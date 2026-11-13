@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeQuest — Profil de Nova_Runner</title>
+  <meta name="description" content="Profil CodeQuest : niveau, badges, historique, sessions actives, préférences de thème, son, accessibilité et droits RGPD.">
+  <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body data-root="../" data-page="profil" data-layout="app" data-title="Profil">
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <div class="app-layout">
+    <aside class="sidebar" data-sidebar></aside>
+    <div class="app-main">
+      <header class="app-topbar" data-topbar></header>
+
+      <main id="main" class="page">
+        <div class="container-wide">
+          <div class="panel mb-6">
+            <div class="panel-body">
+              <div class="row row-wrap between" style="align-items:flex-start">
+                <div class="row" style="align-items:flex-start">
+                  <span class="avatar avatar-xl" style="border-radius:20px">NR</span>
+                  <div>
+                    <div class="row row-wrap mb-2">
+                      <h1 style="margin:0;font-size:clamp(1.5rem,2.6vw,2rem)">Nova_Runner</h1>
+                      <span class="badge badge-cyan">Niveau 12</span>
+                      <span class="badge badge-amber"><span data-icon="crown"></span> Top 0,3 %</span>
+                    </div>
+                    <p class="muted mb-2" style="max-width:560px">Runner depuis mars 2026. Spécialité tris et listes. Capitaine de NullPointer, en route vers le Gardien du Dédale.</p>
+                    <div class="row row-wrap">
+                      <span class="badge"><span data-icon="calendar"></span> Membre depuis 8 mois</span>
+                      <span class="badge"><span data-icon="users"></span> NullPointer [NULL]</span>
+                      <span class="badge badge-lime"><span data-icon="flame"></span> Série 6 jours</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="stack-sm">
+                  <button class="btn btn-primary" type="button" data-toast="Mode édition du profil activé (simulation)."><span data-icon="edit"></span> Modifier le profil</button>
+                  <a class="btn btn-secondary" href="classements.html"><span data-icon="trophy"></span> Voir mon classement</a>
+                  <span class="tiny muted mono text-right">ID · NR-8842</span>
+                </div>
+              </div>
+
+              <div class="grid grid-4 mt-6">
+                <div class="card card-pad-sm">
+                  <div class="stat-label"><span data-icon="star"></span> Expérience</div>
+                  <div class="stat-value" style="font-size:1.5rem">2 480 XP</div>
+                  <div class="progress mt-2"><span style="width:62%"></span></div>
+                  <span class="tiny muted">520 XP avant le niveau 13</span>
+                </div>
+                <div class="card card-pad-sm">
+                  <div class="stat-label"><span data-icon="coin"></span> Bits</div>
+                  <div class="stat-value" style="font-size:1.5rem">1 240</div>
+                  <div class="stat-trend">+180 cette semaine</div>
+                </div>
+                <div class="card card-pad-sm">
+                  <div class="stat-label"><span data-icon="heart"></span> Points de vie</div>
+                  <div class="stat-value" style="font-size:1.5rem">86 / 100</div>
+                  <div class="progress mt-2"><span style="width:86%"></span></div>
+                  <span class="tiny muted">Régénération : 1 PV / 6 min</span>
+                </div>
+                <div class="card card-pad-sm">
+                  <div class="stat-label"><span data-icon="award"></span> Badges</div>
+                  <div class="stat-value" style="font-size:1.5rem">14 / 32</div>
+                  <div class="stat-trend">2 rares</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid" style="grid-template-columns:minmax(0,1fr) 320px;align-items:start">
+            <div class="panel" data-tabs>
+              <div class="panel-body-tight">
+                <div class="tabs" role="tablist" aria-label="Sections du profil">
+                  <button class="tab" role="tab" id="tab-apercu" aria-controls="panel-apercu" aria-selected="true" type="button"><span data-icon="user"></span> Vue d'ensemble</button>
+                  <button class="tab" role="tab" id="tab-badges" aria-controls="panel-badges" aria-selected="false" type="button"><span data-icon="award"></span> Badges</button>
+                  <button class="tab" role="tab" id="tab-historique" aria-controls="panel-historique" aria-selected="false" type="button"><span data-icon="activity"></span> Historique</button>
+                  <button class="tab" role="tab" id="tab-sessions" aria-controls="sessions" aria-selected="false" type="button"><span data-icon="shield"></span> Sessions</button>
+                  <button class="tab" role="tab" id="tab-parametres" aria-controls="panel-parametres" aria-selected="false" type="button"><span data-icon="settings"></span> Paramètres</button>
+                </div>
+
+                <div class="panel-body" role="tabpanel" id="panel-apercu" aria-labelledby="tab-apercu">
+                  <div class="grid grid-2">
+                    <div class="panel">
+                      <div class="panel-header"><h4 class="mb-0">Progression du niveau</h4><span class="badge badge-cyan">12 → 13</span></div>
+                      <div class="panel-body">
+                        <div class="row between mb-2"><span class="small muted">XP actuelle</span><span class="mono small">2 480 / 3 000</span></div>
+                        <div class="progress mb-3"><span style="width:82%"></span></div>
+                        <p class="small muted mb-0">Le niveau 13 débloque le chapitre 08 du lore et le défi « Tri par tas en équipe ».</p>
+                      </div>
+                    </div>
+                    <div class="panel">
+                      <div class="panel-header"><h4 class="mb-0">Répartition par thème</h4><span class="badge">4 thèmes</span></div>
+                      <div class="panel-body">
+                        <div class="meter mb-2"><span class="meter-label">Tris</span><div class="progress"><span style="width:74%"></span></div><span class="mono tiny">74 %</span></div>
+                        <div class="meter mb-2"><span class="meter-label">Débogage</span><div class="progress lime"><span style="width:58%"></span></div><span class="mono tiny">58 %</span></div>
+                        <div class="meter mb-2"><span class="meter-label">Crypto</span><div class="progress amber"><span style="width:41%"></span></div><span class="mono tiny">41 %</span></div>
+                        <div class="meter"><span class="meter-label">Stégano</span><div class="progress red"><span style="width:22%"></span></div><span class="mono tiny">22 %</span></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="panel mt-4">
+                    <div class="panel-header"><h4 class="mb-0">Activité récente</h4><span class="badge badge-lime">En ligne</span></div>
+                    <div class="panel-body-tight">
+                      <div class="member-row">
+                        <span class="feature-icon lime" style="margin:0;width:34px;height:34px;flex:0 0 auto"><span data-icon="check" class="icon-sm"></span></span>
+                        <div class="member-info"><strong>Tri fusion sous pression</strong><span>Réussi · 320 pts · il y a 2 h</span></div>
+                        <span class="badge badge-lime">+120 XP</span>
+                      </div>
+                      <div class="member-row">
+                        <span class="feature-icon" style="margin:0;width:34px;height:34px;flex:0 0 auto"><span data-icon="book" class="icon-sm"></span></span>
+                        <div class="member-info"><strong>Chapitre 07 · La boucle qui n'en finit pas</strong><span>Lecture · 48 % · hier</span></div>
+                        <span class="badge">Lore</span>
+                      </div>
+                      <div class="member-row">
+                        <span class="feature-icon magenta" style="margin:0;width:34px;height:34px;flex:0 0 auto"><span data-icon="coin" class="icon-sm"></span></span>
+                        <div class="member-info"><strong>Achat · Potion de PV ×2</strong><span>180 Bits · il y a 2 j</span></div>
+                        <span class="badge badge-amber">Boutique</span>
+                      </div>
+                      <div class="member-row">
+                        <span class="feature-icon violet" style="margin:0;width:34px;height:34px;flex:0 0 auto"><span data-icon="users" class="icon-sm"></span></span>
+                        <div class="member-info"><strong>NullPointer · invitation acceptée</strong><span>Lex_ a rejoint l'équipe · il y a 3 j</span></div>
+                        <span class="badge badge-violet">Équipe</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="grid grid-3 mt-4">
+                    <div class="card card-pad-sm">
+                      <div class="row between mb-2"><span class="badge badge-cyan">Objectif</span><span data-icon="target" class="text-cyan"></span></div>
+                      <strong style="display:block;font-size:0.9rem">Vaincre un Gardien</strong>
+                      <span class="tiny muted">1 / 3 boss de la saison</span>
+                    </div>
+                    <div class="card card-pad-sm">
+                      <div class="row between mb-2"><span class="badge badge-violet">Objectif</span><span data-icon="book" class="text-violet"></span></div>
+                      <strong style="display:block;font-size:0.9rem">Lire 15 chapitres</strong>
+                      <span class="tiny muted">11 / 15 chapitres</span>
+                    </div>
+                    <div class="card card-pad-sm">
+                      <div class="row between mb-2"><span class="badge badge-amber">Objectif</span><span data-icon="coin" class="text-amber"></span></div>
+                      <strong style="display:block;font-size:0.9rem">Économiser 2 000 Bits</strong>
+                      <span class="tiny muted">1 240 / 2 000 Bits</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel-body" role="tabpanel" id="panel-badges" aria-labelledby="tab-badges" hidden>
+                  <div class="row between row-wrap mb-4">
+                    <div>
+                      <h3 class="mb-1">Badges et succès</h3>
+                      <p class="small muted mb-0">14 badges obtenus sur 32. Les badges rares sont signalés par leur bordure.</p>
+                    </div>
+                    <span class="badge badge-cyan">44 % complété</span>
+                  </div>
+                  <div class="grid grid-3">
+                    <div class="card card-pad-sm" style="border-color:rgba(163,230,53,0.35)">
+                      <div class="row between mb-2"><span class="feature-icon lime" style="margin:0;width:40px;height:40px"><span data-icon="check-circle" class="icon-sm"></span></span><span class="badge badge-lime">Obtenu</span></div>
+                      <h4>Premier tri</h4>
+                      <p class="small muted mb-0">Réussir le premier défi de tri. Débloqué le 12 mars 2026.</p>
+                    </div>
+                    <div class="card card-pad-sm" style="border-color:rgba(251,191,36,0.4)">
+                      <div class="row between mb-2"><span class="feature-icon" style="margin:0;width:40px;height:40px;background:rgba(251,191,36,0.12);color:var(--amber)"><span data-icon="award" class="icon-sm"></span></span><span class="badge badge-amber">Rare</span></div>
+                      <h4>Sans faute</h4>
+                      <p class="small muted mb-0">10 défis réussis sans aucun test échoué.</p>
+                    </div>
+                    <div class="card card-pad-sm" style="border-color:rgba(163,230,53,0.35)">
+                      <div class="row between mb-2"><span class="feature-icon lime" style="margin:0;width:40px;height:40px"><span data-icon="flame" class="icon-sm"></span></span><span class="badge badge-lime">Obtenu</span></div>
+                      <h4>Série de 7</h4>
+                      <p class="small muted mb-0">Se connecter et résoudre un défi 7 jours d'affilée.</p>
+                    </div>
+                    <div class="card card-pad-sm" style="border-color:rgba(167,139,250,0.4)">
+                      <div class="row between mb-2"><span class="feature-icon violet" style="margin:0;width:40px;height:40px"><span data-icon="key" class="icon-sm"></span></span><span class="badge badge-violet">Rare</span></div>
+                      <h4>Cryptanalyste</h4>
+                      <p class="small muted mb-0">Résoudre un défi de cryptographie sans indice.</p>
+                    </div>
+                    <div class="card card-pad-sm" style="border-color:rgba(163,230,53,0.35)">
+                      <div class="row between mb-2"><span class="feature-icon lime" style="margin:0;width:40px;height:40px"><span data-icon="users" class="icon-sm"></span></span><span class="badge badge-lime">Obtenu</span></div>
+                      <h4>Esprit d'équipe</h4>
+                      <p class="small muted mb-0">Contribuer à un défi d'équipe réussi.</p>
+                    </div>
+                    <div class="card card-pad-sm" style="opacity:0.6">
+                      <div class="row between mb-2"><span class="feature-icon" style="margin:0;width:40px;height:40px"><span data-icon="lock" class="icon-sm"></span></span><span class="badge">Verrouillé</span></div>
+                      <h4>Boss sans dégât</h4>
+                      <p class="small muted mb-0">Vaincre un Gardien sans perdre un seul PV.</p>
+                    </div>
+                    <div class="card card-pad-sm" style="opacity:0.6">
+                      <div class="row between mb-2"><span class="feature-icon" style="margin:0;width:40px;height:40px"><span data-icon="lock" class="icon-sm"></span></span><span class="badge">Verrouillé</span></div>
+                      <h4>Cartographe</h4>
+                      <p class="small muted mb-0">Débloquer les six régions du lore.</p>
+                    </div>
+                    <div class="card card-pad-sm" style="opacity:0.6">
+                      <div class="row between mb-2"><span class="feature-icon" style="margin:0;width:40px;height:40px"><span data-icon="lock" class="icon-sm"></span></span><span class="badge">Verrouillé</span></div>
+                      <h4>Nuit blanche</h4>
+                      <p class="small muted mb-0">Résoudre un défi entre 2 h et 5 h du matin.</p>
+                    </div>
+                    <div class="card card-pad-sm" style="opacity:0.6">
+                      <div class="row between mb-2"><span class="feature-icon" style="margin:0;width:40px;height:40px"><span data-icon="lock" class="icon-sm"></span></span><span class="badge">Verrouillé</span></div>
+                      <h4>Briseur d'ORACLE</h4>
+                      <p class="small muted mb-0">Terminer premier d'un événement à essai unique.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel-body" role="tabpanel" id="panel-historique" aria-labelledby="tab-historique" hidden>
+                  <div class="row between row-wrap mb-4">
+                    <div>
+                      <h3 class="mb-1">Historique des soumissions</h3>
+                      <p class="small muted mb-0">Toutes les soumissions sont conservées. Seul le meilleur score compte au classement.</p>
+                    </div>
+                    <div class="row row-wrap">
+                      <button class="chip active" type="button">Tout</button>
+                      <button class="chip" type="button">Réussis</button>
+                      <button class="chip" type="button">Échoués</button>
+                    </div>
+                  </div>
+                  <div class="table-wrap">
+                    <table>
+                      <thead><tr><th>Date</th><th>Défi</th><th>Langage</th><th>Score</th><th>Tests</th><th>Temps CPU</th><th>Statut</th></tr></thead>
+                      <tbody>
+                        <tr><td class="tiny muted">04 nov. 08:41</td><td><a href="defi-tri.html">Tri fusion sous pression</a></td><td>Python 3.12</td><td class="mono text-cyan">320</td><td class="mono">9 / 9</td><td class="mono">41 ms</td><td><span class="badge badge-lime">Réussi</span></td></tr>
+                        <tr><td class="tiny muted">04 nov. 08:22</td><td><a href="defi-tri.html">Tri fusion sous pression</a></td><td>Python 3.12</td><td class="mono">280</td><td class="mono">8 / 9</td><td class="mono">39 ms</td><td><span class="badge badge-red">Échoué</span></td></tr>
+                        <tr><td class="tiny muted">03 nov. 19:05</td><td><a href="defi-debogage.html">L'indice fantôme</a></td><td>Python 3.12</td><td class="mono text-cyan">200</td><td class="mono">4 / 4</td><td class="mono">8 ms</td><td><span class="badge badge-lime">Réussi</span></td></tr>
+                        <tr><td class="tiny muted">02 nov. 21:14</td><td><a href="defi-decryptage.html">Le message de la Crypte</a></td><td>Python 3.12</td><td class="mono text-cyan">260</td><td class="mono">1 / 1</td><td class="mono">—</td><td><span class="badge badge-lime">Réussi</span></td></tr>
+                        <tr><td class="tiny muted">01 nov. 16:48</td><td><a href="defi-visuel.html">Le canal des images</a></td><td>Python 3.12</td><td class="mono">—</td><td class="mono">0 / 1</td><td class="mono">—</td><td><span class="badge">Brouillon</span></td></tr>
+                        <tr><td class="tiny muted">31 oct. 11:32</td><td><a href="defis.html">Premier tri à bulles</a></td><td>Python 3.12</td><td class="mono text-cyan">100</td><td class="mono">6 / 6</td><td class="mono">12 ms</td><td><span class="badge badge-lime">Réussi</span></td></tr>
+                        <tr><td class="tiny muted">29 oct. 20:17</td><td><a href="defis.html">Fuite d'état</a></td><td>JavaScript</td><td class="mono">180</td><td class="mono">5 / 7</td><td class="mono">22 ms</td><td><span class="badge badge-red">Échoué</span></td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="row between row-wrap mt-4">
+                    <span class="tiny muted">7 soumissions sur 63 · page 1 / 9</span>
+                    <div class="row"><button class="btn btn-sm btn-secondary" type="button"><span data-icon="chevron-left"></span> Précédent</button><button class="btn btn-sm btn-secondary" type="button">Suivant <span data-icon="chevron-right"></span></button></div>
+                  </div>
+                </div>
+
+                <div class="panel-body" role="tabpanel" id="sessions" aria-labelledby="tab-sessions" hidden>
+                  <div class="row between row-wrap mb-4">
+                    <div>
+                      <h3 class="mb-1">Sessions actives</h3>
+                      <p class="small muted mb-0">Chaque session est liée à un appareil. Un changement de mot de passe révoque toutes les sessions.</p>
+                    </div>
+                    <button class="btn btn-sm btn-danger" type="button" data-modal-open="revoke-all"><span data-icon="logout"></span> Révoquer les autres</button>
+                  </div>
+                  <div class="table-wrap">
+                    <table>
+                      <thead><tr><th>Appareil</th><th>Localisation</th><th>IP approximative</th><th>Dernière activité</th><th>Statut</th><th>Action</th></tr></thead>
+                      <tbody>
+                        <tr>
+                          <td><div class="player-cell"><span data-icon="hard-drive" class="text-cyan"></span><span><strong>Firefox · Linux</strong><br><span class="tiny muted">Session actuelle</span></span></div></td>
+                          <td>Paris, France</td><td class="mono tiny">82.64.•••.•••</td><td class="tiny muted">à l'instant</td>
+                          <td><span class="badge badge-lime">Active</span></td><td><span class="tiny muted">—</span></td>
+                        </tr>
+                        <tr>
+                          <td><div class="player-cell"><span data-icon="hard-drive"></span><span><strong>Chrome · Android</strong><br><span class="tiny muted">Mobile</span></span></div></td>
+                          <td>Lyon, France</td><td class="mono tiny">90.112.•••.•••</td><td class="tiny muted">il y a 3 h</td>
+                          <td><span class="badge badge-cyan">Active</span></td><td><button class="btn btn-sm btn-ghost" type="button" data-toast="Session mobile révoquée (simulation).">Révoquer</button></td>
+                        </tr>
+                        <tr>
+                          <td><div class="player-cell"><span data-icon="hard-drive"></span><span><strong>Safari · macOS</strong><br><span class="tiny muted">Poste secondaire</span></span></div></td>
+                          <td>Bruxelles, Belgique</td><td class="mono tiny">109.88.•••.•••</td><td class="tiny muted">il y a 6 j</td>
+                          <td><span class="badge">Expirée</span></td><td><button class="btn btn-sm btn-ghost" type="button" data-toast="Session déjà expirée.">Révoquer</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="alert alert-amber mt-4">
+                    <span data-icon="alert-triangle"></span>
+                    <span>Une activité inconnue ? Change ton mot de passe et révoque toutes les autres sessions. L'IP affichée est volontairement tronquée.</span>
+                  </div>
+                  <div class="panel mt-4">
+                    <div class="panel-header"><h4 class="mb-0">Double authentification</h4><span class="badge badge-amber">Recommandée</span></div>
+                    <div class="panel-body">
+                      <div class="row between row-wrap">
+                        <div><strong style="display:block;font-size:0.9rem">Application d'authentification (TOTP)</strong><span class="small muted">Non configurée. Ajoute une seconde couche de sécurité à ton compte.</span></div>
+                        <button class="btn btn-secondary btn-sm" type="button" data-toast="Configuration 2FA ouverte (simulation)."><span data-icon="shield-check"></span> Configurer</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel-body" role="tabpanel" id="panel-parametres" aria-labelledby="tab-parametres" hidden>
+                  <h3>Informations du compte</h3>
+                  <form class="form" data-demo-form data-toast="Profil enregistré (simulation). Un e-mail de confirmation serait envoyé pour toute modification d'adresse.">
+                    <div class="form-row">
+                      <div class="field"><label class="label" for="profil-pseudo">Pseudo</label><input class="input" id="profil-pseudo" type="text" value="Nova_Runner" maxlength="20"></div>
+                      <div class="field"><label class="label" for="profil-email">E-mail</label><div class="input-group"><span data-icon="mail"></span><input class="input" id="profil-email" type="email" value="nova@codequest.gg"></div></div>
+                    </div>
+                    <div class="form-row">
+                      <div class="field"><label class="label" for="profil-lang">Langage préféré</label><select class="select" id="profil-lang"><option>Python 3.12</option><option>JavaScript (Node 22)</option><option>Java 21</option><option>C++ 20</option></select></div>
+                      <div class="field"><label class="label" for="profil-tz">Fuseau horaire</label><select class="select" id="profil-tz"><option>Europe/Paris (UTC+1)</option><option>Europe/London (UTC+0)</option><option>America/Montreal (UTC−5)</option></select></div>
+                    </div>
+                    <div class="field"><label class="label" for="profil-bio">Bio publique <span class="optional">160 caractères max.</span></label><textarea class="textarea" id="profil-bio">Runner depuis mars 2026. Spécialité tris et listes. Capitaine de NullPointer.</textarea></div>
+                    <button class="btn btn-primary" type="submit">Enregistrer les informations</button>
+                  </form>
+
+                  <hr class="mt-6">
+
+                  <h3>Apparence</h3>
+                  <div class="grid grid-3">
+                    <label class="card card-pad-sm" style="cursor:pointer;border-color:var(--cyan)">
+                      <div class="row between mb-2"><span class="badge badge-cyan">Sombre</span><input type="radio" name="theme" checked aria-label="Thème sombre"></div>
+                      <strong style="display:block;font-size:0.88rem">Terminal néon</strong>
+                      <span class="tiny muted">Thème par défaut, contrasté.</span>
+                    </label>
+                    <label class="card card-pad-sm" style="cursor:pointer">
+                      <div class="row between mb-2"><span class="badge">Clair</span><input type="radio" name="theme" aria-label="Thème clair"></div>
+                      <strong style="display:block;font-size:0.88rem">Papier froid</strong>
+                      <span class="tiny muted">Fond clair, accents conservés.</span>
+                    </label>
+                    <label class="card card-pad-sm" style="cursor:pointer">
+                      <div class="row between mb-2"><span class="badge">Système</span><input type="radio" name="theme" aria-label="Thème système"></div>
+                      <strong style="display:block;font-size:0.88rem">Automatique</strong>
+                      <span class="tiny muted">Suit la préférence de l'appareil.</span>
+                    </label>
+                  </div>
+
+                  <hr class="mt-6">
+
+                  <h3>Son</h3>
+                  <div class="stack-sm">
+                    <div class="meter"><span class="meter-label">Volume maître</span><input type="range" min="0" max="100" value="70" aria-label="Volume maître" style="flex:1"></div>
+                    <div class="meter"><span class="meter-label">Musique</span><input type="range" min="0" max="100" value="45" aria-label="Volume de la musique" style="flex:1"></div>
+                    <div class="meter"><span class="meter-label">Effets</span><input type="range" min="0" max="100" value="80" aria-label="Volume des effets" style="flex:1"></div>
+                    <div class="meter"><span class="meter-label">Chat vocal</span><input type="range" min="0" max="100" value="60" aria-label="Volume du chat vocal" style="flex:1"></div>
+                  </div>
+                  <label class="checkbox mt-3"><input type="checkbox"> <span>Couper tout le son (le jeu reste entièrement jouable)</span></label>
+                  <p class="tiny muted mt-2">Le son ne démarre qu'après une interaction. Chaque information sonore possède un équivalent visuel.</p>
+
+                  <hr class="mt-6">
+
+                  <h3>Accessibilité</h3>
+                  <div class="stack-sm">
+                    <label class="checkbox"><input type="checkbox" checked> <span>Réduire les animations (équivalent à <code>prefers-reduced-motion</code>)</span></label>
+                    <label class="checkbox"><input type="checkbox"> <span>Contraste renforcé</span></label>
+                    <label class="checkbox"><input type="checkbox" checked> <span>Souligner les liens dans le contenu</span></label>
+                    <label class="checkbox"><input type="checkbox"> <span>Désactiver le défilement automatique du chat</span></label>
+                  </div>
+                  <div class="form-row mt-3">
+                    <div class="field"><label class="label" for="profil-font">Taille de police</label><select class="select" id="profil-font"><option>Normale (16 px)</option><option>Grande (18 px)</option><option>Très grande (20 px)</option></select></div>
+                    <div class="field"><label class="label" for="profil-motion">Mouvement</label><select class="select" id="profil-motion"><option>Réduit</option><option>Normal</option></select></div>
+                  </div>
+
+                  <hr class="mt-6">
+
+                  <h3>Données personnelles (RGPD)</h3>
+                  <div class="grid grid-2">
+                    <div class="card card-pad-sm">
+                      <div class="row between mb-2"><span class="badge badge-cyan">Droit d'accès</span><span data-icon="download" class="text-cyan"></span></div>
+                      <strong style="display:block;font-size:0.9rem">Exporter mes données</strong>
+                      <p class="small muted">Archive JSON contenant profil, soumissions, transactions et messages. Générée sous 24 h.</p>
+                      <button class="btn btn-secondary btn-sm" type="button" data-toast="Export demandé (simulation). Un lien sécurisé sera envoyé par e-mail."><span data-icon="download"></span> Demander l'export</button>
+                    </div>
+                    <div class="card card-pad-sm" style="border-color:rgba(251,113,133,0.35)">
+                      <div class="row between mb-2"><span class="badge badge-red">Zone sensible</span><span data-icon="alert-triangle" class="text-red"></span></div>
+                      <strong style="display:block;font-size:0.9rem">Supprimer mon compte</strong>
+                      <p class="small muted">Suppression définitive sous 30 jours. Les scores d'équipe déjà acquis sont conservés de façon anonyme.</p>
+                      <button class="btn btn-danger btn-sm" type="button" data-modal-open="delete-account"><span data-icon="trash"></span> Supprimer le compte</button>
+                    </div>
+                  </div>
+                  <p class="tiny muted mt-3 mb-0">Responsable de traitement : CodeQuest. Base légale : exécution du contrat et consentement. Réclamation possible auprès de la CNIL.</p>
+                </div>
+              </div>
+            </div>
+
+            <aside class="stack" aria-label="Résumé du compte">
+              <div class="panel">
+                <div class="panel-header"><h3 class="mb-0">Carte de Runner</h3><span class="badge badge-cyan">Saison 03</span></div>
+                <div class="panel-body">
+                  <div class="row mb-3">
+                    <span class="avatar avatar-lg">NR</span>
+                    <div><strong style="display:block">Nova_Runner</strong><span class="tiny muted">Niveau 12 · 2 480 XP</span></div>
+                  </div>
+                  <div class="progress mb-3"><span style="width:82%"></span></div>
+                  <div class="row between mb-2"><span class="small muted">Classement</span><span class="mono small">#3</span></div>
+                  <div class="row between mb-2"><span class="small muted">Défis résolus</span><span class="mono small">37</span></div>
+                  <div class="row between mb-2"><span class="small muted">Précision</span><span class="mono small">84 %</span></div>
+                  <div class="row between"><span class="small muted">Série</span><span class="mono small">6 jours</span></div>
+                  <hr>
+                  <div class="row between"><span class="small muted">Titre affiché</span><span class="badge badge-violet">Briseur de boucles</span></div>
+                </div>
+              </div>
+
+              <div class="panel" id="securite">
+                <div class="panel-header"><h3 class="mb-0">Sécurité</h3><span class="badge badge-lime">Bon état</span></div>
+                <div class="panel-body">
+                  <div class="stack-sm">
+                    <div class="row between"><span class="small muted">Mot de passe</span><span class="badge badge-lime">Fort</span></div>
+                    <div class="row between"><span class="small muted">2FA</span><span class="badge badge-amber">Inactive</span></div>
+                    <div class="row between"><span class="small muted">Sessions actives</span><span class="mono small">2</span></div>
+                    <div class="row between"><span class="small muted">Dernière connexion</span><span class="mono tiny">il y a 2 h</span></div>
+                  </div>
+                  <button class="btn btn-secondary btn-block btn-sm mt-3" type="button" data-modal-open="revoke-all"><span data-icon="shield-check"></span> Gérer les sessions</button>
+                  <a class="btn btn-ghost btn-block btn-sm mt-2" href="#sessions" data-tab-target="sessions">Voir le détail</a>
+                </div>
+              </div>
+
+              <div class="card card-pad-sm">
+                <div class="row mb-2"><span data-icon="bell" class="text-cyan"></span><strong style="font-size:0.86rem">Notifications</strong></div>
+                <label class="checkbox"><input type="checkbox" checked> <span>Réponse à un signalement</span></label>
+                <label class="checkbox"><input type="checkbox" checked> <span>Invitation d'équipe</span></label>
+                <label class="checkbox"><input type="checkbox"> <span>Annonces d'événements</span></label>
+                <label class="checkbox"><input type="checkbox" checked> <span>Résultat de soumission</span></label>
+              </div>
+
+              <div class="alert alert-cyan">
+                <span data-icon="info"></span>
+                <span>Les préférences de thème, de son et d'accessibilité sont stockées localement et appliquées à tous les écrans.</span>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="revoke-all" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="revoke-title">
+      <div class="modal-header"><h3 id="revoke-title" class="mb-0">Révoquer les autres sessions</h3><button class="icon-btn" type="button" data-modal-close aria-label="Fermer"><span data-icon="x"></span></button></div>
+      <div class="modal-body">
+        <p>Toutes les sessions sauf celle-ci seront déconnectées immédiatement. Les autres appareils devront se reconnecter.</p>
+        <div class="alert alert-amber"><span data-icon="alert-triangle"></span><span>Cette action est recommandée si tu suspectes un accès non autorisé.</span></div>
+      </div>
+      <div class="modal-footer"><button class="btn btn-ghost" type="button" data-modal-close>Annuler</button><button class="btn btn-danger" type="button" data-toast="2 sessions révoquées (simulation)." data-modal-close>Révoquer</button></div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="delete-account" hidden>
+    <div class="modal" role="alertdialog" aria-modal="true" aria-labelledby="delete-title" aria-describedby="delete-desc">
+      <div class="modal-header"><h3 id="delete-title" class="mb-0 text-red">Supprimer le compte</h3><button class="icon-btn" type="button" data-modal-close aria-label="Fermer"><span data-icon="x"></span></button></div>
+      <div class="modal-body">
+        <p id="delete-desc">La suppression est définitive après 30 jours. Tu perdras ton inventaire, tes badges et ton accès aux équipes.</p>
+        <div class="field"><label class="label" for="delete-confirm">Saisis <code>SUPPRIMER</code> pour confirmer</label><input class="input" id="delete-confirm" type="text" placeholder="SUPPRIMER"></div>
+      </div>
+      <div class="modal-footer"><button class="btn btn-ghost" type="button" data-modal-close>Annuler</button><button class="btn btn-danger" type="button" data-toast="Demande de suppression enregistrée (simulation)." data-modal-close>Confirmer la suppression</button></div>
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

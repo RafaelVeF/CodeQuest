@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeQuest — Boutique en Bits</title>
+  <meta name="description" content="Boutique CodeQuest : indices, potions, cosmétiques, accès anticipé, inventaire et registre de transactions immuable.">
+  <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body data-root="../" data-page="boutique" data-layout="app" data-title="Boutique">
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <div class="app-layout">
+    <aside class="sidebar" data-sidebar></aside>
+    <div class="app-main">
+      <header class="app-topbar" data-topbar></header>
+
+      <main id="main" class="page">
+        <div class="container-wide">
+          <div class="page-header">
+            <div>
+              <span class="eyebrow">Économie · Saison 03</span>
+              <h1>Boutique du Réseau</h1>
+              <p class="muted">Les Bits s'obtiennent en jouant. Ils achètent du confort et du style, jamais de puissance compétitive.</p>
+            </div>
+            <div class="row row-wrap">
+              <span class="badge badge-amber" style="font-size:0.9rem"><span data-icon="coin"></span> 1 240 Bits</span>
+              <a class="btn btn-sm btn-secondary" href="profil.html"><span data-icon="user"></span> Mon compte</a>
+            </div>
+          </div>
+
+          <div class="grid grid-4 mb-6">
+            <div class="stat-card">
+              <div class="stat-label"><span data-icon="coin"></span> Solde disponible</div>
+              <div class="stat-value">1 240</div>
+              <div class="stat-trend">Bits non convertibles</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label"><span data-icon="activity"></span> Gagnés cette semaine</div>
+              <div class="stat-value">+180</div>
+              <div class="stat-trend">Défis, série et event</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label"><span data-icon="cart"></span> Dépensés ce mois</div>
+              <div class="stat-value">420</div>
+              <div class="stat-trend">2 indices · 1 potion</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label"><span data-icon="gift"></span> Inventaire</div>
+              <div class="stat-value">6</div>
+              <div class="stat-trend">objets · 2 catégories</div>
+            </div>
+          </div>
+
+          <div class="grid" style="grid-template-columns:minmax(0,1fr) 320px;align-items:start">
+            <div class="panel" data-tabs>
+              <div class="panel-body-tight">
+                <div class="tabs" role="tablist" aria-label="Sections de la boutique">
+                  <button class="tab" role="tab" id="tab-catalogue" aria-controls="panel-catalogue" aria-selected="true" type="button"><span data-icon="cart"></span> Catalogue</button>
+                  <button class="tab" role="tab" id="tab-inventaire" aria-controls="panel-inventaire" aria-selected="false" type="button"><span data-icon="gift"></span> Inventaire <span class="badge">6</span></button>
+                  <button class="tab" role="tab" id="tab-registre" aria-controls="panel-registre" aria-selected="false" type="button"><span data-icon="file-text"></span> Registre</button>
+                </div>
+
+                <div class="panel-body" role="tabpanel" id="panel-catalogue" aria-labelledby="tab-catalogue">
+                  <div class="row row-wrap between mb-4">
+                    <div class="row row-wrap">
+                      <button class="chip active" type="button">Tout</button>
+                      <button class="chip" type="button">Indices</button>
+                      <button class="chip" type="button">Potions</button>
+                      <button class="chip" type="button">Cosmétiques</button>
+                      <button class="chip" type="button">Accès anticipé</button>
+                    </div>
+                    <span class="tiny muted">Prix en Bits · TVA fictive incluse</span>
+                  </div>
+
+                  <div class="grid grid-3">
+                    <article class="shop-card">
+                      <div class="shop-preview"><span data-icon="key" class="icon-xl"></span></div>
+                      <div class="row between"><span class="badge badge-cyan">Indice</span><span class="price"><span data-icon="coin" class="icon-sm"></span> 40</span></div>
+                      <h3 style="margin:0;font-size:1rem">Indice simple</h3>
+                      <p class="small muted mb-0">Un indice contextuel sur le défi en cours. Désactivé en event.</p>
+                      <button class="btn btn-primary btn-sm btn-block" type="button" data-modal-open="buy-modal">Acheter</button>
+                    </article>
+
+                    <article class="shop-card">
+                      <div class="shop-preview"><span data-icon="layers" class="icon-xl"></span></div>
+                      <div class="row between"><span class="badge badge-cyan">Indice</span><span class="price"><span data-icon="coin" class="icon-sm"></span> 100</span></div>
+                      <h3 style="margin:0;font-size:1rem">Pack de 3 indices</h3>
+                      <p class="small muted mb-0">Trois indices à utiliser quand tu veux, hors events à essai unique.</p>
+                      <button class="btn btn-primary btn-sm btn-block" type="button" data-modal-open="buy-modal">Acheter</button>
+                    </article>
+
+                    <article class="shop-card">
+                      <div class="shop-preview lime"><span data-icon="heart" class="icon-xl"></span></div>
+                      <div class="row between"><span class="badge badge-lime">Potion</span><span class="price"><span data-icon="coin" class="icon-sm"></span> 90</span></div>
+                      <h3 style="margin:0;font-size:1rem">Potion de PV</h3>
+                      <p class="small muted mb-0">Rend 20 PV instantanément. Utilisable hors combat uniquement.</p>
+                      <button class="btn btn-primary btn-sm btn-block" type="button" data-modal-open="buy-modal">Acheter</button>
+                    </article>
+
+                    <article class="shop-card">
+                      <div class="shop-preview lime"><span data-icon="users" class="icon-xl"></span></div>
+                      <div class="row between"><span class="badge badge-lime">Potion</span><span class="price"><span data-icon="coin" class="icon-sm"></span> 250</span></div>
+                      <h3 style="margin:0;font-size:1rem">Potion d'équipe</h3>
+                      <p class="small muted mb-0">Rend 15 PV au pool partagé. Réservée au capitaine.</p>
+                      <button class="btn btn-primary btn-sm btn-block" type="button" data-modal-open="buy-modal">Acheter</button>
+                    </article>
+
+                    <article class="shop-card">
+                      <div class="shop-preview magenta"><span data-icon="image" class="icon-xl"></span></div>
+                      <div class="row between"><span class="badge badge-magenta">Cosmétique</span><span class="price"><span data-icon="coin" class="icon-sm"></span> 350</span></div>
+                      <h3 style="margin:0;font-size:1rem">Avatar « Glitch »</h3>
+                      <p class="small muted mb-0">Avatar animé sobre, désactivable avec la préférence mouvement réduit.</p>
+                      <button class="btn btn-primary btn-sm btn-block" type="button" data-modal-open="buy-modal">Acheter</button>
+                    </article>
+
+                    <article class="shop-card">
+                      <div class="shop-preview magenta"><span data-icon="crown" class="icon-xl"></span></div>
+                      <div class="row between"><span class="badge badge-magenta">Cosmétique</span><span class="price"><span data-icon="coin" class="icon-sm"></span> 500</span></div>
+                      <h3 style="margin:0;font-size:1rem">Titre « Briseur de boucles »</h3>
+                      <p class="small muted mb-0">Titre affiché sous ton pseudo dans les classements.</p>
+                      <button class="btn btn-primary btn-sm btn-block" type="button" data-modal-open="buy-modal">Acheter</button>
+                    </article>
+
+                    <article class="shop-card">
+                      <div class="shop-preview"><span data-icon="sliders" class="icon-xl"></span></div>
+                      <div class="row between"><span class="badge badge-violet">Cosmétique</span><span class="price"><span data-icon="coin" class="icon-sm"></span> 600</span></div>
+                      <h3 style="margin:0;font-size:1rem">Thème d'éditeur « Ambre »</h3>
+                      <p class="small muted mb-0">Palette de couleurs pour l'éditeur de code. Aucun effet sur les scores.</p>
+                      <button class="btn btn-primary btn-sm btn-block" type="button" data-modal-open="buy-modal">Acheter</button>
+                    </article>
+
+                    <article class="shop-card">
+                      <div class="shop-preview magenta"><span data-icon="book" class="icon-xl"></span></div>
+                      <div class="row between"><span class="badge badge-violet">Accès anticipé</span><span class="price"><span data-icon="coin" class="icon-sm"></span> 800</span></div>
+                      <h3 style="margin:0;font-size:1rem">Chapitre 08 en avant-première</h3>
+                      <p class="small muted mb-0">Lecture anticipée du lore, sans accès aux défis ni au classement associé.</p>
+                      <button class="btn btn-primary btn-sm btn-block" type="button" data-modal-open="buy-modal">Acheter</button>
+                    </article>
+
+                    <article class="shop-card" style="border-style:dashed;opacity:0.75">
+                      <div class="shop-preview"><span data-icon="clock" class="icon-xl"></span></div>
+                      <div class="row between"><span class="badge">Rotation</span><span class="tiny muted mono">3 j 04 h</span></div>
+                      <h3 style="margin:0;font-size:1rem">Offre de saison</h3>
+                      <p class="small muted mb-0">Un cosmétique en rotation chaque semaine. Reviendra après la clôture.</p>
+                      <button class="btn btn-secondary btn-sm btn-block" type="button" data-toast="Article en rotation : indisponible pour le moment.">Bientôt</button>
+                    </article>
+                  </div>
+
+                  <div class="alert alert-cyan mt-6">
+                    <span data-icon="shield-check"></span>
+                    <span><strong>Aucun paiement réel.</strong> Les Bits sont une monnaie virtuelle offerte par le jeu. Ils ne s'achètent pas avec de l'argent et ne se convertissent pas.</span>
+                  </div>
+                </div>
+
+                <div class="panel-body" role="tabpanel" id="panel-inventaire" aria-labelledby="tab-inventaire" hidden>
+                  <div class="row between row-wrap mb-4">
+                    <div>
+                      <h3 class="mb-1">Mon inventaire</h3>
+                      <p class="small muted mb-0">Les objets consommables sont utilisés depuis cet écran ou depuis l'arène de boss.</p>
+                    </div>
+                    <span class="badge badge-cyan">6 objets</span>
+                  </div>
+                  <div class="grid grid-2">
+                    <div class="card card-pad-sm">
+                      <div class="row between mb-2"><span class="badge badge-cyan">Indice</span><span class="mono small">×2</span></div>
+                      <strong style="display:block;font-size:0.92rem">Indice simple</strong>
+                      <p class="small muted">Utilisable sur un défi standard. Non utilisable en event.</p>
+                      <button class="btn btn-secondary btn-sm" type="button" data-toast="Indice consommé (simulation). Ouvre un défi pour l'utiliser."><span data-icon="key"></span> Utiliser</button>
+                    </div>
+                    <div class="card card-pad-sm">
+                      <div class="row between mb-2"><span class="badge badge-lime">Potion</span><span class="mono small">×2</span></div>
+                      <strong style="display:block;font-size:0.92rem">Potion de PV</strong>
+                      <p class="small muted">Rend 20 PV. Le pool est actuellement à 86 / 100.</p>
+                      <button class="btn btn-secondary btn-sm" type="button" data-toast="Potion utilisée : +20 PV (simulation)."><span data-icon="heart"></span> Utiliser</button>
+                    </div>
+                    <div class="card card-pad-sm">
+                      <div class="row between mb-2"><span class="badge badge-magenta">Cosmétique</span><span class="badge badge-lime">Équipé</span></div>
+                      <strong style="display:block;font-size:0.92rem">Titre « Briseur de boucles »</strong>
+                      <p class="small muted">Affiché sous ton pseudo dans les classements et ton profil.</p>
+                      <button class="btn btn-ghost btn-sm" type="button" data-toast="Titre retiré (simulation).">Retirer</button>
+                    </div>
+                    <div class="card card-pad-sm">
+                      <div class="row between mb-2"><span class="badge badge-violet">Cosmétique</span><span class="badge">Non équipé</span></div>
+                      <strong style="display:block;font-size:0.92rem">Thème d'éditeur « Ambre »</strong>
+                      <p class="small muted">Palette de couleurs pour l'éditeur de code.</p>
+                      <button class="btn btn-secondary btn-sm" type="button" data-toast="Thème d'éditeur équipé (simulation).">Équiper</button>
+                    </div>
+                    <div class="card card-pad-sm">
+                      <div class="row between mb-2"><span class="badge badge-violet">Accès anticipé</span><span class="badge badge-lime">Actif</span></div>
+                      <strong style="display:block;font-size:0.92rem">Chapitre 08 en avant-première</strong>
+                      <p class="small muted">Accès de lecture jusqu'à la fin de la saison.</p>
+                      <a class="btn btn-ghost btn-sm" href="lore.html">Lire le chapitre</a>
+                    </div>
+                    <div class="card card-pad-sm" style="border-style:dashed">
+                      <div class="row between mb-2"><span class="badge">Emplacement libre</span><span class="mono small">—</span></div>
+                      <strong style="display:block;font-size:0.92rem">Aucun objet</strong>
+                      <p class="small muted">Les objets achetés apparaissent ici immédiatement.</p>
+                      <a class="btn btn-secondary btn-sm" href="#catalogue" data-tab-target="panel-catalogue">Parcourir la boutique</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel-body" role="tabpanel" id="panel-registre" aria-labelledby="tab-registre" hidden>
+                  <div class="row between row-wrap mb-4">
+                    <div>
+                      <h3 class="mb-1">Registre des transactions</h3>
+                      <p class="small muted mb-0">Registre immuable. Le solde est dérivé de la somme des mouvements, jamais modifié directement.</p>
+                    </div>
+                    <span class="badge badge-lime"><span data-icon="shield-check"></span> Idempotent</span>
+                  </div>
+                  <div class="table-wrap">
+                    <table>
+                      <thead><tr><th>Date</th><th>Type</th><th>Libellé</th><th>Montant</th><th>Solde après</th><th>Clé d'idempotence</th></tr></thead>
+                      <tbody>
+                        <tr><td class="tiny muted">04 nov. 08:44</td><td><span class="badge badge-lime">Gain</span></td><td>Défi réussi · Tri fusion</td><td class="mono text-lime">+40</td><td class="mono">1 240</td><td class="mono tiny">tx_8f2c…a41d</td></tr>
+                        <tr><td class="tiny muted">04 nov. 08:12</td><td><span class="badge badge-red">Dépense</span></td><td>Indice 2 · Le message de la Crypte</td><td class="mono text-red">−60</td><td class="mono">1 200</td><td class="mono tiny">tx_71be…c092</td></tr>
+                        <tr><td class="tiny muted">03 nov. 19:10</td><td><span class="badge badge-lime">Gain</span></td><td>Défi réussi · L'indice fantôme</td><td class="mono text-lime">+30</td><td class="mono">1 260</td><td class="mono tiny">tx_5aa1…77f3</td></tr>
+                        <tr><td class="tiny muted">03 nov. 18:52</td><td><span class="badge badge-red">Dépense</span></td><td>Potion de PV ×1</td><td class="mono text-red">−90</td><td class="mono">1 230</td><td class="mono tiny">tx_44d9…1b60</td></tr>
+                        <tr><td class="tiny muted">02 nov. 21:20</td><td><span class="badge badge-lime">Gain</span></td><td>Event · La clé d'ORACLE · 3<sup>e</sup></td><td class="mono text-lime">+150</td><td class="mono">1 320</td><td class="mono tiny">tx_2c87…9e14</td></tr>
+                        <tr><td class="tiny muted">02 nov. 09:02</td><td><span class="badge badge-lime">Gain</span></td><td>Série de connexions · 7 jours</td><td class="mono text-lime">+50</td><td class="mono">1 170</td><td class="mono tiny">tx_1f03…bd88</td></tr>
+                        <tr><td class="tiny muted">01 nov. 16:45</td><td><span class="badge badge-red">Dépense</span></td><td>Avatar « Glitch »</td><td class="mono text-red">−350</td><td class="mono">1 120</td><td class="mono tiny">tx_0ab5…4c27</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="row between row-wrap mt-4">
+                    <span class="tiny muted">7 mouvements · page 1 / 4</span>
+                    <button class="btn btn-sm btn-secondary" type="button" data-toast="Export CSV du registre simulé."><span data-icon="download"></span> Exporter</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <aside class="stack" aria-label="Solde et règles">
+              <div class="panel">
+                <div class="panel-header"><h3 class="mb-0">Portefeuille</h3><span class="badge badge-amber">Bits</span></div>
+                <div class="panel-body">
+                  <div class="row mb-3">
+                    <span class="feature-icon" style="margin:0;width:44px;height:44px;flex:0 0 auto;background:rgba(251,191,36,0.12);color:var(--amber)"><span data-icon="coin" class="icon-lg"></span></span>
+                    <div><span class="tiny muted mono">Solde disponible</span><strong style="display:block;font-size:1.6rem;line-height:1.1">1 240</strong></div>
+                  </div>
+                  <div class="row between mb-2"><span class="small muted">Gains de la semaine</span><span class="mono small text-lime">+180</span></div>
+                  <div class="row between mb-2"><span class="small muted">Dépenses du mois</span><span class="mono small text-red">−420</span></div>
+                  <div class="row between"><span class="small muted">Valeur réelle</span><span class="mono small">0 €</span></div>
+                  <hr>
+                  <p class="tiny muted mb-0">Les Bits sont virtuels, non convertibles et ne peuvent jamais acheter un avantage compétitif.</p>
+                </div>
+              </div>
+
+              <div class="panel">
+                <div class="panel-header"><h3 class="mb-0">Gagner des Bits</h3><span class="badge badge-lime">Gratuit</span></div>
+                <div class="panel-body-tight">
+                  <div class="member-row"><span data-icon="code" class="text-cyan"></span><span class="member-info"><strong>Défi réussi</strong><span>Une fois par défi</span></span><span class="mono tiny text-lime">+40</span></div>
+                  <div class="member-row"><span data-icon="flame" class="text-amber"></span><span class="member-info"><strong>Série de 7 jours</strong><span>Chaque semaine complète</span></span><span class="mono tiny text-lime">+50</span></div>
+                  <div class="member-row"><span data-icon="skull" class="text-magenta"></span><span class="member-info"><strong>Boss vaincu</strong><span>Par phase et à la victoire</span></span><span class="mono tiny text-lime">+400</span></div>
+                  <div class="member-row"><span data-icon="award" class="text-violet"></span><span class="member-info"><strong>Succès</strong><span>Badge débloqué</span></span><span class="mono tiny text-lime">variable</span></div>
+                </div>
+              </div>
+
+              <div class="card card-pad-sm">
+                <div class="row mb-2"><span data-icon="shield-check" class="text-cyan"></span><strong style="font-size:0.86rem">Achats sécurisés</strong></div>
+                <p class="tiny muted mb-0">Chaque achat est idempotent : un double-clic ne débite jamais deux fois. Toute transaction est journalisée et consultable dans le registre.</p>
+              </div>
+
+              <div class="alert alert-violet">
+                <span data-icon="info"></span>
+                <span><strong>Besoin d'aide ?</strong> Un achat non crédité ? Ouvre un ticket avec la clé de transaction affichée dans le registre.</span>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="buy-modal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="buy-title">
+      <div class="modal-header"><h3 id="buy-title" class="mb-0">Confirmer l'achat</h3><button class="icon-btn" type="button" data-modal-close aria-label="Fermer"><span data-icon="x"></span></button></div>
+      <div class="modal-body">
+        <div class="row between mb-3"><span class="badge badge-cyan">Indice simple</span><span class="price"><span data-icon="coin" class="icon-sm"></span> 40 Bits</span></div>
+        <p class="small muted">L'objet sera ajouté à ton inventaire immédiatement. Le débit est définitif et apparaîtra dans le registre.</p>
+        <div class="row between mb-2"><span class="small muted">Solde actuel</span><span class="mono small">1 240 Bits</span></div>
+        <div class="row between mb-2"><span class="small muted">Après achat</span><span class="mono small text-cyan">1 200 Bits</span></div>
+        <label class="checkbox mt-3"><input type="checkbox" checked> <span>J'ai compris que les Bits n'ont aucune valeur monétaire réelle.</span></label>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" type="button" data-modal-close>Annuler</button>
+        <button class="btn btn-primary" type="button" data-toast="Achat simulé : Indice simple ajouté à l'inventaire. −40 Bits." data-modal-close>Confirmer l'achat</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

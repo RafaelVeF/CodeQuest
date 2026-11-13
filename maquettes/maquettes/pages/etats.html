@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeQuest — États et feedbacks</title>
+  <meta name="description" content="États système CodeQuest : e-mail non confirmé, KO, file d'attente, contenu vide, défi verrouillé, erreurs 403/404/429/500/503 et mode hors ligne.">
+  <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body data-root="../" data-page="etats" data-layout="app" data-title="États & feedbacks">
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <div class="app-layout">
+    <aside class="sidebar" data-sidebar></aside>
+    <div class="app-main">
+      <header class="app-topbar" data-topbar></header>
+
+      <main id="main" class="page">
+        <div class="container-wide">
+          <div class="page-header">
+            <div>
+              <span class="eyebrow">Design system · Feedback</span>
+              <h1>États et feedbacks</h1>
+              <p class="muted">Chaque état explique ce qui s'est passé, ce qui reste possible et comment en sortir. Jamais de message d'erreur sans action.</p>
+            </div>
+            <div class="row row-wrap">
+              <span class="badge badge-cyan"><span data-icon="eye"></span> 16 états</span>
+              <span class="badge badge-lime"><span data-icon="shield-check"></span> WCAG 2.1 AA</span>
+              <a class="btn btn-sm btn-secondary" href="../design-system.html"><span data-icon="layers"></span> Design system</a>
+            </div>
+          </div>
+
+          <div class="alert alert-cyan mb-6">
+            <span data-icon="info"></span>
+            <span><strong>Règle de conception :</strong> un état critique est annoncé par <code>role="alert"</code> ou <code>role="status"</code>, conserve le focus clavier, propose une action de récupération et possède toujours une version textuelle de l'information sonore.</span>
+          </div>
+
+          <section class="mb-8" aria-labelledby="etats-joueur">
+            <div class="section-head" style="padding-top:0">
+              <div>
+                <span class="eyebrow">Parcours joueur</span>
+                <h2 id="etats-joueur" style="font-size:1.3rem">Compte, jeu et progression</h2>
+              </div>
+              <span class="badge">6 états</span>
+            </div>
+            <div class="grid grid-3">
+              <article class="state-card">
+                <div class="row between" style="width:100%">
+                  <span class="feature-icon" style="margin:0;width:44px;height:44px"><span data-icon="mail" class="icon-lg"></span></span>
+                  <span class="state-code">AUTH-01</span>
+                </div>
+                <h3 style="margin:0;font-size:1.05rem">E-mail non confirmé</h3>
+                <p class="small muted mb-0">Ton compte existe, mais l'adresse n'est pas encore validée. Les défis, le chat et les achats restent bloqués jusqu'à confirmation.</p>
+                <div class="row row-wrap">
+                  <button class="btn btn-primary btn-sm" type="button" data-toast="E-mail de confirmation renvoyé (simulation)."><span data-icon="send"></span> Renvoyer l'e-mail</button>
+                  <button class="btn btn-ghost btn-sm" type="button" data-toast="Adresse e-mail modifiable (simulation).">Changer d'adresse</button>
+                </div>
+                <span class="tiny muted mono">Lien valable 24 h · vérifie les indésirables</span>
+              </article>
+
+              <article class="state-card">
+                <div class="row between" style="width:100%">
+                  <span class="feature-icon magenta" style="margin:0;width:44px;height:44px"><span data-icon="ban" class="icon-lg"></span></span>
+                  <span class="state-code">AUTH-03</span>
+                </div>
+                <h3 style="margin:0;font-size:1.05rem">Compte suspendu</h3>
+                <p class="small muted mb-0">Une sanction temporaire est active. Le motif et la durée sont affichés ; la contestation passe par la modération.</p>
+                <div class="alert alert-red" style="padding:10px 12px"><span data-icon="clock"></span><span class="tiny">Suspension jusqu'au 11 nov. 2026 · 18:00</span></div>
+                <div class="row row-wrap">
+                  <button class="btn btn-secondary btn-sm" type="button" data-modal-open="appeal-modal"><span data-icon="flag"></span> Contester</button>
+                  <a class="btn btn-ghost btn-sm" href="chat.html">Règles du chat</a>
+                </div>
+              </article>
+
+              <article class="state-card" style="border-color:rgba(251,113,133,0.35)">
+                <div class="row between" style="width:100%">
+                  <span class="feature-icon magenta" style="margin:0;width:44px;height:44px"><span data-icon="heart" class="icon-lg"></span></span>
+                  <span class="state-code">GAME-01</span>
+                </div>
+                <h3 style="margin:0;font-size:1.05rem">KO · 0 PV</h3>
+                <p class="small muted mb-0">Toute l'équipe est à terre. Les boss et events hardcore sont bloqués jusqu'à la fin de la récupération.</p>
+                <div class="hp-bar team" style="height:18px"><span style="width:0%"></span><span class="hp-text" style="font-size:0.64rem">0 / 100 PV</span></div>
+                <div class="row between"><span class="tiny muted">Récupération</span><span class="mono tiny text-amber">29:42</span></div>
+                <div class="row row-wrap">
+                  <button class="btn btn-secondary btn-sm" type="button" data-toast="Potion utilisée : +20 PV (simulation)."><span data-icon="heart"></span> Potion</button>
+                  <a class="btn btn-ghost btn-sm" href="boutique.html">Boutique</a>
+                </div>
+              </article>
+
+              <article class="state-card">
+                <div class="row between" style="width:100%">
+                  <span class="feature-icon violet" style="margin:0;width:44px;height:44px"><span data-icon="calendar" class="icon-lg"></span></span>
+                  <span class="state-code">EVENT-02</span>
+                </div>
+                <h3 style="margin:0;font-size:1.05rem">Événement fermé</h3>
+                <p class="small muted mb-0">Les soumissions sont closes. Les résultats sont en cours de calcul et seront publiés à l'heure annoncée.</p>
+                <div class="row between"><span class="small muted">Publication</span><span class="badge badge-amber">dans 12 min</span></div>
+                <div class="row row-wrap">
+                  <a class="btn btn-primary btn-sm" href="classements.html">Voir le classement</a>
+                  <a class="btn btn-ghost btn-sm" href="evenements.html">Détails de l'event</a>
+                </div>
+              </article>
+
+              <article class="state-card">
+                <div class="row between" style="width:100%">
+                  <span class="feature-icon magenta" style="margin:0;width:44px;height:44px"><span data-icon="alert-triangle" class="icon-lg"></span></span>
+                  <span class="state-code">EVENT-03</span>
+                </div>
+                <h3 style="margin:0;font-size:1.05rem">Essai unique consommé</h3>
+                <p class="small muted mb-0">L'essai a été utilisé. Aucun replay n'est possible, même après une déconnexion ou un incident technique.</p>
+                <div class="alert alert-amber" style="padding:10px 12px"><span data-icon="lock"></span><span class="tiny">Soumission définitive · 720 pts</span></div>
+                <div class="row row-wrap">
+                  <a class="btn btn-secondary btn-sm" href="classements.html">Voir mon rang</a>
+                  <button class="btn btn-ghost btn-sm" type="button" data-toast="Corrigé disponible après la clôture (simulation).">Corrigé</button>
+                </div>
+              </article>
+
+              <article class="state-card">
+                <div class="row between" style="width:100%">
+                  <span class="feature-icon" style="margin:0;width:44px;height:44px"><span data-icon="cpu" class="icon-lg"></span></span>
+                  <span class="state-code">RUN-01</span>
+                </div>
+                <h3 style="margin:0;font-size:1.05rem">File d'exécution</h3>
+                <p class="small muted mb-0">Le runner est saturé. Ta soumission est conservée et démarrera automatiquement. Ne ferme pas l'onglet.</p>
+                <div class="row between"><span class="small muted">Position</span><span class="mono small">7<sup>e</sup> · ~18 s</span></div>
+                <div class="progress mb-2"><span style="width:32%"></span></div>
+                <span class="tiny muted mono">#8845 · Tri fusion · Java 21</span>
+              </article>
+            </div>
+          </section>
+
+          <section class="mb-8" aria-labelledby="etats-contenu">
+            <div class="section-head" style="padding-top:0">
+              <div>
+                <span class="eyebrow">Contenu</span>
+                <h2 id="etats-contenu" style="font-size:1.3rem">Vide, verrouillé et recherche</h2>
+              </div>
+              <span class="badge">4 états</span>
+            </div>
+            <div class="grid grid-2">
+              <article class="state-card">
+                <div class="row between" style="width:100%">
+                  <span class="feature-icon" style="margin:0;width:44px;height:44px"><span data-icon="search" class="icon-lg"></span></span>
+                  <span class="state-code">EMPTY-01</span>
+                </div>
+                <h3 style="margin:0;font-size:1.05rem">Aucun résultat</h3>
+                <p class="small muted mb-0">Aucun défi ne correspond à « tri quantique ». Élargis les filtres ou réinitialise la recherche.</p>
+                <div class="row row-wrap">
+                  <button class="btn btn-secondary btn-sm" type="button" data-toast="Filtres réinitialisés (simulation)."><span data-icon="refresh"></span> Réinitialiser</button>
+                  <a class="btn btn-ghost btn-sm" href="defis.html">Retour au catalogue</a>
+                </div>
+              </article>
+
+              <article class="state-card">
+                <div class="row between" style="width:100%">
+                  <span class="feature-icon violet" style="margin:0;width:44px;height:44px"><span data-icon="lock" class="icon-lg"></span></span>
+                  <span class="state-code">LOCK-01</span>
+                </div>
+                <h3 style="margin:0;font-size:1.05rem">Défi verrouillé</h3>
+                <p class="small muted mb-0">« Tri par tas en équipe » exige deux prérequis. Le détail est toujours visible, même verrouillé.</p>
+                <ul class="check-list">
+                  <li class="ok"><span data-icon="check-circle"></span> Didacticiel « Tri fusion »</li>
+                  <li><span data-icon="lock"></span> Réussir « Tri fusion sous pression »</li>
+                  <li><span data-icon="lock"></span> Niveau 14 · actuel 12</li>
+                </ul>
+                <a class="btn btn-primary btn-sm" href="defi-tri.html">Aller au prérequis</a>
+              </article>
+
+              <article class="state-card">
+                <div class="row between" style="width:100%">
+                  <span class="feature-icon" style="margin:0;width:44px;height:44px"><span data-icon="bell" class="icon-lg"></span></span>
+                  <span class="state-code">EMPTY-02</span>
+                </div>
+                <h3 style="margin:0;font-size:1.05rem">Aucune notification</h3>
+                <p class="small muted mb-0">Tout est à jour. Les résultats de soumission, invitations et réponses de modération apparaîtront ici.</p>
+                <div class="row row-wrap">
+                  <a class="btn btn-secondary btn-sm" href="profil.html">Préférences</a>
+                  <button class="btn btn-ghost btn-sm" type="button" data-toast="Notifications marquées comme lues (simulation).">Tout marquer comme lu</button>
+                </div>
+              </article>
+
+              <article class="state-card">
+                <div class="row between" style="width:100%">
+                  <span class="feature-icon lime" style="margin:0;width:44px;height:44px"><span data-icon="users" class="icon-lg"></span></span>
+                  <span class="state-code">TEAM-01</span>
+                </div>
+                <h3 style="margin:0;font-size:1.05rem">Aucune équipe</h3>
+                <p class="small muted mb-0">Tu joues actuellement en solo. Crée une équipe de 2 à 5 membres ou rejoins une équipe existante.</p>
+                <div class="row row-wrap">
+                  <button class="btn btn-primary btn-sm" type="button" data-toast="Création d'équipe ouverte (simulation)."><span data-icon="plus"></span> Créer</button>
+                  <a class="btn btn-secondary btn-sm" href="equipes.html">Rejoindre</a>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section class="mb-8" aria-labelledby="etats-erreurs">
+            <div class="section-head" style="padding-top:0">
+              <div>
+                <span class="eyebrow">Système</span>
+                <h2 id="etats-erreurs" style="font-size:1.3rem">Erreurs et indisponibilité</h2>
+              </div>
+              <span class="badge">6 états</span>
+            </div>
+            <div class="grid grid-3">
+              <article class="state-card">
+                <span class="state-code">404 · NOT FOUND</span>
+                <div class="row"><span class="feature-icon" style="margin:0;width:44px;height:44px"><span data-icon="map" class="icon-lg"></span></span><h3 style="margin:0;font-size:1.05rem">Secteur introuvable</h3></div>
+                <p class="small muted mb-0">Cette page n'existe pas ou a été déplacée. Le Réseau n'a pas perdu ta progression.</p>
+                <div class="row row-wrap"><a class="btn btn-primary btn-sm" href="accueil.html">Accueil</a><a class="btn btn-ghost btn-sm" href="defis.html">Défis</a></div>
+              </article>
+
+              <article class="state-card">
+                <span class="state-code">403 · FORBIDDEN</span>
+                <div class="row"><span class="feature-icon magenta" style="margin:0;width:44px;height:44px"><span data-icon="shield" class="icon-lg"></span></span><h3 style="margin:0;font-size:1.05rem">Accès refusé</h3></div>
+                <p class="small muted mb-0">Ton rôle ne permet pas d'ouvrir cette zone. Si tu penses qu'il s'agit d'une erreur, contacte un administrateur.</p>
+                <div class="row row-wrap"><a class="btn btn-secondary btn-sm" href="accueil.html">Retour</a><button class="btn btn-ghost btn-sm" type="button" data-toast="Demande d'accès envoyée (simulation).">Demander l'accès</button></div>
+              </article>
+
+              <article class="state-card">
+                <span class="state-code">429 · RATE LIMITED</span>
+                <div class="row"><span class="feature-icon" style="margin:0;width:44px;height:44px"><span data-icon="clock" class="icon-lg"></span></span><h3 style="margin:0;font-size:1.05rem">Trop de requêtes</h3></div>
+                <p class="small muted mb-0">Trop de tentatives en peu de temps. Attends quelques secondes avant de réessayer.</p>
+                <div class="row between"><span class="small muted">Nouvel essai dans</span><span class="mono small text-amber">00:12</span></div>
+                <button class="btn btn-secondary btn-sm" type="button" disabled>Réessayer</button>
+              </article>
+
+              <article class="state-card">
+                <span class="state-code">500 · SERVER ERROR</span>
+                <div class="row"><span class="feature-icon magenta" style="margin:0;width:44px;height:44px"><span data-icon="server" class="icon-lg"></span></span><h3 style="margin:0;font-size:1.05rem">Erreur interne</h3></div>
+                <p class="small muted mb-0">Une erreur inattendue a interrompu l'action. Aucun débit de Bits ni soumission n'a été enregistré.</p>
+                <div class="row row-wrap"><button class="btn btn-primary btn-sm" type="button" data-toast="Nouvelle tentative (simulation)."><span data-icon="refresh"></span> Réessayer</button><button class="btn btn-ghost btn-sm" type="button" data-modal-open="incident-modal">Signaler</button></div>
+              </article>
+
+              <article class="state-card">
+                <span class="state-code">503 · MAINTENANCE</span>
+                <div class="row"><span class="feature-icon violet" style="margin:0;width:44px;height:44px"><span data-icon="hard-drive" class="icon-lg"></span></span><h3 style="margin:0;font-size:1.05rem">Maintenance planifiée</h3></div>
+                <p class="small muted mb-0">Le Réseau se recharge. Les soumissions en cours sont conservées et reprendront automatiquement.</p>
+                <div class="row between"><span class="small muted">Retour prévu</span><span class="mono small">04 nov. · 09:30</span></div>
+                <button class="btn btn-secondary btn-sm" type="button" data-toast="Alerte de retour programmée (simulation)."><span data-icon="bell"></span> Me prévenir</button>
+              </article>
+
+              <article class="state-card">
+                <span class="state-code">OFFLINE · PWA</span>
+                <div class="row"><span class="feature-icon" style="margin:0;width:44px;height:44px"><span data-icon="globe" class="icon-lg"></span></span><h3 style="margin:0;font-size:1.05rem">Hors ligne</h3></div>
+                <p class="small muted mb-0">La connexion est perdue. Les chapitres déjà lus et le didacticiel restent consultables hors ligne.</p>
+                <div class="row row-wrap"><a class="btn btn-primary btn-sm" href="lore.html">Lire hors ligne</a><button class="btn btn-ghost btn-sm" type="button" data-toast="Nouvelle tentative de connexion (simulation).">Réessayer</button></div>
+              </article>
+            </div>
+          </section>
+
+          <section class="mb-8" aria-labelledby="etats-chargement">
+            <div class="section-head" style="padding-top:0">
+              <div>
+                <span class="eyebrow">Chargement</span>
+                <h2 id="etats-chargement" style="font-size:1.3rem">Squelettes et progression</h2>
+              </div>
+              <span class="badge">2 états</span>
+            </div>
+            <div class="grid grid-2">
+              <div class="panel">
+                <div class="panel-header"><h4 class="mb-0">Squelette de carte de défi</h4><span class="badge">Chargement</span></div>
+                <div class="panel-body">
+                  <div class="skeleton" style="height:12px;width:42%;margin-bottom:12px"></div>
+                  <div class="skeleton" style="height:22px;width:74%;margin-bottom:10px"></div>
+                  <div class="skeleton" style="height:10px;width:100%;margin-bottom:8px"></div>
+                  <div class="skeleton" style="height:10px;width:88%;margin-bottom:18px"></div>
+                  <div class="row between"><div class="skeleton" style="height:28px;width:96px"></div><div class="skeleton" style="height:28px;width:72px"></div></div>
+                  <p class="tiny muted mt-4 mb-0">Le squelette reprend la structure finale pour éviter les sauts de mise en page. Il est annoncé une seule fois aux lecteurs d'écran.</p>
+                </div>
+              </div>
+
+              <div class="panel">
+                <div class="panel-header"><h4 class="mb-0">Progression bloquante</h4><span class="badge badge-cyan">Étape 2 / 3</span></div>
+                <div class="panel-body">
+                  <p class="small muted">Création de l'équipe en cours : vérification du tag et envoi des invitations.</p>
+                  <div class="progress mb-3"><span style="width:66%"></span></div>
+                  <div class="stack-sm">
+                    <div class="row between"><span class="small"><span data-icon="check-circle" class="text-lime icon-sm"></span> Nom et tag validés</span><span class="badge badge-lime">OK</span></div>
+                    <div class="row between"><span class="small"><span data-icon="loader" class="text-cyan icon-sm"></span> Invitations en cours</span><span class="badge badge-cyan">2 / 3</span></div>
+                    <div class="row between"><span class="small muted"><span data-icon="minus" class="icon-sm"></span> Confirmation du capitaine</span><span class="badge">En attente</span></div>
+                  </div>
+                  <p class="tiny muted mt-4 mb-0">Une progression n'est jamais uniquement une barre : chaque étape possède un libellé et un statut textuel.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section aria-labelledby="etats-feedback">
+            <div class="section-head" style="padding-top:0">
+              <div>
+                <span class="eyebrow">Feedback</span>
+                <h2 id="etats-feedback" style="font-size:1.3rem">Toasts et confirmations</h2>
+              </div>
+              <span class="badge">Interactif</span>
+            </div>
+            <div class="grid grid-2">
+              <div class="panel">
+                <div class="panel-header"><h4 class="mb-0">Notifications éphémères</h4><span class="badge">aria-live</span></div>
+                <div class="panel-body">
+                  <p class="small muted">Quatre niveaux de feedback, toujours accompagnés d'une icône et d'un texte. Les toasts critiques restent affichés plus longtemps et sont aussi annoncés.</p>
+                  <div class="row row-wrap">
+                    <button class="btn btn-primary btn-sm" type="button" data-toast="Défi réussi. 320 points ajoutés à ton score." data-toast-type="success"><span data-icon="check-circle"></span> Succès</button>
+                    <button class="btn btn-secondary btn-sm" type="button" data-toast="Le runner a dépassé le temps limite. Réessaie avec une solution plus rapide." data-toast-type="error"><span data-icon="x-circle"></span> Erreur</button>
+                    <button class="btn btn-secondary btn-sm" type="button" data-toast="Un indice est disponible pour ce défi."><span data-icon="info"></span> Information</button>
+                    <button class="btn btn-danger btn-sm" type="button" data-toast="Action irréversible : confirmation requise." data-toast-type="error"><span data-icon="alert-triangle"></span> Critique</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel">
+                <div class="panel-header"><h4 class="mb-0">Confirmation explicite</h4><span class="badge badge-amber">Focus piégé</span></div>
+                <div class="panel-body">
+                  <p class="small muted">Les actions destructrices ou à essai unique passent par une modale avec rappel des conséquences, case de confirmation et bouton de sortie.</p>
+                  <button class="btn btn-danger btn-sm" type="button" data-modal-open="incident-modal"><span data-icon="alert-triangle"></span> Ouvrir une confirmation</button>
+                  <p class="tiny muted mt-3 mb-0">Échap ferme la modale, le focus revient au déclencheur, et le bouton de confirmation reste désactivé tant que la case n'est pas cochée.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="appeal-modal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="appeal-title">
+      <div class="modal-header"><h3 id="appeal-title" class="mb-0">Contester une sanction</h3><button class="icon-btn" type="button" data-modal-close aria-label="Fermer"><span data-icon="x"></span></button></div>
+      <div class="modal-body">
+        <form class="form" data-demo-form data-toast="Contestation envoyée à la modération (simulation).">
+          <div class="field"><label class="label" for="appeal-reason">Motif de la contestation</label><textarea class="textarea" id="appeal-reason" placeholder="Explique pourquoi la sanction te semble erronée…" required></textarea></div>
+          <div class="alert alert-cyan"><span data-icon="info"></span><span>Une contestation est examinée par un modérateur différent de celui qui a pris la décision.</span></div>
+        </form>
+      </div>
+      <div class="modal-footer"><button class="btn btn-ghost" type="button" data-modal-close>Annuler</button><button class="btn btn-primary" type="button" data-toast="Contestation transmise (simulation)." data-modal-close>Envoyer</button></div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="incident-modal" hidden>
+    <div class="modal" role="alertdialog" aria-modal="true" aria-labelledby="incident-title" aria-describedby="incident-desc">
+      <div class="modal-header"><h3 id="incident-title" class="mb-0 text-red">Signaler l'incident</h3><button class="icon-btn" type="button" data-modal-close aria-label="Fermer"><span data-icon="x"></span></button></div>
+      <div class="modal-body">
+        <p id="incident-desc">Un identifiant de corrélation sera joint au rapport. Aucune donnée personnelle superflue n'est envoyée.</p>
+        <div class="card card-pad-sm mb-3"><span class="tiny muted mono">ID d'incident · cq_9f2c8a41</span></div>
+        <label class="checkbox"><input type="checkbox" id="incident-ack"> <span>J'accepte que les journaux techniques soient transmis à l'équipe d'exploitation.</span></label>
+      </div>
+      <div class="modal-footer"><button class="btn btn-ghost" type="button" data-modal-close>Annuler</button><button class="btn btn-danger" type="button" data-toast="Rapport d'incident envoyé (simulation)." data-modal-close data-requires-ack="incident-ack" disabled>Envoyer le rapport</button></div>
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

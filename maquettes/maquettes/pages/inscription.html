@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeQuest — Créer un compte</title>
+  <meta name="description" content="Inscription à CodeQuest : pseudo unique, e-mail, mot de passe de 12 caractères minimum et consentement.">
+  <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body data-root="../" data-page="inscription" data-layout="public" data-title="Inscription">
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <header class="topbar" data-topbar></header>
+
+  <main id="main">
+    <div class="auth-layout">
+      <aside class="auth-aside" aria-label="Présentation de l'initiation">
+        <div>
+          <a class="brand" href="accueil.html">
+            <span class="brand-mark"><span data-icon="terminal"></span></span>
+            <span>Code<span class="brand-dot">Quest</span></span>
+          </a>
+          <div class="mt-8">
+            <span class="eyebrow">Initiation · 3 minutes</span>
+            <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);text-transform:uppercase">Deviens<br>un Runner.</h2>
+            <p class="muted" style="max-width:420px">Choisis ton pseudo, confirme ton e-mail, puis suis le didacticiel « Tris et listes ». Ton premier défi se débloque dès la fin du cours.</p>
+          </div>
+
+          <div class="stack mt-8" style="max-width:440px">
+            <div class="row" style="align-items:flex-start">
+              <span class="feature-icon" style="margin:0;width:36px;height:36px;flex:0 0 auto"><span data-icon="user-plus" class="icon-sm"></span></span>
+              <div><strong style="display:block;font-size:0.9rem">1. Identité</strong><span class="small muted">Pseudo unique de 3 à 20 caractères, e-mail valide.</span></div>
+            </div>
+            <div class="row" style="align-items:flex-start">
+              <span class="feature-icon magenta" style="margin:0;width:36px;height:36px;flex:0 0 auto"><span data-icon="lock" class="icon-sm"></span></span>
+              <div><strong style="display:block;font-size:0.9rem">2. Sécurité</strong><span class="small muted">12 caractères minimum, vérification anti-mots de passe compromis.</span></div>
+            </div>
+            <div class="row" style="align-items:flex-start">
+              <span class="feature-icon lime" style="margin:0;width:36px;height:36px;flex:0 0 auto"><span data-icon="mail" class="icon-sm"></span></span>
+              <div><strong style="display:block;font-size:0.9rem">3. Confirmation</strong><span class="small muted">Le compte reste limité tant que l'e-mail n'est pas confirmé.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-pad-sm mt-8" style="max-width:440px">
+          <div class="row between mb-2"><span class="badge badge-lime">Gratuit</span><span class="mono tiny muted">Saison 03</span></div>
+          <p class="small muted mb-0">Aucune carte bancaire. Les Bits sont une monnaie virtuelle non convertible et n'achètent jamais de puissance compétitive.</p>
+        </div>
+      </aside>
+
+      <div class="auth-main">
+        <div class="auth-card">
+          <span class="eyebrow">Nouveau Runner</span>
+          <h1>Créer un compte</h1>
+          <p class="muted">Renseigne les informations ci-dessous. Les champs marqués d'un astérisque sont obligatoires.</p>
+
+          <form class="form" data-demo-form data-toast="Compte simulé créé. Vérifie ta boîte mail pour confirmer l'adresse." data-toast-type="success" data-success-target="#signup-success">
+            <div class="field">
+              <label class="label" for="signup-pseudo">Pseudo <span class="optional">3–20 caractères</span></label>
+              <div class="input-group">
+                <span data-icon="user"></span>
+                <input class="input" id="signup-pseudo" name="pseudo" type="text" autocomplete="username" minlength="3" maxlength="20" placeholder="nova_runner" required>
+              </div>
+              <span class="hint">Lettres, chiffres, tiret et underscore. Ce pseudo sera visible dans les classements.</span>
+            </div>
+
+            <div class="field">
+              <label class="label" for="signup-email">Adresse e-mail</label>
+              <div class="input-group">
+                <span data-icon="mail"></span>
+                <input class="input" id="signup-email" name="email" type="email" autocomplete="email" placeholder="runner@codequest.gg" required>
+              </div>
+              <span class="hint">Un lien de confirmation sera envoyé. Le compte reste limité avant confirmation.</span>
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <label class="label" for="signup-pass">Mot de passe</label>
+                <div class="input-group">
+                  <span data-icon="lock"></span>
+                  <input class="input" id="signup-pass" name="password" type="password" autocomplete="new-password" minlength="12" placeholder="12 caractères min." required aria-describedby="pass-rules">
+                  <button class="icon-btn" type="button" data-password-toggle="signup-pass" aria-label="Afficher le mot de passe"><span data-icon="eye"></span></button>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label" for="signup-pass2">Confirmation</label>
+                <div class="input-group">
+                  <span data-icon="lock"></span>
+                  <input class="input" id="signup-pass2" name="password_confirm" type="password" autocomplete="new-password" placeholder="Répéter" required>
+                </div>
+              </div>
+            </div>
+
+            <div id="pass-rules">
+              <ul class="check-list">
+                <li class="ok"><span data-icon="check-circle"></span> Au moins 12 caractères</li>
+                <li class="ok"><span data-icon="check-circle"></span> Une majuscule et une minuscule</li>
+                <li class="ok"><span data-icon="check-circle"></span> Un chiffre ou un symbole</li>
+                <li><span data-icon="info"></span> Absent des listes de mots de passe compromis</li>
+              </ul>
+              <div class="meter mt-3">
+                <span class="meter-label">Robustesse</span>
+                <div class="progress lime"><span style="width:78%"></span></div>
+                <span class="mono tiny text-lime">Solide</span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label" for="signup-lang">Langage préféré <span class="optional">Modifiable</span></label>
+              <select class="select" id="signup-lang" name="language">
+                <option>Python 3.12</option>
+                <option>JavaScript (Node 22)</option>
+                <option>Java 21</option>
+                <option>C++ 20</option>
+              </select>
+            </div>
+
+            <label class="checkbox">
+              <input type="checkbox" name="consent" required>
+              <span>J'accepte les <a href="#">conditions d'utilisation</a> et la <a href="#">politique de confidentialité</a>. Je peux exporter ou supprimer mes données à tout moment.</span>
+            </label>
+            <label class="checkbox">
+              <input type="checkbox" name="newsletter">
+              <span>Recevoir les annonces d'événements et de saisons <span class="muted-2">(optionnel)</span></span>
+            </label>
+
+            <button class="btn btn-primary btn-block btn-lg" type="submit">Créer mon compte <span data-icon="arrow-right"></span></button>
+
+            <div class="alert alert-lime" id="signup-success" hidden>
+              <span data-icon="check-circle"></span>
+              <span><strong>Compte créé.</strong> Un e-mail de confirmation vient de partir. Le compte reste limité jusqu'à validation.</span>
+            </div>
+          </form>
+
+          <p class="auth-switch">Déjà un compte ? <a href="connexion.html">Se connecter</a></p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer" data-footer></footer>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

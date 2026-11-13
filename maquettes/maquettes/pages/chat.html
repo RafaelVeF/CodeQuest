@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeQuest — Chat textuel et vocal</title>
+  <meta name="description" content="Chat CodeQuest : canaux global, équipe et événement, mentions, signalement, modération et salon vocal WebRTC sans enregistrement.">
+  <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body data-root="../" data-page="chat" data-layout="app" data-title="Chat">
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <div class="app-layout">
+    <aside class="sidebar" data-sidebar></aside>
+    <div class="app-main">
+      <header class="app-topbar" data-topbar></header>
+
+      <main id="main" class="page-tight">
+        <div class="container-wide">
+          <div class="row row-wrap between mb-4">
+            <div>
+              <span class="eyebrow">Social · Temps réel</span>
+              <h1 style="font-size:clamp(1.4rem,2.6vw,2rem);margin:0">Chat du Réseau</h1>
+            </div>
+            <div class="row row-wrap">
+              <span class="badge badge-lime"><span data-icon="activity"></span> 248 en ligne</span>
+              <span class="badge badge-cyan"><span data-icon="shield-check"></span> Salon modéré</span>
+              <button class="btn btn-sm btn-ghost" type="button" data-toast="Règles du chat ouvertes (simulation)."><span data-icon="file-text"></span> Règles</button>
+            </div>
+          </div>
+
+          <div class="chat-layout">
+            <aside class="chat-sidebar" aria-label="Canaux de discussion">
+              <div class="stack-sm">
+                <span class="sidebar-label">Canaux publics</span>
+                <a class="channel active" href="#global" aria-current="page"><span data-icon="hash" class="icon-sm"></span> global <span class="badge badge-cyan">248</span></a>
+                <a class="channel" href="#aide"><span data-icon="hash" class="icon-sm"></span> aide <span class="badge">12</span></a>
+                <a class="channel" href="#lore"><span data-icon="hash" class="icon-sm"></span> lore</a>
+                <a class="channel" href="#spoil"><span data-icon="hash" class="icon-sm"></span> spoilers <span class="badge badge-amber">!</span></a>
+
+                <span class="sidebar-label mt-4">Mon équipe</span>
+                <a class="channel" href="#nullpointer"><span data-icon="users" class="icon-sm"></span> nullpointer <span class="badge badge-magenta">3</span></a>
+                <a class="channel" href="#nullpointer-dev"><span data-icon="code" class="icon-sm"></span> nullpointer-dev</a>
+
+                <span class="sidebar-label mt-4">Événement</span>
+                <a class="channel" href="#oracle"><span data-icon="calendar" class="icon-sm"></span> oracle <span class="badge badge-amber">84</span></a>
+                <a class="channel" href="#oracle-spectateurs"><span data-icon="eye" class="icon-sm"></span> spectateurs</a>
+
+                <span class="sidebar-label mt-4">Messages privés</span>
+                <a class="channel" href="#mp-nyx"><span class="avatar" style="width:22px;height:22px;font-size:0.55rem">NY</span> Nyx <span class="badge badge-magenta">1</span></a>
+                <a class="channel" href="#mp-vortex"><span class="avatar" style="width:22px;height:22px;font-size:0.55rem">VX</span> Vortex</a>
+              </div>
+
+              <div class="card card-pad-sm mt-4">
+                <div class="row between mb-2"><span class="tiny muted mono">Filtre anti-spam</span><span class="badge badge-lime">Actif</span></div>
+                <p class="tiny muted mb-0">1 message / 2 s · 10 messages / min. Les liens externes sont examinés.</p>
+              </div>
+            </aside>
+
+            <section class="chat-main" aria-label="Canal global">
+              <div class="chat-header">
+                <div>
+                  <div class="row"><span class="text-cyan" data-icon="hash"></span><h2 style="margin:0;font-size:1.1rem">global</h2><span class="badge">Public</span></div>
+                  <span class="tiny muted">Entraide générale, annonces et recherche d'équipe. Reste courtois.</span>
+                </div>
+                <div class="row" style="margin-left:auto">
+                  <button class="icon-btn" type="button" aria-label="Rechercher dans le canal" data-toast="Recherche dans le canal (simulation)."><span data-icon="search"></span></button>
+                  <button class="icon-btn" type="button" aria-label="Membres du canal" data-toast="248 membres en ligne."><span data-icon="users"></span></button>
+                  <button class="icon-btn" type="button" aria-label="Signaler un problème" data-modal-open="report-modal"><span data-icon="flag"></span></button>
+                </div>
+              </div>
+
+              <div class="chat-messages" data-chat-messages aria-live="polite" aria-label="Historique des messages">
+                <div class="message">
+                  <span class="avatar">NY</span>
+                  <div class="message-body">
+                    <div class="message-head"><strong class="text-cyan">Nyx</strong><time>08:32</time><span class="badge badge-cyan">Équipe NULL</span></div>
+                    <p class="message-text">Le test « entrée non modifiée » échoue seulement si on trie sur place. Pensez à <code>list(values)</code> avant la récursion.</p>
+                  </div>
+                </div>
+
+                <div class="message">
+                  <span class="avatar">VX</span>
+                  <div class="message-body">
+                    <div class="message-head"><strong class="text-magenta">Vortex</strong><time>08:34</time></div>
+                    <p class="message-text">Le sujet du jour : <a href="defi-tri.html">Tri fusion sous pression</a>. Les tests cachés sont plus méchants que prévu.</p>
+                    <div class="row mt-2"><span class="badge"><span data-icon="link"></span> lien interne sécurisé</span><span class="tiny muted">2 réponses</span></div>
+                  </div>
+                </div>
+
+                <div class="message self">
+                  <span class="avatar">NR</span>
+                  <div class="message-body">
+                    <div class="message-head"><strong>Nova_Runner</strong><time>08:36</time><span class="badge badge-lime">Toi</span></div>
+                    <p class="message-text">@Nyx merci, c'était exactement ça. Je relance les 9 tests et je partage le temps CPU.</p>
+                  </div>
+                </div>
+
+                <div class="message">
+                  <span class="avatar">K0</span>
+                  <div class="message-body">
+                    <div class="message-head"><strong class="text-lime">Kernel_0</strong><time>08:38</time></div>
+                    <p class="message-text">Quelqu'un a un retour sur le QR fragmenté ? Le fragment 3 est illisible même en amplifiant le contraste.</p>
+                  </div>
+                </div>
+
+                <div class="message">
+                  <span class="avatar">BY</span>
+                  <div class="message-body">
+                    <div class="message-head"><strong class="text-amber">ByteMe</strong><time>08:39</time></div>
+                    <p class="message-text">Essaie le canal alpha avant de reconstruire. Le message est peut-être dans les métadonnées supprimées, pas dans l'image.</p>
+                  </div>
+                </div>
+
+                <div class="message">
+                  <span class="avatar" style="border-color:var(--border-strong);color:var(--muted-2)">SYS</span>
+                  <div class="message-body">
+                    <div class="message-head"><strong class="muted">Modération</strong><time>08:40</time><span class="badge badge-amber">Automatique</span></div>
+                    <p class="message-text" style="border-style:dashed;color:var(--muted)">Un message a été supprimé par un modérateur. Motif : divulgation de solution d'event. L'action est journalisée.</p>
+                  </div>
+                </div>
+
+                <div class="message">
+                  <span class="avatar">GL</span>
+                  <div class="message-body">
+                    <div class="message-head"><strong class="text-violet">Glitch</strong><time>08:42</time></div>
+                    <p class="message-text">Petit rappel : les indices sont désactivés sur l'event ORACLE. Gardez vos Bits pour les défis standard.</p>
+                  </div>
+                </div>
+
+                <div class="message">
+                  <span class="avatar">LX</span>
+                  <div class="message-body">
+                    <div class="message-head"><strong class="text-cyan">Lex_</strong><time>08:43</time></div>
+                    <p class="message-text">On cherche un 5<sup>e</sup> pour NullPointer, niveau 15+. MP si intéressé. Ambiance sérieuse mais pas toxique.</p>
+                    <div class="row mt-2"><button class="btn btn-sm btn-ghost" type="button" data-toast="Demande envoyée à Lex_ (simulation)."><span data-icon="user-plus"></span> Rejoindre</button><button class="btn btn-sm btn-ghost" type="button" data-toast="Message signalé (simulation)."><span data-icon="flag"></span> Signaler</button></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="chat-compose">
+                <form class="row" style="flex:1;gap:8px" data-chat-form>
+                  <input class="input" type="text" placeholder="Écrire dans #global… (Entrée pour envoyer)" aria-label="Message dans le canal global" maxlength="500">
+                  <button class="icon-btn" type="button" aria-label="Ajouter une pièce jointe" data-toast="Pièces jointes limitées aux images PNG et JPEG (simulation)."><span data-icon="upload"></span></button>
+                  <button class="btn btn-primary" type="submit"><span data-icon="send"></span> Envoyer</button>
+                </form>
+              </div>
+              <div class="row between row-wrap" style="padding:0 var(--space-4) var(--space-3)">
+                <span class="tiny muted">Les messages sont conservés 90 jours. Les signalements sont anonymes pour les autres joueurs.</span>
+                <span class="tiny muted mono">0 / 500</span>
+              </div>
+            </section>
+
+            <aside class="voice-panel" aria-label="Salon vocal et membres">
+              <div class="row between mb-3">
+                <h3 style="margin:0;font-size:0.98rem">Salon vocal</h3>
+                <span class="badge badge-lime"><span data-icon="activity"></span> 3</span>
+              </div>
+              <p class="tiny muted">Équipe NullPointer · aucun enregistrement. Le micro ne s'active qu'après ton consentement.</p>
+
+              <div class="voice-user">
+                <span class="avatar" style="width:28px;height:28px;font-size:0.6rem">NR</span>
+                <div style="min-width:0"><strong style="display:block;font-size:0.82rem">Nova_Runner</strong><span class="tiny muted">Toi · micro actif</span></div>
+                <button class="icon-btn" type="button" aria-label="Couper mon micro" data-toast="Micro coupé (simulation)."><span data-icon="mic"></span></button>
+              </div>
+              <div class="voice-user">
+                <span class="avatar" style="width:28px;height:28px;font-size:0.6rem">VX</span>
+                <div style="min-width:0"><strong style="display:block;font-size:0.82rem">Vortex</strong><span class="tiny muted">Micro actif</span></div>
+                <button class="icon-btn" type="button" aria-label="Baisser le volume de Vortex" data-toast="Volume de Vortex réduit (simulation)."><span data-icon="volume"></span></button>
+              </div>
+              <div class="voice-user">
+                <span class="avatar" style="width:28px;height:28px;font-size:0.6rem">NY</span>
+                <div style="min-width:0"><strong style="display:block;font-size:0.82rem">Nyx</strong><span class="tiny muted">Micro coupé</span></div>
+                <button class="icon-btn" type="button" aria-label="Baisser le volume de Nyx" data-toast="Volume de Nyx réduit (simulation)."><span data-icon="volume-off"></span></button>
+              </div>
+              <div class="voice-user">
+                <span class="avatar" style="width:28px;height:28px;font-size:0.6rem;opacity:0.5">K0</span>
+                <div style="min-width:0"><strong style="display:block;font-size:0.82rem;color:var(--muted)">Kernel_0</strong><span class="tiny muted">Déconnecté</span></div>
+              </div>
+
+              <div class="stack-sm mt-3">
+                <button class="btn btn-secondary btn-sm btn-block" type="button" data-toast="Mode push-to-talk activé (simulation)."><span data-icon="mic"></span> Push-to-talk</button>
+                <button class="btn btn-ghost btn-sm btn-block" type="button" data-toast="Réglages audio ouverts (simulation)."><span data-icon="sliders"></span> Réglages audio</button>
+                <button class="btn btn-danger btn-sm btn-block" type="button" data-toast="Salon vocal quitté (simulation)."><span data-icon="logout"></span> Quitter le salon</button>
+              </div>
+
+              <div class="alert alert-cyan mt-4">
+                <span data-icon="shield-check"></span>
+                <span>WebRTC chiffré de bout en bout. Aucun enregistrement, aucune transcription.</span>
+              </div>
+
+              <hr>
+
+              <div class="row between mb-2"><h3 style="margin:0;font-size:0.98rem">Membres</h3><span class="badge">248</span></div>
+              <div class="voice-user"><span class="avatar" style="width:26px;height:26px;font-size:0.55rem">NY</span><div><strong style="display:block;font-size:0.8rem">Nyx</strong><span class="tiny muted">Modératrice</span></div><span class="badge badge-violet">Mod</span></div>
+              <div class="voice-user"><span class="avatar" style="width:26px;height:26px;font-size:0.55rem">VX</span><div><strong style="display:block;font-size:0.8rem">Vortex</strong><span class="tiny muted">Niveau 24</span></div></div>
+              <div class="voice-user"><span class="avatar" style="width:26px;height:26px;font-size:0.55rem">GL</span><div><strong style="display:block;font-size:0.8rem">Glitch</strong><span class="tiny muted">Niveau 17</span></div></div>
+              <button class="btn btn-ghost btn-sm btn-block mt-2" type="button" data-toast="Liste complète des membres (simulation).">Voir tous les membres</button>
+            </aside>
+          </div>
+
+          <div class="grid grid-3 mt-4">
+            <div class="card card-pad-sm">
+              <div class="row between mb-2"><span class="badge badge-cyan">Sécurité</span><span data-icon="shield-check" class="text-cyan"></span></div>
+              <strong style="display:block;font-size:0.88rem">Liens examinés</strong>
+              <p class="tiny muted mb-0">Les liens externes passent par un filtre et sont affichés avec un avertissement. Les liens internes restent directs.</p>
+            </div>
+            <div class="card card-pad-sm">
+              <div class="row between mb-2"><span class="badge badge-amber">Modération</span><span data-icon="ban" class="text-amber"></span></div>
+              <strong style="display:block;font-size:0.88rem">Mute et bannissement</strong>
+              <p class="tiny muted mb-0">Un modérateur peut masquer un message ou suspendre un compte temporairement. Chaque action est journalisée.</p>
+            </div>
+            <div class="card card-pad-sm">
+              <div class="row between mb-2"><span class="badge badge-violet">Accessibilité</span><span data-icon="eye" class="text-violet"></span></div>
+              <strong style="display:block;font-size:0.88rem">Chat lisible</strong>
+              <p class="tiny muted mb-0">Navigation clavier, annonces ARIA et possibilité de désactiver le défilement automatique dans le profil.</p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="report-modal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="report-title">
+      <div class="modal-header"><h3 id="report-title" class="mb-0">Signaler un message</h3><button class="icon-btn" type="button" data-modal-close aria-label="Fermer"><span data-icon="x"></span></button></div>
+      <div class="modal-body">
+        <form class="form" data-demo-form data-toast="Signalement envoyé à la modération (simulation).">
+          <div class="field">
+            <label class="label" for="report-reason">Motif</label>
+            <select class="select" id="report-reason">
+              <option>Divulgation de solution</option>
+              <option>Harcèlement ou insulte</option>
+              <option>Spam ou publicité</option>
+              <option>Contenu illégal</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="label" for="report-detail">Précisions <span class="optional">facultatif</span></label>
+            <textarea class="textarea" id="report-detail" placeholder="Contexte utile pour la modération…"></textarea>
+          </div>
+          <label class="checkbox"><input type="checkbox" checked> <span>Je comprends que les signalements abusifs peuvent être sanctionnés.</span></label>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" type="button" data-modal-close>Annuler</button>
+        <button class="btn btn-danger" type="button" data-toast="Signalement transmis (simulation)." data-modal-close>Envoyer le signalement</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

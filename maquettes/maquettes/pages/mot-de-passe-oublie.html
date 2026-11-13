@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeQuest — Mot de passe oublié</title>
+  <meta name="description" content="Réinitialisation du mot de passe CodeQuest : lien à usage unique valable une heure, réponse identique quelle que soit l'adresse.">
+  <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body data-root="../" data-page="mot-de-passe-oublie" data-layout="public" data-title="Mot de passe oublié">
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <header class="topbar" data-topbar></header>
+
+  <main id="main">
+    <div class="auth-layout">
+      <aside class="auth-aside" aria-label="Procédure de récupération">
+        <div>
+          <a class="brand" href="accueil.html">
+            <span class="brand-mark"><span data-icon="terminal"></span></span>
+            <span>Code<span class="brand-dot">Quest</span></span>
+          </a>
+          <div class="mt-8">
+            <span class="eyebrow">Récupération</span>
+            <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);text-transform:uppercase">Un jeton.<br>Une heure.</h2>
+            <p class="muted" style="max-width:420px">Le lien de réinitialisation contient un jeton à usage unique valable 1 heure. Toutes les sessions actives sont révoquées après le changement.</p>
+          </div>
+          <div class="stack mt-8" style="max-width:440px">
+            <div class="panel">
+              <div class="panel-header"><h4 class="mb-0">Ce qui se passe ensuite</h4><span class="badge badge-cyan">3 étapes</span></div>
+              <div class="panel-body">
+                <ol class="check-list" style="counter-reset:none">
+                  <li class="ok"><span data-icon="check-circle"></span> Demande envoyée, même si l'adresse est inconnue.</li>
+                  <li class="ok"><span data-icon="check-circle"></span> E-mail avec lien unique, expiration 1 h.</li>
+                  <li class="ok"><span data-icon="check-circle"></span> Nouveau mot de passe, sessions révoquées.</li>
+                </ol>
+              </div>
+            </div>
+            <div class="alert alert-amber">
+              <span data-icon="alert-triangle"></span>
+              <span>Aucun e-mail ? Vérifie les indésirables. Pour des raisons de sécurité, le support ne peut pas révéler si une adresse existe.</span>
+            </div>
+          </div>
+        </div>
+        <span class="tiny muted mono mt-8">Anti-énumération · rate limiting par IP et par compte</span>
+      </aside>
+
+      <div class="auth-main">
+        <div class="auth-card">
+          <span class="eyebrow">Accès au compte</span>
+          <h1>Mot de passe oublié</h1>
+          <p class="muted">Saisis l'adresse e-mail associée à ton compte. Nous enverrons un lien de réinitialisation si elle existe.</p>
+
+          <form class="form" data-demo-form data-toast="Demande simulée. La réponse reste identique quelle que soit l'adresse." data-toast-type="success" data-success-target="#reset-sent">
+            <div class="field">
+              <label class="label" for="reset-email">Adresse e-mail</label>
+              <div class="input-group">
+                <span data-icon="mail"></span>
+                <input class="input" id="reset-email" name="email" type="email" autocomplete="email" placeholder="runner@codequest.gg" required>
+              </div>
+              <span class="hint">Réponse identique que l'adresse existe ou non.</span>
+            </div>
+
+            <button class="btn btn-primary btn-block btn-lg" type="submit">Envoyer le lien <span data-icon="send"></span></button>
+
+            <div class="alert alert-lime" id="reset-sent" hidden>
+              <span data-icon="check-circle"></span>
+              <span><strong>Demande enregistrée.</strong> Si un compte existe pour cette adresse, un lien valable 1 heure vient d'être envoyé. Pense à vérifier les indésirables.</span>
+            </div>
+
+            <div class="auth-security">
+              <span data-icon="shield-check" class="icon-sm"></span>
+              <span>Le jeton est à usage unique et stocké haché côté serveur. Il devient invalide dès qu'il est utilisé ou expiré.</span>
+            </div>
+          </form>
+
+          <div class="divider"></div>
+
+          <div class="stack-sm">
+            <p class="small muted mb-2">Tu as retrouvé ton mot de passe ?</p>
+            <a class="btn btn-secondary btn-block" href="connexion.html"><span data-icon="arrow-left"></span> Revenir à la connexion</a>
+            <a class="btn btn-ghost btn-block" href="etats.html">Voir l'écran « lien expiré »</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer" data-footer></footer>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

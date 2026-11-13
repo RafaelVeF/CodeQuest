@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeQuest — Connexion</title>
+  <meta name="description" content="Connexion à CodeQuest : e-mail ou pseudo, mot de passe, récupération et sécurité de session.">
+  <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body data-root="../" data-page="connexion" data-layout="public" data-title="Connexion">
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <header class="topbar" data-topbar></header>
+
+  <main id="main">
+    <div class="auth-layout">
+      <aside class="auth-aside" aria-label="Présentation de CodeQuest">
+        <div>
+          <a class="brand" href="accueil.html">
+            <span class="brand-mark"><span data-icon="terminal"></span></span>
+            <span>Code<span class="brand-dot">Quest</span></span>
+          </a>
+          <div class="mt-8">
+            <span class="eyebrow">Session sécurisée</span>
+            <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);text-transform:uppercase">Le Réseau<br>n'attend que toi.</h2>
+            <p class="muted" style="max-width:420px">Reprends ta progression, retrouve ton équipe et affronte les Gardiens. Tes scores, ton inventaire et tes chapitres sont conservés.</p>
+          </div>
+          <div class="terminal scanlines mt-8" style="max-width:430px">
+            <div class="terminal-bar">
+              <span class="terminal-dots"><span></span><span></span><span></span></span>
+              <span class="terminal-title">oracle://auth / handshake</span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line"><span class="terminal-prompt">$</span><span class="terminal-cmd">codequest auth --runner Nova_Runner</span></div>
+              <div class="terminal-line"><span class="terminal-ok">✓</span><span>Identité vérifiée · niveau 12</span></div>
+              <div class="terminal-line"><span class="terminal-ok">✓</span><span>2 480 XP · 1 240 Bits · 86 PV</span></div>
+              <div class="terminal-line"><span class="terminal-warn">!</span><span class="terminal-dim">Dernière connexion : secteur 07, il y a 3 j</span></div>
+              <div class="terminal-line"><span class="terminal-prompt">›</span><span class="terminal-dim">En attente de confirmation…</span><span class="terminal-cursor"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="row row-wrap mt-8">
+          <span class="badge badge-cyan"><span data-icon="shield-check"></span> Argon2id</span>
+          <span class="badge"><span data-icon="lock"></span> HTTPS obligatoire</span>
+          <span class="badge badge-violet"><span data-icon="users"></span> 1 248 Runners</span>
+        </div>
+      </aside>
+
+      <div class="auth-main">
+        <div class="auth-card">
+          <span class="eyebrow">Accès joueur</span>
+          <h1>Connexion</h1>
+          <p class="muted">Entre ton e-mail ou ton pseudo pour reprendre la partie.</p>
+
+          <div class="alert alert-red mb-4" role="alert">
+            <span data-icon="alert-triangle"></span>
+            <span><strong>Identifiants incorrects.</strong> Le message reste volontairement générique : il ne précise jamais quel champ est faux.</span>
+          </div>
+
+          <form class="form" data-demo-form data-toast="Connexion simulée. Redirection vers le tableau de bord…" data-toast-type="success">
+            <div class="field">
+              <label class="label" for="login-id">E-mail ou pseudo</label>
+              <div class="input-group">
+                <span data-icon="user"></span>
+                <input class="input" id="login-id" name="identifier" type="text" autocomplete="username" placeholder="nova_runner ou runner@codequest.gg" required>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label" for="login-pass">
+                Mot de passe
+                <a class="tiny" href="mot-de-passe-oublie.html">Mot de passe oublié ?</a>
+              </label>
+              <div class="input-group">
+                <span data-icon="lock"></span>
+                <input class="input" id="login-pass" name="password" type="password" autocomplete="current-password" placeholder="••••••••••••" required>
+                <button class="icon-btn" type="button" data-password-toggle="login-pass" aria-label="Afficher le mot de passe"><span data-icon="eye"></span></button>
+              </div>
+            </div>
+
+            <div class="row between row-wrap">
+              <label class="checkbox"><input type="checkbox" name="remember" checked> <span>Rester connecté sur cet appareil</span></label>
+              <span class="tiny muted mono">5 échecs → blocage progressif</span>
+            </div>
+
+            <button class="btn btn-primary btn-block btn-lg" type="submit">Se connecter <span data-icon="arrow-right"></span></button>
+
+            <div class="auth-security">
+              <span data-icon="shield-check" class="icon-sm"></span>
+              <span>La session est révoquée à la déconnexion. Un changement de mot de passe révoque toutes les sessions actives.</span>
+            </div>
+          </form>
+
+          <p class="auth-switch">Pas encore de compte ? <a href="inscription.html">Créer un compte</a></p>
+
+          <div class="row center mt-4">
+            <a class="btn btn-ghost btn-sm" href="accueil.html"><span data-icon="arrow-left"></span> Retour à l'accueil</a>
+            <a class="btn btn-ghost btn-sm" href="etats.html">Voir l'état « e-mail non confirmé »</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer" data-footer></footer>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

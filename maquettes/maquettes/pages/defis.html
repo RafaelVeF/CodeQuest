@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeQuest — Catalogue des défis</title>
+  <meta name="description" content="Catalogue des défis CodeQuest : filtres par thème, difficulté, statut et type, prérequis et progression.">
+  <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body data-root="../" data-page="defis" data-layout="app" data-title="Défis">
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <div class="app-layout">
+    <aside class="sidebar" data-sidebar></aside>
+    <div class="app-main">
+      <header class="app-topbar" data-topbar></header>
+
+      <main id="main" class="page">
+        <div class="container-wide">
+          <div class="page-header">
+            <div>
+              <span class="eyebrow">Catalogue · Saison 03</span>
+              <h1>Défis du Réseau</h1>
+              <p class="muted">Choisis une région, respecte les prérequis, puis soumets ta solution. Les défis standard n'ont pas de limite d'essais.</p>
+            </div>
+            <div class="row row-wrap">
+              <a class="btn btn-secondary" href="didacticiel.html"><span data-icon="book"></span> Didacticiels</a>
+              <a class="btn btn-primary" href="defi-tri.html"><span data-icon="play"></span> Reprendre un défi</a>
+            </div>
+          </div>
+
+          <div class="grid grid-4 mb-6">
+            <div class="stat-card">
+              <div class="stat-label"><span data-icon="code"></span> Défis ouverts</div>
+              <div class="stat-value" data-challenge-count>9</div>
+              <div class="stat-trend">sur 24 dans le catalogue</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label"><span data-icon="check-circle"></span> Réussis</div>
+              <div class="stat-value">37</div>
+              <div class="stat-trend">+4 cette semaine</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label"><span data-icon="flame"></span> Série</div>
+              <div class="stat-value">6 j</div>
+              <div class="stat-trend">Record : 11 jours</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label"><span data-icon="gauge"></span> Précision</div>
+              <div class="stat-value">84 %</div>
+              <div class="stat-trend">Tests passés au 1<sup>er</sup> essai</div>
+            </div>
+          </div>
+
+          <div class="panel mb-6">
+            <div class="panel-body">
+              <div class="row row-wrap between mb-4">
+                <div class="input-group" style="flex:1;min-width:240px;max-width:420px">
+                  <span data-icon="search"></span>
+                  <input class="input" type="search" placeholder="Rechercher un défi, un thème, un tag…" aria-label="Rechercher un défi" data-challenge-search>
+                </div>
+                <div class="row row-wrap">
+                  <button class="btn btn-sm btn-secondary" type="button"><span data-icon="filter"></span> Filtres avancés</button>
+                  <button class="btn btn-sm btn-ghost" type="button"><span data-icon="refresh"></span> Réinitialiser</button>
+                </div>
+              </div>
+
+              <div class="stack-sm">
+                <div class="row row-wrap">
+                  <span class="tiny muted mono" style="width:82px">Thème</span>
+                  <button class="chip active" type="button" data-filter-key="theme" data-filter-value="all">Tous <span class="count">9</span></button>
+                  <button class="chip" type="button" data-filter-key="theme" data-filter-value="tris">Tris <span class="count">3</span></button>
+                  <button class="chip" type="button" data-filter-key="theme" data-filter-value="debogage">Débogage <span class="count">2</span></button>
+                  <button class="chip" type="button" data-filter-key="theme" data-filter-value="crypto">Cryptographie <span class="count">2</span></button>
+                  <button class="chip" type="button" data-filter-key="theme" data-filter-value="visuel">Stégano &amp; QR <span class="count">2</span></button>
+                </div>
+                <div class="row row-wrap">
+                  <span class="tiny muted mono" style="width:82px">Difficulté</span>
+                  <button class="chip active" type="button" data-filter-key="difficulty" data-filter-value="all">Toutes</button>
+                  <button class="chip" type="button" data-filter-key="difficulty" data-filter-value="1">1 · Initiation</button>
+                  <button class="chip" type="button" data-filter-key="difficulty" data-filter-value="2">2 · Facile</button>
+                  <button class="chip" type="button" data-filter-key="difficulty" data-filter-value="3">3 · Moyen</button>
+                  <button class="chip" type="button" data-filter-key="difficulty" data-filter-value="4">4 · Difficile</button>
+                  <button class="chip" type="button" data-filter-key="difficulty" data-filter-value="5">5 · Expert</button>
+                </div>
+                <div class="row row-wrap">
+                  <span class="tiny muted mono" style="width:82px">Statut</span>
+                  <button class="chip active" type="button" data-filter-key="status" data-filter-value="all">Tous</button>
+                  <button class="chip" type="button" data-filter-key="status" data-filter-value="available">Disponible</button>
+                  <button class="chip" type="button" data-filter-key="status" data-filter-value="done">Réussi</button>
+                  <button class="chip" type="button" data-filter-key="status" data-filter-value="locked">Verrouillé</button>
+                </div>
+                <div class="row row-wrap">
+                  <span class="tiny muted mono" style="width:82px">Type</span>
+                  <button class="chip active" type="button" data-filter-key="type" data-filter-value="all">Tous</button>
+                  <button class="chip" type="button" data-filter-key="type" data-filter-value="solo">Solo</button>
+                  <button class="chip" type="button" data-filter-key="type" data-filter-value="equipe">Équipe</button>
+                  <button class="chip" type="button" data-filter-key="type" data-filter-value="event">Event</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row between row-wrap mb-4">
+            <div class="row">
+              <span class="badge badge-cyan"><span data-icon="filter"></span> <span data-challenge-count>9</span> résultats</span>
+              <span class="tiny muted">Tri : recommandé · difficulté croissante</span>
+            </div>
+            <div class="segmented" role="group" aria-label="Affichage">
+              <button class="active" type="button">Grille</button>
+              <button type="button">Liste</button>
+            </div>
+          </div>
+
+          <div class="grid grid-3" id="challenge-grid">
+            <article class="challenge-card" data-challenge-card data-theme="tris" data-difficulty="1" data-status="done" data-type="solo">
+              <div class="challenge-top">
+                <div>
+                  <div class="row row-wrap mb-2"><span class="badge badge-cyan">Tris</span><span class="badge badge-lime">Réussi</span></div>
+                  <h3 class="challenge-title"><a href="defi-tri.html">Premier tri à bulles</a></h3>
+                </div>
+                <span class="challenge-points">100 pts</span>
+              </div>
+              <p class="challenge-desc">Implémente un tri à bulles et compte les échanges. Idéal pour vérifier la boucle et les bornes.</p>
+              <div class="challenge-meta">
+                <span class="difficulty d1"><i class="on"></i><i></i><i></i><i></i><i></i></span>
+                <span class="tiny muted mono">1/5</span>
+                <span class="badge badge-lime">Meilleur : 100</span>
+              </div>
+              <div class="challenge-foot"><span><span data-icon="clock"></span> 10 min</span><span>Python</span></div>
+              <div class="challenge-progress"><span style="width:100%"></span></div>
+            </article>
+
+            <article class="challenge-card" data-challenge-card data-theme="tris" data-difficulty="3" data-status="available" data-type="solo">
+              <div class="challenge-top">
+                <div>
+                  <div class="row row-wrap mb-2"><span class="badge badge-cyan">Tris</span><span class="badge">Disponible</span></div>
+                  <h3 class="challenge-title"><a href="defi-tri.html">Tri fusion sous pression</a></h3>
+                </div>
+                <span class="challenge-points">300 pts</span>
+              </div>
+              <p class="challenge-desc">Tri stable en O(n log n), jeux de tests limites et 100 000 éléments. Le temps CPU médian départage.</p>
+              <div class="challenge-meta">
+                <span class="difficulty d3"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span>
+                <span class="tiny muted mono">3/5</span>
+                <span class="badge">Python · JS</span>
+              </div>
+              <div class="challenge-foot"><span><span data-icon="clock"></span> 25 min</span><span>5 + 4 tests</span></div>
+              <div class="challenge-progress"><span style="width:0%"></span></div>
+            </article>
+
+            <article class="challenge-card" data-challenge-card data-theme="tris" data-difficulty="4" data-status="locked" data-type="equipe">
+              <div class="challenge-top">
+                <div>
+                  <div class="row row-wrap mb-2"><span class="badge badge-cyan">Tris</span><span class="badge badge-red">Verrouillé</span></div>
+                  <h3 class="challenge-title"><a href="defi-tri.html">Tri par tas en équipe</a></h3>
+                </div>
+                <span class="challenge-points">400 pts</span>
+              </div>
+              <p class="challenge-desc">Tas binaire, extraction min/max et contrainte mémoire. Édition collaborative à 2–5 membres.</p>
+              <div class="challenge-meta">
+                <span class="difficulty d4"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+                <span class="tiny muted mono">4/5</span>
+                <span class="badge"><span data-icon="lock"></span> Tri fusion</span>
+              </div>
+              <div class="challenge-foot"><span><span data-icon="users"></span> Équipe</span><span>Prérequis manquant</span></div>
+              <div class="challenge-progress"><span style="width:0%"></span></div>
+            </article>
+
+            <article class="challenge-card" data-challenge-card data-theme="debogage" data-difficulty="2" data-status="available" data-type="solo">
+              <div class="challenge-top">
+                <div>
+                  <div class="row row-wrap mb-2"><span class="badge badge-magenta">Débogage</span><span class="badge">Disponible</span></div>
+                  <h3 class="challenge-title"><a href="defi-debogage.html">L'indice fantôme</a></h3>
+                </div>
+                <span class="challenge-points">200 pts</span>
+              </div>
+              <p class="challenge-desc">Un parcours de tableau déborde d'une case. Corrige sans modifier l'interface publique.</p>
+              <div class="challenge-meta">
+                <span class="difficulty d2"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span>
+                <span class="tiny muted mono">2/5</span>
+                <span class="badge">1 bug</span>
+              </div>
+              <div class="challenge-foot"><span><span data-icon="clock"></span> 15 min</span><span>≤ 3 lignes</span></div>
+              <div class="challenge-progress"><span style="width:0%"></span></div>
+            </article>
+
+            <article class="challenge-card" data-challenge-card data-theme="debogage" data-difficulty="4" data-status="available" data-type="solo">
+              <div class="challenge-top">
+                <div>
+                  <div class="row row-wrap mb-2"><span class="badge badge-magenta">Débogage</span><span class="badge badge-amber">Difficile</span></div>
+                  <h3 class="challenge-title"><a href="defi-debogage.html">Fuite d'état</a></h3>
+                </div>
+                <span class="challenge-points">400 pts</span>
+              </div>
+              <p class="challenge-desc">Trois bugs se cachent dans un cache applicatif. Corrige-les sans casser les tests de concurrence.</p>
+              <div class="challenge-meta">
+                <span class="difficulty d4"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+                <span class="tiny muted mono">4/5</span>
+                <span class="badge">3 bugs</span>
+              </div>
+              <div class="challenge-foot"><span><span data-icon="clock"></span> 35 min</span><span>JS</span></div>
+              <div class="challenge-progress"><span style="width:0%"></span></div>
+            </article>
+
+            <article class="challenge-card" data-challenge-card data-theme="crypto" data-difficulty="3" data-status="available" data-type="solo">
+              <div class="challenge-top">
+                <div>
+                  <div class="row row-wrap mb-2"><span class="badge badge-violet">Cryptographie</span><span class="badge">Disponible</span></div>
+                  <h3 class="challenge-title"><a href="defi-decryptage.html">Le message de la Crypte</a></h3>
+                </div>
+                <span class="challenge-points">300 pts</span>
+              </div>
+              <p class="challenge-desc">Déchiffre un message Vigenère généré par ta seed. Indices progressifs payants en Bits.</p>
+              <div class="challenge-meta">
+                <span class="difficulty d3"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span>
+                <span class="tiny muted mono">3/5</span>
+                <span class="badge">Seed unique</span>
+              </div>
+              <div class="challenge-foot"><span><span data-icon="clock"></span> 30 min</span><span>Texte à soumettre</span></div>
+              <div class="challenge-progress"><span style="width:0%"></span></div>
+            </article>
+
+            <article class="challenge-card" data-challenge-card data-theme="crypto" data-difficulty="5" data-status="locked" data-type="event">
+              <div class="challenge-top">
+                <div>
+                  <div class="row row-wrap mb-2"><span class="badge badge-violet">Cryptographie</span><span class="badge badge-magenta">Event · 1 essai</span></div>
+                  <h3 class="challenge-title"><a href="evenements.html">La clé d'ORACLE</a></h3>
+                </div>
+                <span class="challenge-points">800 pts</span>
+              </div>
+              <p class="challenge-desc">Chiffrement composite Base64 + XOR + substitution. Classement dédié, corrigé après clôture.</p>
+              <div class="challenge-meta">
+                <span class="difficulty d5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
+                <span class="tiny muted mono">5/5</span>
+                <span class="badge badge-amber"><span data-icon="clock"></span> 2 j 04 h</span>
+              </div>
+              <div class="challenge-foot"><span><span data-icon="lock"></span> S'inscrire à l'event</span><span>Équipe · 1 essai</span></div>
+              <div class="challenge-progress"><span style="width:0%"></span></div>
+            </article>
+
+            <article class="challenge-card" data-challenge-card data-theme="visuel" data-difficulty="3" data-status="available" data-type="solo">
+              <div class="challenge-top">
+                <div>
+                  <div class="row row-wrap mb-2"><span class="badge badge-violet">Stéganographie</span><span class="badge">Disponible</span></div>
+                  <h3 class="challenge-title"><a href="defi-visuel.html">Le canal des images</a></h3>
+                </div>
+                <span class="challenge-points">300 pts</span>
+              </div>
+              <p class="challenge-desc">Un message est caché dans les bits de poids faible d'une image PNG. Extrais-le et soumets-le.</p>
+              <div class="challenge-meta">
+                <span class="difficulty d3"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span>
+                <span class="tiny muted mono">3/5</span>
+                <span class="badge">Image seedée</span>
+              </div>
+              <div class="challenge-foot"><span><span data-icon="clock"></span> 20 min</span><span>Indices : 3</span></div>
+              <div class="challenge-progress"><span style="width:0%"></span></div>
+            </article>
+
+            <article class="challenge-card" data-challenge-card data-theme="visuel" data-difficulty="4" data-status="available" data-type="solo">
+              <div class="challenge-top">
+                <div>
+                  <div class="row row-wrap mb-2"><span class="badge badge-violet">QR codes</span><span class="badge">Disponible</span></div>
+                  <h3 class="challenge-title"><a href="defi-visuel.html">Le QR fragmenté</a></h3>
+                </div>
+                <span class="challenge-points">400 pts</span>
+              </div>
+              <p class="challenge-desc">Un QR code est découpé et partiellement dégradé. Reconstruis-le ou décode les fragments utiles.</p>
+              <div class="challenge-meta">
+                <span class="difficulty d4"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+                <span class="tiny muted mono">4/5</span>
+                <span class="badge">Atelier</span>
+              </div>
+              <div class="challenge-foot"><span><span data-icon="clock"></span> 30 min</span><span>2 variantes</span></div>
+              <div class="challenge-progress"><span style="width:0%"></span></div>
+            </article>
+          </div>
+
+          <div class="empty-state mt-6" id="challenge-empty" hidden>
+            <span class="feature-icon"><span data-icon="search" class="icon-lg"></span></span>
+            <h3>Aucun défi ne correspond</h3>
+            <p class="small muted">Élargis un filtre ou réinitialise la recherche. Les défis verrouillés restent visibles avec leur prérequis.</p>
+            <button class="btn btn-secondary btn-sm" type="button">Réinitialiser les filtres</button>
+          </div>
+
+          <div class="row center mt-8">
+            <button class="btn btn-secondary" type="button"><span data-icon="chevron-left"></span> Précédent</button>
+            <span class="mono small muted">Page 1 / 3</span>
+            <button class="btn btn-secondary" type="button">Suivant <span data-icon="chevron-right"></span></button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

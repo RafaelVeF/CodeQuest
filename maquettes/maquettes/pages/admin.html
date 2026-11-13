@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeQuest — Administration</title>
+  <meta name="description" content="Back-office CodeQuest : KPI, file d'exécution, CRUD des défis, gestion des utilisateurs et rôles, signalements et journal d'audit.">
+  <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body data-root="../" data-page="admin" data-layout="app" data-title="Administration" data-admin="true">
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <div class="app-layout">
+    <aside class="sidebar" data-sidebar></aside>
+    <div class="app-main">
+      <header class="app-topbar" data-topbar></header>
+
+      <main id="main" class="page">
+        <div class="container-wide">
+          <div class="page-header">
+            <div>
+              <span class="eyebrow">Back-office · Accès restreint</span>
+              <h1>Administration</h1>
+              <p class="muted">Pilotage du contenu, des rôles et de la file d'exécution. Toute action est journalisée.</p>
+            </div>
+            <div class="row row-wrap">
+              <span class="badge badge-red"><span data-icon="shield-check"></span> Rôle administrateur</span>
+              <button class="btn btn-sm btn-secondary" type="button" data-modal-open="new-challenge"><span data-icon="plus"></span> Nouveau défi</button>
+              <button class="btn btn-sm btn-ghost" type="button" data-toast="Journal d'audit exporté (simulation)."><span data-icon="download"></span> Exporter l'audit</button>
+            </div>
+          </div>
+
+          <div class="admin-kpi mb-6">
+            <div class="stat-card">
+              <div class="stat-label"><span data-icon="users"></span> Utilisateurs actifs</div>
+              <div class="stat-value">1 248</div>
+              <div class="stat-trend">+6,2 % sur 7 jours</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label"><span data-icon="code"></span> Soumissions 24 h</div>
+              <div class="stat-value">8 402</div>
+              <div class="stat-trend">pic à 14:20</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label"><span data-icon="target"></span> Taux de réussite</div>
+              <div class="stat-value">61 %</div>
+              <div class="stat-trend">−2,1 pts vs semaine passée</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label"><span data-icon="cpu"></span> File d'exécution</div>
+              <div class="stat-value">7</div>
+              <div class="stat-trend">attente médiane 1,8 s</div>
+            </div>
+          </div>
+
+          <div class="grid" style="grid-template-columns:minmax(0,1fr) 340px;align-items:start">
+            <div class="panel" data-tabs>
+              <div class="panel-body-tight">
+                <div class="tabs" role="tablist" aria-label="Sections d'administration">
+                  <button class="tab" role="tab" id="tab-admin-dashboard" aria-controls="panel-admin-dashboard" aria-selected="true" type="button"><span data-icon="gauge"></span> Tableau de bord</button>
+                  <button class="tab" role="tab" id="tab-admin-defis" aria-controls="panel-admin-defis" aria-selected="false" type="button"><span data-icon="file-code"></span> Défis</button>
+                  <button class="tab" role="tab" id="tab-admin-users" aria-controls="panel-admin-users" aria-selected="false" type="button"><span data-icon="users"></span> Utilisateurs</button>
+                  <button class="tab" role="tab" id="tab-admin-reports" aria-controls="panel-admin-reports" aria-selected="false" type="button"><span data-icon="flag"></span> Signalements <span class="badge badge-red">3</span></button>
+                  <button class="tab" role="tab" id="tab-admin-audit" aria-controls="panel-admin-audit" aria-selected="false" type="button"><span data-icon="file-text"></span> Audit</button>
+                </div>
+
+                <div class="panel-body" role="tabpanel" id="panel-admin-dashboard" aria-labelledby="tab-admin-dashboard">
+                  <div class="grid grid-2">
+                    <div class="panel">
+                      <div class="panel-header"><h4 class="mb-0">Soumissions sur 7 jours</h4><span class="badge badge-cyan">8 402 aujourd'hui</span></div>
+                      <div class="panel-body">
+                        <div class="row" style="align-items:flex-end;gap:10px;height:160px" role="img" aria-label="Histogramme des soumissions : lundi 6 200, mardi 7 100, mercredi 6 800, jeudi 7 900, vendredi 8 100, samedi 9 400, dimanche 8 402">
+                          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;height:100%"><div style="height:62%;background:linear-gradient(180deg,var(--cyan),rgba(34,211,238,0.25));border-radius:6px 6px 0 0"></div><span class="tiny muted mono text-center">Lun</span></div>
+                          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;height:100%"><div style="height:71%;background:linear-gradient(180deg,var(--cyan),rgba(34,211,238,0.25));border-radius:6px 6px 0 0"></div><span class="tiny muted mono text-center">Mar</span></div>
+                          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;height:100%"><div style="height:68%;background:linear-gradient(180deg,var(--cyan),rgba(34,211,238,0.25));border-radius:6px 6px 0 0"></div><span class="tiny muted mono text-center">Mer</span></div>
+                          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;height:100%"><div style="height:79%;background:linear-gradient(180deg,var(--cyan),rgba(34,211,238,0.25));border-radius:6px 6px 0 0"></div><span class="tiny muted mono text-center">Jeu</span></div>
+                          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;height:100%"><div style="height:81%;background:linear-gradient(180deg,var(--cyan),rgba(34,211,238,0.25));border-radius:6px 6px 0 0"></div><span class="tiny muted mono text-center">Ven</span></div>
+                          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;height:100%"><div style="height:94%;background:linear-gradient(180deg,var(--magenta),rgba(244,114,182,0.25));border-radius:6px 6px 0 0"></div><span class="tiny muted mono text-center">Sam</span></div>
+                          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;height:100%"><div style="height:84%;background:linear-gradient(180deg,var(--cyan),rgba(34,211,238,0.25));border-radius:6px 6px 0 0"></div><span class="tiny muted mono text-center">Dim</span></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="panel">
+                      <div class="panel-header"><h4 class="mb-0">Défis les plus joués</h4><span class="badge">24 h</span></div>
+                      <div class="panel-body-tight">
+                        <div class="member-row"><span class="rank rank-1">1</span><div class="member-info"><strong>Tri fusion sous pression</strong><span>2 140 tentatives · 64 % réussite</span></div><span class="mono tiny">2 140</span></div>
+                        <div class="member-row"><span class="rank rank-2">2</span><div class="member-info"><strong>L'indice fantôme</strong><span>1 802 tentatives · 71 % réussite</span></div><span class="mono tiny">1 802</span></div>
+                        <div class="member-row"><span class="rank rank-3">3</span><div class="member-info"><strong>Le message de la Crypte</strong><span>1 204 tentatives · 48 % réussite</span></div><span class="mono tiny">1 204</span></div>
+                        <div class="member-row"><span class="rank">4</span><div class="member-info"><strong>Le canal des images</strong><span>842 tentatives · 39 % réussite</span></div><span class="mono tiny">842</span></div>
+                        <div class="member-row"><span class="rank">5</span><div class="member-info"><strong>Premier tri à bulles</strong><span>760 tentatives · 92 % réussite</span></div><span class="mono tiny">760</span></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="panel mt-4">
+                    <div class="panel-header"><h4 class="mb-0">File d'exécution</h4><span class="badge badge-lime"><span data-icon="activity"></span> En direct</span></div>
+                    <div class="panel-body-tight">
+                      <div class="queue-item"><span class="badge badge-cyan">#8842</span><div><strong style="display:block;font-size:0.84rem">Tri fusion · Python 3.12</strong><span class="tiny muted">Nova_Runner · 9 tests · 41 ms</span></div><span class="badge badge-lime">Terminé</span></div>
+                      <div class="queue-item"><span class="badge badge-cyan">#8843</span><div><strong style="display:block;font-size:0.84rem">Fuite d'état · JavaScript</strong><span class="tiny muted">Vortex · 7 tests · en cours</span></div><span class="badge badge-amber">Exécution</span></div>
+                      <div class="queue-item"><span class="badge badge-cyan">#8844</span><div><strong style="display:block;font-size:0.84rem">Le QR fragmenté · Python 3.12</strong><span class="tiny muted">ByteMe · 4 tests · en attente</span></div><span class="badge">File</span></div>
+                      <div class="queue-item"><span class="badge badge-red">#8841</span><div><strong style="display:block;font-size:0.84rem">Boucle infinie · Python 3.12</strong><span class="tiny muted">Kernel_0 · timeout 2 s · tué</span></div><span class="badge badge-red">Timeout</span></div>
+                      <div class="queue-item"><span class="badge badge-cyan">#8845</span><div><strong style="display:block;font-size:0.84rem">Tri fusion · Java 21</strong><span class="tiny muted">Nyx · 9 tests · en attente</span></div><span class="badge">File</span></div>
+                    </div>
+                  </div>
+
+                  <div class="alert alert-amber mt-4">
+                    <span data-icon="alert-triangle"></span>
+                    <span><strong>2 défis en quarantaine :</strong> « Tri par tas en équipe » (tests instables) et « La clé d'ORACLE » (calibrage à revoir). Ils restent invisibles pour les joueurs.</span>
+                  </div>
+                </div>
+
+                <div class="panel-body" role="tabpanel" id="panel-admin-defis" aria-labelledby="tab-admin-defis" hidden>
+                  <div class="row between row-wrap mb-4">
+                    <div>
+                      <h3 class="mb-1">Catalogue des défis</h3>
+                      <p class="small muted mb-0">Un défi ne peut être publié qu'après exécution de la solution de référence et validation des tests.</p>
+                    </div>
+                    <div class="row row-wrap">
+                      <div class="input-group" style="max-width:240px"><span data-icon="search"></span><input class="input" type="search" placeholder="Rechercher…" aria-label="Rechercher un défi"></div>
+                      <button class="btn btn-sm btn-primary" type="button" data-modal-open="new-challenge"><span data-icon="plus"></span> Nouveau</button>
+                    </div>
+                  </div>
+                  <div class="table-wrap">
+                    <table>
+                      <thead><tr><th>Défi</th><th>Thème</th><th>Diff.</th><th>Version</th><th>Tests</th><th>Statut</th><th>Modifié</th><th>Actions</th></tr></thead>
+                      <tbody>
+                        <tr><td><strong>Tri fusion sous pression</strong><br><span class="tiny muted">slug · tri-fusion</span></td><td>Tris</td><td class="mono">3</td><td class="mono">v4</td><td class="mono">9</td><td><span class="badge badge-lime">Publié</span></td><td class="tiny muted">04 nov.</td><td><div class="row"><button class="icon-btn" type="button" aria-label="Modifier Tri fusion" data-toast="Éditeur du défi ouvert (simulation)."><span data-icon="edit"></span></button><button class="icon-btn" type="button" aria-label="Historique des versions" data-toast="Versions v1 à v4 (simulation)."><span data-icon="layers"></span></button></div></td></tr>
+                        <tr><td><strong>L'indice fantôme</strong><br><span class="tiny muted">slug · indice-fantome</span></td><td>Débogage</td><td class="mono">2</td><td class="mono">v2</td><td class="mono">4</td><td><span class="badge badge-lime">Publié</span></td><td class="tiny muted">03 nov.</td><td><div class="row"><button class="icon-btn" type="button" aria-label="Modifier L'indice fantôme" data-toast="Éditeur du défi ouvert (simulation)."><span data-icon="edit"></span></button><button class="icon-btn" type="button" aria-label="Historique des versions" data-toast="Versions v1 à v2 (simulation)."><span data-icon="layers"></span></button></div></td></tr>
+                        <tr><td><strong>Le message de la Crypte</strong><br><span class="tiny muted">slug · message-crypte</span></td><td>Crypto</td><td class="mono">3</td><td class="mono">v3</td><td class="mono">1</td><td><span class="badge badge-lime">Publié</span></td><td class="tiny muted">02 nov.</td><td><div class="row"><button class="icon-btn" type="button" aria-label="Modifier Le message de la Crypte" data-toast="Éditeur du défi ouvert (simulation)."><span data-icon="edit"></span></button><button class="icon-btn" type="button" aria-label="Historique des versions" data-toast="Versions v1 à v3 (simulation)."><span data-icon="layers"></span></button></div></td></tr>
+                        <tr><td><strong>Tri par tas en équipe</strong><br><span class="tiny muted">slug · tri-tas-equipe</span></td><td>Tris</td><td class="mono">4</td><td class="mono">v1</td><td class="mono">12</td><td><span class="badge badge-red">Quarantaine</span></td><td class="tiny muted">01 nov.</td><td><div class="row"><button class="icon-btn" type="button" aria-label="Modifier Tri par tas" data-toast="Éditeur du défi ouvert (simulation)."><span data-icon="edit"></span></button><button class="btn btn-sm btn-ghost" type="button" data-modal-open="validate-challenge">Valider</button></div></td></tr>
+                        <tr><td><strong>La clé d'ORACLE</strong><br><span class="tiny muted">slug · cle-oracle · event</span></td><td>Crypto</td><td class="mono">5</td><td class="mono">v2</td><td class="mono">1</td><td><span class="badge badge-red">Quarantaine</span></td><td class="tiny muted">31 oct.</td><td><div class="row"><button class="icon-btn" type="button" aria-label="Modifier La clé d'ORACLE" data-toast="Éditeur de l'event ouvert (simulation)."><span data-icon="edit"></span></button><button class="btn btn-sm btn-ghost" type="button" data-modal-open="validate-challenge">Valider</button></div></td></tr>
+                        <tr><td><strong>Le QR fragmenté</strong><br><span class="tiny muted">slug · qr-fragmente</span></td><td>Stégano</td><td class="mono">4</td><td class="mono">v1</td><td class="mono">3</td><td><span class="badge badge-amber">Brouillon</span></td><td class="tiny muted">30 oct.</td><td><div class="row"><button class="icon-btn" type="button" aria-label="Modifier Le QR fragmenté" data-toast="Éditeur du défi ouvert (simulation)."><span data-icon="edit"></span></button><button class="btn btn-sm btn-ghost" type="button" data-modal-open="validate-challenge">Valider</button></div></td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="row between row-wrap mt-4">
+                    <span class="tiny muted">6 défis sur 24 · page 1 / 4</span>
+                    <div class="row"><button class="btn btn-sm btn-secondary" type="button"><span data-icon="chevron-left"></span> Précédent</button><button class="btn btn-sm btn-secondary" type="button">Suivant <span data-icon="chevron-right"></span></button></div>
+                  </div>
+                </div>
+
+                <div class="panel-body" role="tabpanel" id="panel-admin-users" aria-labelledby="tab-admin-users" hidden>
+                  <div class="row between row-wrap mb-4">
+                    <div>
+                      <h3 class="mb-1">Utilisateurs et rôles</h3>
+                      <p class="small muted mb-0">Un changement de rôle est journalisé et révoque les sessions concernées.</p>
+                    </div>
+                    <div class="row row-wrap">
+                      <button class="chip active" type="button">Tous</button>
+                      <button class="chip" type="button">Joueurs</button>
+                      <button class="chip" type="button">Modérateurs</button>
+                      <button class="chip" type="button">Admins</button>
+                      <button class="chip" type="button">Suspendus</button>
+                    </div>
+                  </div>
+                  <div class="table-wrap">
+                    <table>
+                      <thead><tr><th>Utilisateur</th><th>Rôle</th><th>Niveau</th><th>Statut</th><th>Dernière activité</th><th>Actions</th></tr></thead>
+                      <tbody>
+                        <tr><td><div class="player-cell"><span class="avatar">NR</span><span><strong>Nova_Runner</strong><br><span class="tiny muted">nova@codequest.gg</span></span></div></td><td><span class="badge badge-cyan">Joueur</span></td><td class="mono">12</td><td><span class="badge badge-lime">Actif</span></td><td class="tiny muted">à l'instant</td><td><button class="btn btn-sm btn-ghost" type="button" data-toast="Fiche utilisateur ouverte (simulation).">Gérer</button></td></tr>
+                        <tr><td><div class="player-cell"><span class="avatar">NY</span><span><strong>Nyx</strong><br><span class="tiny muted">nyx@codequest.gg</span></span></div></td><td><span class="badge badge-violet">Modérateur</span></td><td class="mono">22</td><td><span class="badge badge-lime">Actif</span></td><td class="tiny muted">il y a 4 min</td><td><button class="btn btn-sm btn-ghost" type="button" data-toast="Fiche utilisateur ouverte (simulation).">Gérer</button></td></tr>
+                        <tr><td><div class="player-cell"><span class="avatar">VX</span><span><strong>Vortex</strong><br><span class="tiny muted">vortex@codequest.gg</span></span></div></td><td><span class="badge badge-cyan">Joueur</span></td><td class="mono">24</td><td><span class="badge badge-lime">Actif</span></td><td class="tiny muted">il y a 8 min</td><td><button class="btn btn-sm btn-ghost" type="button" data-toast="Fiche utilisateur ouverte (simulation).">Gérer</button></td></tr>
+                        <tr><td><div class="player-cell"><span class="avatar">K0</span><span><strong>Kernel_0</strong><br><span class="tiny muted">kernel0@codequest.gg</span></span></div></td><td><span class="badge badge-cyan">Joueur</span></td><td class="mono">19</td><td><span class="badge badge-amber">Muet 24 h</span></td><td class="tiny muted">il y a 12 min</td><td><button class="btn btn-sm btn-ghost" type="button" data-toast="Fiche utilisateur ouverte (simulation).">Gérer</button></td></tr>
+                        <tr><td><div class="player-cell"><span class="avatar">GL</span><span><strong>Glitch</strong><br><span class="tiny muted">glitch@codequest.gg</span></span></div></td><td><span class="badge badge-cyan">Joueur</span></td><td class="mono">17</td><td><span class="badge badge-red">Suspendu 7 j</span></td><td class="tiny muted">hier</td><td><button class="btn btn-sm btn-ghost" type="button" data-toast="Fiche utilisateur ouverte (simulation).">Gérer</button></td></tr>
+                        <tr><td><div class="player-cell"><span class="avatar">AD</span><span><strong>Admin_07</strong><br><span class="tiny muted">admin@codequest.gg</span></span></div></td><td><span class="badge badge-red">Administrateur</span></td><td class="mono">—</td><td><span class="badge badge-lime">Actif</span></td><td class="tiny muted">il y a 1 h</td><td><button class="btn btn-sm btn-ghost" type="button" data-toast="Fiche administrateur ouverte (simulation).">Gérer</button></td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="grid grid-3 mt-4">
+                    <div class="card card-pad-sm"><span class="badge badge-cyan">Joueur</span><p class="small muted mb-0">Jouer, gérer son profil, son équipe et sa monnaie. Aucun accès à la modération.</p></div>
+                    <div class="card card-pad-sm"><span class="badge badge-violet">Modérateur</span><p class="small muted mb-0">Droits joueur + mute, suppression de message, bannissement temporaire et traitement des signalements.</p></div>
+                    <div class="card card-pad-sm"><span class="badge badge-red">Administrateur</span><p class="small muted mb-0">Tout : CRUD contenu, rôles, boutique, events, lore, configuration et journal d'audit.</p></div>
+                  </div>
+                </div>
+
+                <div class="panel-body" role="tabpanel" id="panel-admin-reports" aria-labelledby="tab-admin-reports" hidden>
+                  <div class="row between row-wrap mb-4">
+                    <div>
+                      <h3 class="mb-1">Signalements</h3>
+                      <p class="small muted mb-0">3 signalements ouverts. Les décisions sont notifiées aux personnes concernées.</p>
+                    </div>
+                    <span class="badge badge-red">Priorité haute : 1</span>
+                  </div>
+                  <div class="stack-sm">
+                    <div class="card card-pad-sm" style="border-color:rgba(251,113,133,0.35)">
+                      <div class="row between row-wrap mb-2"><span class="badge badge-red">Priorité haute</span><span class="tiny muted mono">il y a 6 min</span></div>
+                      <strong style="display:block">Divulgation de solution · #oracle</strong>
+                      <p class="small muted">Message de <strong>Glitch</strong> contenant une clé de déchiffrement pendant un event à essai unique. 2 témoins.</p>
+                      <div class="row row-wrap"><button class="btn btn-sm btn-danger" type="button" data-toast="Message supprimé et compte suspendu 7 jours (simulation).">Supprimer + suspendre</button><button class="btn btn-sm btn-secondary" type="button" data-toast="Avertissement envoyé (simulation).">Avertir</button><button class="btn btn-sm btn-ghost" type="button" data-toast="Signalement classé sans suite (simulation).">Classer</button></div>
+                    </div>
+                    <div class="card card-pad-sm">
+                      <div class="row between row-wrap mb-2"><span class="badge badge-amber">Moyenne</span><span class="tiny muted mono">il y a 42 min</span></div>
+                      <strong style="display:block">Spam répété · #global</strong>
+                      <p class="small muted">5 messages identiques en 30 secondes par <strong>Kernel_0</strong>. Filtre anti-spam déclenché, compte déjà muet 24 h.</p>
+                      <div class="row row-wrap"><button class="btn btn-sm btn-secondary" type="button" data-toast="Mute prolongé de 24 h (simulation).">Prolonger le mute</button><button class="btn btn-sm btn-ghost" type="button" data-toast="Signalement classé (simulation).">Classer</button></div>
+                    </div>
+                    <div class="card card-pad-sm">
+                      <div class="row between row-wrap mb-2"><span class="badge">Basse</span><span class="tiny muted mono">hier</span></div>
+                      <strong style="display:block">Lien externe non sollicité · MP</strong>
+                      <p class="small muted">Un compte récent a envoyé un lien externe à 3 joueurs. Lien bloqué automatiquement.</p>
+                      <div class="row row-wrap"><button class="btn btn-sm btn-secondary" type="button" data-toast="Compte placé sous surveillance (simulation).">Surveiller</button><button class="btn btn-sm btn-ghost" type="button" data-toast="Signalement classé (simulation).">Classer</button></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel-body" role="tabpanel" id="panel-admin-audit" aria-labelledby="tab-admin-audit" hidden>
+                  <div class="row between row-wrap mb-4">
+                    <div>
+                      <h3 class="mb-1">Journal d'audit</h3>
+                      <p class="small muted mb-0">Toute action d'administration et tout changement de rôle sont journalisés, en lecture seule.</p>
+                    </div>
+                    <span class="badge badge-lime"><span data-icon="lock"></span> Immuable</span>
+                  </div>
+                  <div class="table-wrap">
+                    <table>
+                      <thead><tr><th>Horodatage</th><th>Acteur</th><th>Action</th><th>Cible</th><th>IP</th><th>Détail</th></tr></thead>
+                      <tbody>
+                        <tr><td class="mono tiny">04 nov. 08:46:12</td><td>Admin_07</td><td><span class="badge badge-red">user:ban</span></td><td>Glitch</td><td class="mono tiny">82.64.•••.•••</td><td class="tiny muted">Suspension 7 j · divulgation de solution</td></tr>
+                        <tr><td class="mono tiny">04 nov. 08:44:03</td><td>Admin_07</td><td><span class="badge badge-amber">challenge:update</span></td><td>Tri fusion · v4</td><td class="mono tiny">82.64.•••.•••</td><td class="tiny muted">Calibrage t_opt 40 ms · t_max 1 200 ms</td></tr>
+                        <tr><td class="mono tiny">04 nov. 08:12:55</td><td>Nyx</td><td><span class="badge badge-violet">chat:moderate</span></td><td>#oracle · msg 8842</td><td class="mono tiny">90.112.•••.•••</td><td class="tiny muted">Message masqué · motif : spoiler</td></tr>
+                        <tr><td class="mono tiny">03 nov. 22:30:18</td><td>Admin_07</td><td><span class="badge badge-cyan">role:grant</span></td><td>Nyx</td><td class="mono tiny">82.64.•••.•••</td><td class="tiny muted">Rôle modérateur accordé · sessions révoquées</td></tr>
+                        <tr><td class="mono tiny">03 nov. 19:04:40</td><td>Admin_07</td><td><span class="badge badge-amber">challenge:publish</span></td><td>L'indice fantôme · v2</td><td class="mono tiny">82.64.•••.•••</td><td class="tiny muted">Solution de référence validée · 4 tests</td></tr>
+                        <tr><td class="mono tiny">02 nov. 14:18:09</td><td>System</td><td><span class="badge">challenge:quarantine</span></td><td>La clé d'ORACLE</td><td class="mono tiny">—</td><td class="tiny muted">Tests instables · publication bloquée</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="row between row-wrap mt-4">
+                    <span class="tiny muted">6 entrées sur 12 480 · page 1 / 2 080</span>
+                    <div class="row"><button class="btn btn-sm btn-secondary" type="button">Précédent</button><button class="btn btn-sm btn-secondary" type="button">Suivant</button></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <aside class="stack" aria-label="Santé système et raccourcis">
+              <div class="panel">
+                <div class="panel-header"><h3 class="mb-0">Santé système</h3><span class="badge badge-lime">Opérationnel</span></div>
+                <div class="panel-body">
+                  <div class="stack-sm">
+                    <div class="row between"><span class="small muted">API REST</span><span class="badge badge-lime">42 ms</span></div>
+                    <div class="row between"><span class="small muted">PostgreSQL</span><span class="badge badge-lime">8 ms</span></div>
+                    <div class="row between"><span class="small muted">Redis</span><span class="badge badge-lime">2 ms</span></div>
+                    <div class="row between"><span class="small muted">Runner</span><span class="badge badge-amber">7 en file</span></div>
+                    <div class="row between"><span class="small muted">WebSocket</span><span class="badge badge-lime">248 clients</span></div>
+                  </div>
+                  <hr>
+                  <div class="row between"><span class="tiny muted">Dernier incident</span><span class="mono tiny">il y a 6 j</span></div>
+                  <button class="btn btn-secondary btn-block btn-sm mt-3" type="button" data-toast="Statut détaillé ouvert (simulation)."><span data-icon="activity"></span> Statut détaillé</button>
+                </div>
+              </div>
+
+              <div class="panel">
+                <div class="panel-header"><h3 class="mb-0">À traiter</h3><span class="badge badge-red">4</span></div>
+                <div class="panel-body-tight">
+                  <div class="queue-item"><span data-icon="flag" class="text-red"></span><div><strong style="display:block;font-size:0.82rem">1 signalement prioritaire</strong><span class="tiny muted">Divulgation de solution</span></div></div>
+                  <div class="queue-item"><span data-icon="alert-triangle" class="text-amber"></span><div><strong style="display:block;font-size:0.82rem">2 défis en quarantaine</strong><span class="tiny muted">Tests à recalibrer</span></div></div>
+                  <div class="queue-item"><span data-icon="clock" class="text-cyan"></span><div><strong style="display:block;font-size:0.82rem">1 event à publier</strong><span class="tiny muted">La clé d'ORACLE · 6 nov.</span></div></div>
+                  <div class="queue-item"><span data-icon="database" class="text-violet"></span><div><strong style="display:block;font-size:0.82rem">Sauvegarde quotidienne</strong><span class="tiny muted">Aujourd'hui 03:00 · OK</span></div></div>
+                </div>
+              </div>
+
+              <div class="card card-pad-sm">
+                <div class="row mb-2"><span data-icon="shield-check" class="text-cyan"></span><strong style="font-size:0.86rem">Bonnes pratiques</strong></div>
+                <ul class="check-list">
+                  <li class="ok"><span data-icon="check-circle"></span> Solution de référence exécutée</li>
+                  <li class="ok"><span data-icon="check-circle"></span> Tests visibles et cachés séparés</li>
+                  <li class="ok"><span data-icon="check-circle"></span> t_opt et t_max calibrés</li>
+                  <li><span data-icon="info"></span> Relecture par un second admin</li>
+                </ul>
+              </div>
+
+              <div class="alert alert-amber">
+                <span data-icon="alert-triangle"></span>
+                <span><strong>Zone sensible :</strong> les actions de rôle et de suppression sont irréversibles. Vérifie la cible avant confirmation.</span>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="new-challenge" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="new-challenge-title">
+      <div class="modal-header"><h3 id="new-challenge-title" class="mb-0">Nouveau défi</h3><button class="icon-btn" type="button" data-modal-close aria-label="Fermer"><span data-icon="x"></span></button></div>
+      <div class="modal-body">
+        <form class="form" data-demo-form data-toast="Brouillon de défi créé (simulation). Il reste invisible jusqu'à validation.">
+          <div class="field"><label class="label" for="nc-title">Titre</label><input class="input" id="nc-title" type="text" placeholder="Tri fusion sous pression" required></div>
+          <div class="form-row">
+            <div class="field"><label class="label" for="nc-theme">Thématique</label><select class="select" id="nc-theme"><option>Tris et listes</option><option>Débogage</option><option>Cryptographie</option><option>Stéganographie</option><option>QR codes</option></select></div>
+            <div class="field"><label class="label" for="nc-diff">Difficulté</label><select class="select" id="nc-diff"><option>1 · Initiation</option><option>2 · Facile</option><option selected>3 · Moyen</option><option>4 · Difficile</option><option>5 · Expert</option></select></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label class="label" for="nc-type">Type</label><select class="select" id="nc-type"><option>Solo</option><option>Équipe</option><option>Event</option></select></div>
+            <div class="field"><label class="label" for="nc-lang">Langages</label><select class="select" id="nc-lang"><option>Python + JavaScript</option><option>Python seul</option><option>Java + C++</option></select></div>
+          </div>
+          <div class="field"><label class="label" for="nc-ref">Solution de référence</label><textarea class="textarea" id="nc-ref" placeholder="Colle la solution qui servira à valider les tests…" style="font-family:var(--font-mono);font-size:0.8rem"></textarea><span class="hint">Elle sera exécutée dans le runner avant publication.</span></div>
+          <label class="checkbox"><input type="checkbox" checked> <span>Exiger la réussite du didacticiel associé avant l'accès.</span></label>
+        </form>
+      </div>
+      <div class="modal-footer"><button class="btn btn-ghost" type="button" data-modal-close>Annuler</button><button class="btn btn-primary" type="button" data-toast="Brouillon enregistré (simulation)." data-modal-close>Créer le brouillon</button></div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="validate-challenge" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="validate-title">
+      <div class="modal-header"><h3 id="validate-title" class="mb-0">Valider avant publication</h3><button class="icon-btn" type="button" data-modal-close aria-label="Fermer"><span data-icon="x"></span></button></div>
+      <div class="modal-body">
+        <p class="small muted">La validation exécute la solution de référence, vérifie les tests visibles et cachés, puis recalibre les seuils de performance.</p>
+        <div class="stack-sm">
+          <div class="row between"><span class="small">Solution de référence</span><span class="badge badge-lime">Exécutée</span></div>
+          <div class="row between"><span class="small">Tests visibles</span><span class="badge badge-lime">5 / 5</span></div>
+          <div class="row between"><span class="small">Tests cachés</span><span class="badge badge-lime">4 / 4</span></div>
+          <div class="row between"><span class="small">Calibrage t_opt / t_max</span><span class="badge badge-amber">À confirmer</span></div>
+          <div class="row between"><span class="small">Relecture second admin</span><span class="badge badge-lime">Admin_07</span></div>
+        </div>
+        <div class="alert alert-amber mt-4"><span data-icon="alert-triangle"></span><span>La publication rend le défi visible immédiatement. Les joueurs déjà en cours conservent leur version.</span></div>
+      </div>
+      <div class="modal-footer"><button class="btn btn-ghost" type="button" data-modal-close>Annuler</button><button class="btn btn-primary" type="button" data-toast="Défi validé et publié (simulation)." data-modal-close>Publier</button></div>
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

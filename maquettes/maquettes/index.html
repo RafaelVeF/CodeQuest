@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeQuest — Kit de maquettes</title>
+  <meta name="description" content="Galerie de maquettes HTML/CSS pour CodeQuest, plateforme de défis informatiques.">
+  <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body data-root="" data-page="index" data-layout="public" data-title="Kit de maquettes">
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <header class="topbar" data-topbar></header>
+
+  <main id="main">
+    <section class="gallery-hero">
+      <div class="container">
+        <div class="row row-wrap between mb-8">
+          <div style="max-width:760px">
+            <span class="eyebrow">Design system &amp; maquettes · v1.0</span>
+            <h1 class="hero-title" style="font-size:clamp(2.2rem,5vw,4.4rem)">Code<span class="gradient">Quest</span><br>Kit de maquettes</h1>
+            <p class="hero-sub">Un ensemble cohérent, simplifié et structuré pour couvrir les parcours clés de la plateforme : accueil, authentification, didacticiels, défis, classements, équipes, events, boss, lore, boutique, chat et administration.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary btn-lg" href="pages/accueil.html">Ouvrir l'accueil <span data-icon="arrow-right"></span></a>
+              <a class="btn btn-secondary btn-lg" href="design-system.html">Voir le design system</a>
+            </div>
+          </div>
+          <div class="terminal scanlines" style="width:min(100%,430px)">
+            <div class="terminal-bar">
+              <span class="terminal-dots"><span></span><span></span><span></span></span>
+              <span class="terminal-title">codequest / maquettes</span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line"><span class="terminal-prompt">$</span><span class="terminal-cmd">python3 -m http.server 8080</span></div>
+              <div class="terminal-line"><span class="terminal-prompt">›</span><span class="terminal-dim">Serving HTTP on 0.0.0.0 port 8080…</span></div>
+              <div class="terminal-line"><span class="terminal-prompt">›</span><span>http://localhost:8080</span><span class="terminal-cursor"></span></div>
+              <div class="terminal-line mt-3"><span class="terminal-ok">✓</span><span>20 écrans · 1 design system</span></div>
+              <div class="terminal-line"><span class="terminal-ok">✓</span><span>dark / light · responsive · WCAG AA</span></div>
+              <div class="terminal-line"><span class="terminal-warn">!</span><span class="terminal-dim">Données fictives, actions simulées</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-4 mb-8">
+          <div class="stat-card">
+            <div class="stat-label"><span data-icon="layers"></span> Écrans</div>
+            <div class="stat-value">20</div>
+            <div class="stat-trend">Parcours public, joueur et admin</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label"><span data-icon="grid"></span> Composants</div>
+            <div class="stat-value">30+</div>
+            <div class="stat-trend">Cartes, formulaires, tables, éditeur…</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label"><span data-icon="shield-check"></span> Accessibilité</div>
+            <div class="stat-value">AA</div>
+            <div class="stat-trend">Focus visible, contrastes, clavier</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label"><span data-icon="moon"></span> Thèmes</div>
+            <div class="stat-value">2</div>
+            <div class="stat-trend">Sombre par défaut, clair optionnel</div>
+          </div>
+        </div>
+
+        <div class="alert alert-cyan mb-8">
+          <span data-icon="info"></span>
+          <span><strong>Prévisualisation :</strong> ouvrez <code>index.html</code> directement, ou lancez <code>python3 -m http.server 8080</code> depuis ce dossier puis <code>http://localhost:8080</code>. Les iframes ci-dessous sont des aperçus vivants ; le bouton « Ouvrir » affiche l'écran en plein format.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Parcours public</span>
+            <h2>Découvrir et créer son compte</h2>
+            <p>Accueil visiteur, connexion, inscription et récupération de mot de passe. Les états d'erreur et de confirmation sont prévus.</p>
+          </div>
+        </div>
+        <div class="gallery-grid">
+          <article class="gallery-card">
+            <div class="gallery-preview"><iframe src="pages/accueil.html" title="Aperçu accueil" loading="lazy" tabindex="-1"></iframe></div>
+            <div class="gallery-info">
+              <div class="row between"><span class="badge badge-cyan">Public</span><span class="tiny muted mono">01</span></div>
+              <h3>Accueil visiteur</h3>
+              <p>Hero narratif, promesse, régions, classement public et appels à l'action.</p>
+              <div class="row"><a class="btn btn-sm btn-primary" href="pages/accueil.html">Ouvrir <span data-icon="arrow-right"></span></a></div>
+            </div>
+          </article>
+          <article class="gallery-card">
+            <div class="gallery-preview"><iframe src="pages/connexion.html" title="Aperçu connexion" loading="lazy" tabindex="-1"></iframe></div>
+            <div class="gallery-info">
+              <div class="row between"><span class="badge badge-magenta">Auth</span><span class="tiny muted mono">02</span></div>
+              <h3>Connexion</h3>
+              <p>E-mail ou pseudo, mot de passe, erreur générique et lien de récupération.</p>
+              <div class="row"><a class="btn btn-sm btn-primary" href="pages/connexion.html">Ouvrir <span data-icon="arrow-right"></span></a></div>
+            </div>
+          </article>
+          <article class="gallery-card">
+            <div class="gallery-preview"><iframe src="pages/inscription.html" title="Aperçu inscription" loading="lazy" tabindex="-1"></iframe></div>
+            <div class="gallery-info">
+              <div class="row between"><span class="badge badge-magenta">Auth</span><span class="tiny muted mono">03</span></div>
+              <h3>Inscription</h3>
+              <p>Pseudo, e-mail, mot de passe 12 caractères, consentement et confirmation.</p>
+              <div class="row"><a class="btn btn-sm btn-primary" href="pages/inscription.html">Ouvrir <span data-icon="arrow-right"></span></a></div>
+            </div>
+          </article>
+          <article class="gallery-card">
+            <div class="gallery-preview"><iframe src="pages/mot-de-passe-oublie.html" title="Aperçu mot de passe oublié" loading="lazy" tabindex="-1"></iframe></div>
+            <div class="gallery-info">
+              <div class="row between"><span class="badge badge-magenta">Auth</span><span class="tiny muted mono">04</span></div>
+              <h3>Mot de passe oublié</h3>
+              <p>Demande par e-mail, réponse identique que l'adresse existe ou non.</p>
+              <div class="row"><a class="btn btn-sm btn-primary" href="pages/mot-de-passe-oublie.html">Ouvrir <span data-icon="arrow-right"></span></a></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Jouer &amp; apprendre</span>
+            <h2>Du didacticiel au défi</h2>
+            <p>Catalogue filtrable, cours, espace de résolution avec éditeur, tests et console, et variantes de défis.</p>
+          </div>
+        </div>
+        <div class="gallery-grid">
+          <article class="gallery-card">
+            <div class="gallery-preview"><iframe src="pages/didacticiel.html" title="Aperçu didacticiel" loading="lazy" tabindex="-1"></iframe></div>
+            <div class="gallery-info">
+              <div class="row between"><span class="badge badge-lime">Apprendre</span><span class="tiny muted mono">05</span></div>
+              <h3>Didacticiel</h3>
+              <p>Leçon courte, exemple interactif, mini-quiz et défi d'application.</p>
+              <div class="row"><a class="btn btn-sm btn-primary" href="pages/didacticiel.html">Ouvrir <span data-icon="arrow-right"></span></a></div>
+            </div>
+          </article>
+          <article class="gallery-card">
+            <div class="gallery-preview"><iframe src="pages/defis.html" title="Aperçu défis" loading="lazy" tabindex="-1"></iframe></div>
+            <div class="gallery-info">
+              <div class="row between"><span class="badge badge-cyan">Jouer</span><span class="tiny muted mono">06</span></div>
+              <h3>Catalogue des défis</h3>
+              <p>Filtres thème/difficulté/statut/type, prérequis et progression.</p>
+              <div class="row"><a class="btn btn-sm btn-primary" href="pages/defis.html">Ouvrir <span data-icon="arrow-right"></span></a></div>
+            </div>
+          </article>
+          <article class="gallery-card">
+            <div class="gallery-preview"><iframe src="pages/defi-tri.html" title="Aperçu défi de tri" loading="lazy" tabindex="-1"></iframe></div>
+            <div class="gallery-info">
+              <div class="row between"><span class="badge badge-cyan">Défi</span><span class="tiny muted mono">07</span></div>
+              <h3>Défi de tri</h3>
+              <p>Énoncé, éditeur, tests visibles/cachés, console et soumission.</p>
+              <div class="row"><a class="btn btn-sm btn-primary" href="pages/defi-tri.html">Ouvrir <span data-icon="arrow-right"></span></a></div>
+            </div>
+          </article>
+          <article class="gallery-card">
+            <div class="gallery-preview"><iframe src="pages/defi-debogage.html" title="Aperçu défi de débogage" loading="lazy" tabindex="-1"></iframe></div>
+            <div class="gallery-info">
+              <div class="row between"><span class="badge badge-amber">Défi</span><span class="tiny muted mono">08</span></div>
+              <h3>Défi de débogage</h3>
+              <p>Code buggé, contrainte de lignes modifiées, essais et score.</p>
+              <div class="row"><a class="btn btn-sm btn-primary" href="pages/defi-debogage.html">Ouvrir <span data-icon="arrow-right"></span></a></div>
+            </div>
+          </article>
+          <article class="gallery-card">
+            <div class="gallery-preview"><iframe src="pages/defi-decryptage.html" title="Aperçu décryptage" loading="lazy" tabindex="-1"></iframe></div>
+            <div class="gallery-info">
+              <div class="row between"><span class="badge badge-violet">Défi</span><span class="tiny muted mono">09</span></div>
+              <h3>Décryptage</h3>
+              <p>Texte chiffré par seed, indices, soumission du texte clair.</p>
+              <div class="row"><a class="btn btn-sm btn-primary" href="pages/defi-decryptage.html">Ouvrir <span data-icon="arrow-right"></span></a></div>
+            </div>
+          </article>
+          <article class="gallery-card">
+            <div class="gallery-preview"><iframe src="pages/defi-visuel.html" title="Aperçu stéganographie / QR" loading="lazy" tabindex="-1"></iframe></div>
+            <div class="gallery-info">
+              <div class="row between"><span class="badge badge-violet">Défi</span><span class="tiny muted mono">10</span></div>
+              <h3>Stégano &amp; QR</h3>
+              <p>Image à analyser, QR fragmenté, indices et variante atelier.</p>
+              <div class="row"><a class="btn btn-sm btn-primary" href="pages/defi-visuel.html">Ouvrir <span data-icon="arrow-right"></span></a></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Progression &amp; social</span>
+            <h2>Classements, équipes, events et boss</h2>
+            <p>Les boucles de motivation : se comparer, s'associer, participer à un event à essai unique et affronter un Gardien.</p>
+          </div>
+        </div>
+        <div class="gallery-grid">
+          <article class="gallery-card">
+            <div class="gallery-preview"><iframe src="pages/classements.html" title="Aperçu classements" loading="lazy" tabindex="-1"></iframe></div>
+            <div class="gallery-info">
+              <div class="row between"><span class="badge badge-amber">Progression</span><span class="tiny muted mono">11</span></div>
+              <h3>Classements</h3>
+              <p>Joueurs, équipes, events, filtres de période et départage.</p>
+              <div class="row"><a class="btn btn-sm btn-primary" href="pages/classements.html">Ouvrir <span data-icon="arrow-right"></span></a></div>
+            </div>
+          </article>
+          <article class="gallery-card">
+            <div class="gallery-preview"><iframe src="pages/equipes.html" title="Aperçu équipes" loading="lazy" tabindex="-1"></iframe></div>
+            <div class="gallery-info">
+              <div class="row between"><span class="badge badge-cyan">Social</span><span class="tiny muted mono">12</span></div>
+              <h3>Équipe</h3>
+              <p>Membres, capitaine, invitations, PV partagés et édition collaborative.</p>
+              <div class="row"><a class="btn btn-sm btn-primary" href="pages/equipes.html">Ouvrir <span data-icon="arrow-right"></span></a></div>
+            </div>
+          </article>
+          <article class="gallery-card">
+            <div class="gallery-preview"><iframe src="pages/evenements.html" title="Aperçu événements" loading="lazy" tabindex="-1"></iframe></div>
+            <div class="gallery-info">
+              <div class="row between"><span class="badge badge-magenta">Event</span><span class="tiny muted mono">13</span></div>
+              <h3>Événement à 1 essai</h3>
+              <p>Compte à rebours, confirmation explicite, classement et récompenses.</p>
+              <div class="row"><a class="btn btn-sm btn-primary" href="pages/evenements.html">Ouvrir <span data-icon="arrow-right"></span></a></div>
+            </div>
+          </article>
+          <article class="gallery-card">
+            <div class="gallery-preview"><iframe src="pages/boss.html" title="Aperçu boss" loading="lazy" tabindex="-1"></iframe></div>
+            <div class="gallery-info">
+              <div class="row between"><span class="badge badge-red">Boss</span><span class="tiny muted mono">14</span></div>
+              <h3>Boss &amp; points de vie</h3>
+              <p>Barre de vie, phases, pool d'équipe, KO et potions.</p>
+              <div class="row"><a class="btn btn-sm btn-primary" href="pages/boss.html">Ouvrir <span data-icon="arrow-right"></span></a></div>
+            </div>
+          </article>
+          <article class="gallery-card">
+            <div class="gallery-preview"><iframe src="pages/lore.html" title="Aperçu lore" loading="lazy" tabindex="-1"></iframe></div>
+            <div class="gallery-info">
+              <div class="row between"><span class="badge badge-violet">Univers</span><span class="tiny muted mono">15</span></div>
+              <h3>Lore &amp; chapitres</h3>
+              <p>Carte des régions, progression, chapitres verrouillés et état de lecture.</p>
+              <div class="row"><a class="btn btn-sm btn-primary" href="pages/lore.html">Ouvrir <span data-icon="arrow-right"></span></a></div>
+            </div>
+          </article>
+          <article class="gallery-card">
+            <div class="gallery-preview"><iframe src="pages/chat.html" title="Aperçu chat" loading="lazy" tabindex="-1"></iframe></div>
+            <div class="gallery-info">
+              <div class="row between"><span class="badge badge-cyan">Social</span><span class="tiny muted mono">16</span></div>
+              <h3>Chat textuel &amp; vocal</h3>
+              <p>Canaux global/équipe/event, modération, salon vocal et mentions.</p>
+              <div class="row"><a class="btn btn-sm btn-primary" href="pages/chat.html">Ouvrir <span data-icon="arrow-right"></span></a></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Compte &amp; back-office</span>
+            <h2>Profil, économie et administration</h2>
+            <p>Les écrans de gestion : profil et RGPD, boutique en Bits, console d'administration et états système.</p>
+          </div>
+        </div>
+        <div class="gallery-grid">
+          <article class="gallery-card">
+            <div class="gallery-preview"><iframe src="pages/profil.html" title="Aperçu profil" loading="lazy" tabindex="-1"></iframe></div>
+            <div class="gallery-info">
+              <div class="row between"><span class="badge badge-cyan">Compte</span><span class="tiny muted mono">17</span></div>
+              <h3>Profil</h3>
+              <p>Avatar, niveau, badges, historique, sessions, thème, RGPD.</p>
+              <div class="row"><a class="btn btn-sm btn-primary" href="pages/profil.html">Ouvrir <span data-icon="arrow-right"></span></a></div>
+            </div>
+          </article>
+          <article class="gallery-card">
+            <div class="gallery-preview"><iframe src="pages/boutique.html" title="Aperçu boutique" loading="lazy" tabindex="-1"></iframe></div>
+            <div class="gallery-info">
+              <div class="row between"><span class="badge badge-amber">Économie</span><span class="tiny muted mono">18</span></div>
+              <h3>Boutique</h3>
+              <p>Bits, indices, potions, cosmétiques, inventaire et registre.</p>
+              <div class="row"><a class="btn btn-sm btn-primary" href="pages/boutique.html">Ouvrir <span data-icon="arrow-right"></span></a></div>
+            </div>
+          </article>
+          <article class="gallery-card">
+            <div class="gallery-preview"><iframe src="pages/admin.html" title="Aperçu administration" loading="lazy" tabindex="-1"></iframe></div>
+            <div class="gallery-info">
+              <div class="row between"><span class="badge badge-red">Admin</span><span class="tiny muted mono">19</span></div>
+              <h3>Administration</h3>
+              <p>KPI, file d'exécution, CRUD défis, rôles et journal d'audit.</p>
+              <div class="row"><a class="btn btn-sm btn-primary" href="pages/admin.html">Ouvrir <span data-icon="arrow-right"></span></a></div>
+            </div>
+          </article>
+          <article class="gallery-card">
+            <div class="gallery-preview"><iframe src="pages/etats.html" title="Aperçu états système" loading="lazy" tabindex="-1"></iframe></div>
+            <div class="gallery-info">
+              <div class="row between"><span class="badge">Système</span><span class="tiny muted mono">20</span></div>
+              <h3>États &amp; feedbacks</h3>
+              <p>E-mail à confirmer, KO, file d'attente, vide, erreur et 404.</p>
+              <div class="row"><a class="btn btn-sm btn-primary" href="pages/etats.html">Ouvrir <span data-icon="arrow-right"></span></a></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container">
+        <div class="panel">
+          <div class="panel-header">
+            <div>
+              <span class="eyebrow mb-0">Mode d'emploi</span>
+              <h3 class="mb-0">Prévisualiser et itérer</h3>
+            </div>
+            <span class="badge badge-cyan">HTML/CSS statique</span>
+          </div>
+          <div class="panel-body">
+            <div class="grid grid-3">
+              <div>
+                <h4>1. Ouvrir un écran</h4>
+                <p class="small muted">Chaque carte ouvre la page complète. Les liens de navigation sont fonctionnels entre les écrans.</p>
+              </div>
+              <div>
+                <h4>2. Tester les états</h4>
+                <p class="small muted">Boutons, onglets, filtres, thème clair/sombre, formulaires et éditeur sont simulés en JavaScript.</p>
+              </div>
+              <div>
+                <h4>3. Passer à l'implémentation</h4>
+                <p class="small muted">Les tokens et composants du <a href="design-system.html">design system</a> sont pensés pour React + Tailwind.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" data-footer></footer>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

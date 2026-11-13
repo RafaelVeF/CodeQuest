@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeQuest — Boss : le Gardien du Dédale</title>
+  <meta name="description" content="Arène de boss CodeQuest : barre de vie, phases, PV d'équipe, KO, potions et récompenses.">
+  <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body data-root="../" data-page="boss" data-layout="app" data-title="Boss">
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <div class="app-layout">
+    <aside class="sidebar" data-sidebar></aside>
+    <div class="app-main">
+      <header class="app-topbar" data-topbar></header>
+
+      <main id="main" class="page">
+        <div class="container-wide">
+          <div class="page-header">
+            <div>
+              <span class="eyebrow">Forteresse des Gardiens · Chapitre 04</span>
+              <h1>Le Gardien du Dédale</h1>
+              <p class="muted">Trois phases, un pool de PV partagé, aucune pitié. Chaque essai raté coûte 15 PV.</p>
+            </div>
+            <div class="row row-wrap">
+              <span class="badge badge-red"><span data-icon="skull"></span> Boss · difficulté 5/5</span>
+              <a class="btn btn-secondary" href="defis.html"><span data-icon="arrow-left"></span> Quitter l'arène</a>
+            </div>
+          </div>
+
+          <div class="panel mb-6" style="border-color:rgba(244,114,182,0.35);background:radial-gradient(circle at 50% 0%, rgba(244,114,182,0.12), transparent 55%), var(--surface)">
+            <div class="panel-body">
+              <div class="grid" style="grid-template-columns:220px minmax(0,1fr);align-items:center">
+                <div style="position:relative;display:grid;place-items:center">
+                  <svg viewBox="0 0 200 200" role="img" aria-label="Représentation abstraite du Gardien du Dédale, un masque corrompu" style="width:180px;height:180px">
+                    <defs>
+                      <linearGradient id="boss-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f472b6"/><stop offset="1" stop-color="#a78bfa"/></linearGradient>
+                      <radialGradient id="boss-glow"><stop offset="0" stop-color="#f472b6" stop-opacity="0.35"/><stop offset="1" stop-color="#f472b6" stop-opacity="0"/></radialGradient>
+                    </defs>
+                    <circle cx="100" cy="100" r="92" fill="url(#boss-glow)"/>
+                    <circle cx="100" cy="100" r="70" fill="none" stroke="url(#boss-grad)" stroke-width="2" stroke-dasharray="5 7"/>
+                    <path d="M100 38 L148 64 V120 C148 148 124 164 100 172 C76 164 52 148 52 120 V64 Z" fill="#0d1424" stroke="url(#boss-grad)" stroke-width="2.5"/>
+                    <path d="M78 88 L92 96 M122 88 L108 96" stroke="#f472b6" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M78 126 L100 136 L122 126" fill="none" stroke="#a78bfa" stroke-width="2.5" stroke-linecap="round"/>
+                    <path d="M100 54 V74" stroke="#22d3ee" stroke-width="2"/>
+                    <circle cx="100" cy="50" r="4" fill="#22d3ee"/>
+                  </svg>
+                  <span class="badge badge-red" style="position:absolute;bottom:0">Phase 2 · active</span>
+                </div>
+
+                <div>
+                  <div class="row between row-wrap mb-2">
+                    <div class="row"><span class="badge badge-magenta">Boss</span><span class="badge">PV 100 max.</span><span class="badge badge-amber">Récompense 1 000 pts</span></div>
+                    <span class="mono small text-magenta">42 / 100 PV</span>
+                  </div>
+                  <div class="hp-bar mb-4" style="height:24px"><span style="width:42%"></span><span class="hp-text" style="font-size:0.72rem">42 / 100 PV</span></div>
+
+                  <div class="grid grid-3">
+                    <div class="card card-pad-sm" style="border-color:rgba(163,230,53,0.3)">
+                      <div class="row between mb-1"><span class="chapter-number text-lime">Phase 1</span><span data-icon="check-circle" class="text-lime icon-sm"></span></div>
+                      <strong style="display:block;font-size:0.88rem">Le tri brisé</strong>
+                      <span class="tiny muted">Vaincue · 0 PV restant</span>
+                    </div>
+                    <div class="card card-pad-sm" style="border-color:var(--magenta);box-shadow:var(--glow-magenta)">
+                      <div class="row between mb-1"><span class="chapter-number text-magenta">Phase 2</span><span class="badge badge-magenta">Active</span></div>
+                      <strong style="display:block;font-size:0.88rem">La boucle infinie</strong>
+                      <span class="tiny muted">En cours · 42 PV</span>
+                    </div>
+                    <div class="card card-pad-sm" style="opacity:0.6">
+                      <div class="row between mb-1"><span class="chapter-number">Phase 3</span><span data-icon="lock" class="icon-sm muted"></span></div>
+                      <strong style="display:block;font-size:0.88rem">Le noyau d'ORACLE</strong>
+                      <span class="tiny muted">Verrouillée</span>
+                    </div>
+                  </div>
+
+                  <div class="row row-wrap between mt-4">
+                    <div class="row row-wrap">
+                      <span class="badge badge-red"><span data-icon="heart"></span> Essai raté : −15 PV</span>
+                      <span class="badge"><span data-icon="clock"></span> Récupération KO : 30 min</span>
+                    </div>
+                    <button class="btn btn-primary" type="button" data-modal-open="boss-phase"><span data-icon="sword"></span> Affronter la phase 2</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid" style="grid-template-columns:minmax(0,1fr) 340px;align-items:start">
+            <div class="stack">
+              <div class="panel">
+                <div class="panel-header"><h3 class="mb-0">Phase 2 · La boucle infinie</h3><span class="badge badge-magenta">Sous-défi : débogage</span></div>
+                <div class="panel-body">
+                  <p>Le Gardien a corrompu une boucle de fusion. Le code tourne indéfiniment sur les listes impaires. Corrige-le avant que le pool de PV ne tombe à zéro.</p>
+
+                  <div class="grid grid-3 mb-4">
+                    <div class="card card-pad-sm"><div class="stat-label"><span data-icon="heart"></span> PV du boss</div><div class="stat-value" style="font-size:1.4rem">42</div></div>
+                    <div class="card card-pad-sm"><div class="stat-label"><span data-icon="users"></span> PV d'équipe</div><div class="stat-value" style="font-size:1.4rem">72</div></div>
+                    <div class="card card-pad-sm"><div class="stat-label"><span data-icon="clock"></span> Temps</div><div class="stat-value" style="font-size:1.4rem">08:14</div></div>
+                  </div>
+
+                  <div class="code-shell" data-editor data-workspace>
+                    <div class="code-toolbar"><span class="badge badge-magenta">phase2.py</span><span class="spacer"></span><span class="tiny muted mono">Bac à sable · 3 s max</span></div>
+                    <div class="editor" style="min-height:260px">
+                      <div class="line-numbers" data-line-numbers aria-hidden="true">1</div>
+                      <textarea class="code-area" data-code-input aria-label="Éditeur de la phase 2" spellcheck="false">def merge_guardian(left, right):
+    result = []
+    i = j = 0
+    while i < len(left) or j < len(right):
+        # BUG : les deux bornes ne sont pas vérifiées
+        if left[i] <= right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+    return result
+</textarea>
+                    </div>
+                    <div class="console" data-console aria-live="polite">
+                      <div class="console-line"><span class="console-time">[boss]</span><span class="terminal-warn">Le Gardien ricane. La boucle ne termine pas sur [1, 3, 5].</span></div>
+                      <div class="console-line"><span class="console-time">[boss]</span><span class="terminal-dim">Indice : que se passe-t-il quand i atteint len(left) ?</span></div>
+                    </div>
+                  </div>
+                  <div class="row row-wrap between mt-3">
+                    <div class="row">
+                      <button class="btn btn-secondary btn-sm" type="button" data-run><span data-icon="play"></span> Tester</button>
+                      <button class="btn btn-primary btn-sm" type="button" data-submit><span data-icon="sword"></span> Frapper le boss</button>
+                    </div>
+                    <span class="tiny muted">Chaque échec retire 15 PV au pool d'équipe.</span>
+                  </div>
+                  <div id="run-result" data-run-result hidden class="mt-3"></div>
+                  <div id="submit-result" data-submit-result hidden class="mt-3"></div>
+                </div>
+              </div>
+
+              <div class="panel">
+                <div class="panel-header"><h3 class="mb-0">Journal de combat</h3><span class="badge">Temps réel</span></div>
+                <div class="panel-body">
+                  <div class="stack-sm">
+                    <div class="row between"><span class="small"><span class="text-lime">Phase 1 vaincue</span> · tri brisé</span><span class="mono tiny muted">−28 PV</span></div>
+                    <div class="row between"><span class="small"><span class="text-cyan">Nyx</span> a soumis une correction</span><span class="mono tiny text-lime">+14 PV</span></div>
+                    <div class="row between"><span class="small"><span class="text-red">Essai raté</span> · boucle infinie</span><span class="mono tiny text-red">−15 PV équipe</span></div>
+                    <div class="row between"><span class="small"><span class="text-cyan">Vortex</span> a rejoint l'arène</span><span class="mono tiny muted">—</span></div>
+                    <div class="row between"><span class="small"><span class="text-magenta">Le Gardien</span> passe en phase 2</span><span class="mono tiny muted">il y a 4 min</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <aside class="stack" aria-label="PV et récompenses">
+              <div class="panel">
+                <div class="panel-header"><h3 class="mb-0">Pool d'équipe</h3><span class="badge badge-cyan">Partagé</span></div>
+                <div class="panel-body">
+                  <div class="hp-bar team mb-3"><span style="width:72%"></span><span class="hp-text">72 / 100 PV</span></div>
+                  <div class="row between mb-2"><span class="small muted">Régénération</span><span class="mono tiny">1 PV / 6 min</span></div>
+                  <div class="row between mb-2"><span class="small muted">Prochain PV</span><span class="mono tiny text-lime">dans 3 min</span></div>
+                  <div class="row between"><span class="small muted">KO</span><span class="badge badge-lime">Non</span></div>
+                  <hr>
+                  <div class="row between mb-2"><span class="small muted">Potions</span><span class="mono small">2</span></div>
+                  <button class="btn btn-secondary btn-block btn-sm" type="button" data-toast="Potion utilisée : +20 PV au pool (simulation)."><span data-icon="heart"></span> Utiliser une potion</button>
+                  <a class="btn btn-ghost btn-block btn-sm mt-2" href="boutique.html">Acheter des potions</a>
+                </div>
+              </div>
+
+              <div class="panel">
+                <div class="panel-header"><h3 class="mb-0">Récompenses</h3><span class="badge badge-amber">À la victoire</span></div>
+                <div class="panel-body">
+                  <div class="member-row"><span data-icon="star" class="text-amber"></span><span class="member-info"><strong>1 000 pts</strong><span>Score de boss</span></span></div>
+                  <div class="member-row"><span data-icon="coin" class="text-amber"></span><span class="member-info"><strong>400 Bits</strong><span>Monnaie virtuelle</span></span></div>
+                  <div class="member-row"><span data-icon="award" class="text-violet"></span><span class="member-info"><strong>Titre « Briseur de Dédale »</strong><span>Cosmétique</span></span></div>
+                  <div class="member-row"><span data-icon="book" class="text-cyan"></span><span class="member-info"><strong>Chapitre 05</strong><span>Fragment de lore</span></span></div>
+                </div>
+              </div>
+
+              <div class="alert alert-amber">
+                <span data-icon="alert-triangle"></span>
+                <span><strong>Règle :</strong> les défis standard ne coûtent aucun PV. Seuls les boss et les events « hardcore » consomment le pool.</span>
+              </div>
+
+              <div class="card card-pad-sm">
+                <div class="row mb-2"><span data-icon="users" class="text-cyan"></span><strong style="font-size:0.86rem">Équipe en arène</strong></div>
+                <div class="row row-wrap gap-2">
+                  <span class="badge">NR</span><span class="badge">VX</span><span class="badge">NY</span><span class="badge">K0</span><span class="badge">BY</span>
+                </div>
+                <p class="tiny muted mt-3 mb-0">Les dégâts infligés et subis sont cumulés sur le pool partagé.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="boss-phase" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="boss-phase-title">
+      <div class="modal-header"><h3 id="boss-phase-title" class="mb-0">Affronter la phase 2</h3><button class="icon-btn" type="button" data-modal-close aria-label="Fermer"><span data-icon="x"></span></button></div>
+      <div class="modal-body">
+        <p>Un essai raté coûte <strong>15 PV</strong> au pool d'équipe. Si le pool tombe à 0, toute l'équipe est KO pendant 30 minutes.</p>
+        <div class="hp-bar team mb-3"><span style="width:72%"></span><span class="hp-text">72 / 100 PV</span></div>
+        <div class="alert alert-amber"><span data-icon="alert-triangle"></span><span>Le boss est à 42 PV. Une phase réussie retire des PV proportionnellement au score obtenu.</span></div>
+        <label class="checkbox mt-4"><input type="checkbox" checked> <span>Je suis prêt et j'accepte le coût en PV.</span></label>
+      </div>
+      <div class="modal-footer"><button class="btn btn-ghost" type="button" data-modal-close>Annuler</button><button class="btn btn-primary" type="button" data-toast="Combat lancé (simulation)." data-modal-close>Entrer dans l'arène</button></div>
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

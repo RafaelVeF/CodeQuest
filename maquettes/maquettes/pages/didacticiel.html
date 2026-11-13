@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeQuest — Didacticiel : tris et listes</title>
+  <meta name="description" content="Didacticiel CodeQuest : leçon courte, exemple interactif, mini-quiz et défi d'application sur le tri fusion.">
+  <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body data-root="../" data-page="didacticiels" data-layout="app" data-title="Didacticiel">
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <div class="app-layout">
+    <aside class="sidebar" data-sidebar></aside>
+    <div class="app-main">
+      <header class="app-topbar" data-topbar></header>
+
+      <main id="main" class="page">
+        <div class="container-wide">
+          <div class="page-header">
+            <div>
+              <nav class="breadcrumb mb-2" aria-label="Fil d'Ariane">
+                <a href="didacticiel.html">Didacticiels</a><span class="sep">/</span>
+                <a href="didacticiel.html">Tris et listes</a><span class="sep">/</span>
+                <span class="current">Tri fusion</span>
+              </nav>
+              <div class="row row-wrap mb-2">
+                <span class="badge badge-cyan">Tris et listes</span>
+                <span class="badge">Leçon 03 / 08</span>
+                <span class="badge badge-lime">Obligatoire avant le défi</span>
+              </div>
+              <h1 class="mb-1">Tri fusion : diviser pour régner</h1>
+              <p class="muted">Comprendre l'algorithme, sa stabilité et sa complexité avant de le coder sous contrainte.</p>
+            </div>
+            <div class="stack-sm" style="min-width:220px">
+              <div class="row between"><span class="tiny muted mono">Progression du cours</span><span class="tiny mono text-cyan">62 %</span></div>
+              <div class="progress"><span style="width:62%"></span></div>
+              <span class="tiny muted">3 sections sur 5 · ~12 min restantes</span>
+            </div>
+          </div>
+
+          <div class="grid" style="grid-template-columns:minmax(0,1fr) 300px;align-items:start">
+            <div class="stack">
+              <div class="panel">
+                <div class="panel-body-tight" data-tabs>
+                  <div class="tabs" role="tablist" aria-label="Sections du didacticiel">
+                    <button class="tab" role="tab" id="tab-lecon" aria-controls="panel-lecon" aria-selected="true" type="button"><span data-icon="book"></span> Leçon</button>
+                    <button class="tab" role="tab" id="tab-exemple" aria-controls="panel-exemple" aria-selected="false" type="button"><span data-icon="code"></span> Exemple interactif</button>
+                    <button class="tab" role="tab" id="tab-quiz" aria-controls="panel-quiz" aria-selected="false" type="button"><span data-icon="puzzle"></span> Mini-quiz</button>
+                    <button class="tab" role="tab" id="tab-defi" aria-controls="panel-defi" aria-selected="false" type="button"><span data-icon="target"></span> Défi d'application</button>
+                  </div>
+
+                  <div class="panel-body" role="tabpanel" id="panel-lecon" aria-labelledby="tab-lecon">
+                    <h2 style="font-size:1.4rem">Le principe</h2>
+                    <p>Le tri fusion coupe la liste en deux moitiés, trie chaque moitié récursivement, puis fusionne les deux listes triées. La fusion est l'étape clé : elle compare les têtes de file et reconstruit une liste ordonnée.</p>
+
+                    <div class="terminal mb-4">
+                      <div class="terminal-bar"><span class="terminal-dots"><span></span><span></span><span></span></span><span class="terminal-title">merge_sort.py</span></div>
+                      <pre class="terminal-body" style="margin:0;overflow-x:auto"><span class="code-comment"># Complexité : O(n log n) dans tous les cas</span>
+<span class="code-keyword">def</span> <span class="code-fn">merge_sort</span>(values):
+    <span class="code-keyword">if</span> len(values) &lt;= <span class="code-number">1</span>:
+        <span class="code-keyword">return</span> values
+    mid = len(values) // <span class="code-number">2</span>
+    left = merge_sort(values[:mid])
+    right = merge_sort(values[mid:])
+    <span class="code-keyword">return</span> merge(left, right)
+
+<span class="code-keyword">def</span> <span class="code-fn">merge</span>(left, right):
+    result, i, j = [], <span class="code-number">0</span>, <span class="code-number">0</span>
+    <span class="code-keyword">while</span> i &lt; len(left) <span class="code-keyword">and</span> j &lt; len(right):
+        <span class="code-keyword">if</span> left[i] &lt;= right[j]:   <span class="code-comment"># &lt;= garantit la stabilité</span>
+            result.append(left[i]); i += <span class="code-number">1</span>
+        <span class="code-keyword">else</span>:
+            result.append(right[j]); j += <span class="code-number">1</span>
+    <span class="code-keyword">return</span> result + left[i:] + right[j:]</pre>
+                    </div>
+
+                    <div class="grid grid-2">
+                      <div class="card card-pad-sm">
+                        <div class="row mb-2"><span class="feature-icon lime" style="margin:0;width:34px;height:34px"><span data-icon="check-circle" class="icon-sm"></span></span><h4 class="mb-0">Points clés</h4></div>
+                        <ul class="check-list">
+                          <li class="ok"><span data-icon="check-circle"></span> Stable avec <code>&lt;=</code> à la fusion.</li>
+                          <li class="ok"><span data-icon="check-circle"></span> O(n log n) garanti, même au pire.</li>
+                          <li class="ok"><span data-icon="check-circle"></span> O(n) d'espace auxiliaire.</li>
+                        </ul>
+                      </div>
+                      <div class="card card-pad-sm">
+                        <div class="row mb-2"><span class="feature-icon magenta" style="margin:0;width:34px;height:34px"><span data-icon="alert-triangle" class="icon-sm"></span></span><h4 class="mb-0">Pièges fréquents</h4></div>
+                        <ul class="check-list">
+                          <li><span data-icon="minus"></span> Oublier le reste de la liste la plus longue.</li>
+                          <li><span data-icon="minus"></span> Utiliser <code>&lt;</code> et casser la stabilité.</li>
+                          <li><span data-icon="minus"></span> Copier les sous-listes à chaque appel sans besoin.</li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div class="alert alert-cyan mt-4">
+                      <span data-icon="info"></span>
+                      <span><strong>À retenir pour le défi :</strong> le score récompense la correction, puis le temps CPU médian sur 5 exécutions. Une solution correcte mais lente reste valide, avec moins de points de performance.</span>
+                    </div>
+
+                    <div class="row between mt-6">
+                      <button class="btn btn-ghost" type="button"><span data-icon="arrow-left"></span> Section précédente</button>
+                      <button class="btn btn-primary" type="button" onclick="document.getElementById('tab-exemple').click()">Section suivante <span data-icon="arrow-right"></span></button>
+                    </div>
+                  </div>
+
+                  <div class="panel-body" role="tabpanel" id="panel-exemple" aria-labelledby="tab-exemple" hidden>
+                    <h2 style="font-size:1.4rem">Visualiser la fusion</h2>
+                    <p>Observe les deux moitiés triées puis la reconstruction. Chaque comparaison est comptée : c'est un indicateur de coût.</p>
+                    <div class="terminal mb-4">
+                      <div class="terminal-bar"><span class="terminal-dots"><span></span><span></span><span></span></span><span class="terminal-title">fusion / trace</span></div>
+                      <div class="terminal-body">
+                        <div class="terminal-line"><span class="terminal-dim">gauche</span><span>[3, 8, 12]</span></div>
+                        <div class="terminal-line"><span class="terminal-dim">droite</span><span>[1, 5, 9]</span></div>
+                        <div class="terminal-line mt-2"><span class="terminal-prompt">›</span><span>3 vs 1 → 1</span></div>
+                        <div class="terminal-line"><span class="terminal-prompt">›</span><span>3 vs 5 → 3</span></div>
+                        <div class="terminal-line"><span class="terminal-prompt">›</span><span>8 vs 5 → 5</span></div>
+                        <div class="terminal-line"><span class="terminal-prompt">›</span><span>8 vs 9 → 8</span></div>
+                        <div class="terminal-line"><span class="terminal-prompt">›</span><span>12 vs 9 → 9</span></div>
+                        <div class="terminal-line"><span class="terminal-ok">✓</span><span>[1, 3, 5, 8, 9, 12] · 5 comparaisons</span></div>
+                      </div>
+                    </div>
+                    <div class="row row-wrap">
+                      <button class="btn btn-secondary btn-sm" type="button"><span data-icon="play"></span> Rejouer</button>
+                      <button class="btn btn-ghost btn-sm" type="button">Vitesse 1×</button>
+                      <span class="badge badge-lime">Cas nominal</span>
+                      <span class="badge">Tableau de 6 éléments</span>
+                    </div>
+                  </div>
+
+                  <div class="panel-body" role="tabpanel" id="panel-quiz" aria-labelledby="tab-quiz" hidden>
+                    <h2 style="font-size:1.4rem">Mini-quiz</h2>
+                    <p>3 questions pour valider la notion. Une erreur affiche une explication, pas seulement « faux ».</p>
+                    <form class="form" data-demo-form data-toast="Quiz validé : 3/3. Le défi d'application est débloqué." data-toast-type="success">
+                      <fieldset class="field" style="border:0;padding:0;margin:0">
+                        <legend class="label">1. Quelle est la complexité temporelle du tri fusion dans le pire cas ?</legend>
+                        <label class="radio"><input type="radio" name="q1" value="a"> <span>O(n²)</span></label>
+                        <label class="radio"><input type="radio" name="q1" value="b" checked> <span>O(n log n)</span></label>
+                        <label class="radio"><input type="radio" name="q1" value="c"> <span>O(n)</span></label>
+                      </fieldset>
+                      <fieldset class="field" style="border:0;padding:0;margin:0">
+                        <legend class="label">2. Que faut-il utiliser à la fusion pour garantir la stabilité ?</legend>
+                        <label class="radio"><input type="radio" name="q2" value="a"> <span><code>&lt;</code> strict</span></label>
+                        <label class="radio"><input type="radio" name="q2" value="b" checked> <span><code>&lt;=</code> (élément de gauche d'abord)</span></label>
+                        <label class="radio"><input type="radio" name="q2" value="c"> <span>Une comparaison aléatoire</span></label>
+                      </fieldset>
+                      <fieldset class="field" style="border:0;padding:0;margin:0">
+                        <legend class="label">3. Pourquoi le tri fusion coûte-t-il de la mémoire ?</legend>
+                        <label class="radio"><input type="radio" name="q3" value="a" checked> <span>Il alloue des listes auxiliaires à chaque fusion.</span></label>
+                        <label class="radio"><input type="radio" name="q3" value="b"> <span>Il utilise la récursion sans pile.</span></label>
+                        <label class="radio"><input type="radio" name="q3" value="c"> <span>Il trie sur disque.</span></label>
+                      </fieldset>
+                      <button class="btn btn-primary" type="submit">Valider mes réponses</button>
+                    </form>
+                  </div>
+
+                  <div class="panel-body" role="tabpanel" id="panel-defi" aria-labelledby="tab-defi" hidden>
+                    <h2 style="font-size:1.4rem">Défi d'application</h2>
+                    <p>Le cours se termine toujours par une mise en pratique. Ce défi reprend exactement la notion vue : tri stable, grands volumes et cas limites.</p>
+                    <article class="challenge-card mb-4">
+                      <div class="challenge-top">
+                        <div>
+                          <div class="row row-wrap mb-2"><span class="badge badge-cyan">Tris</span><span class="badge badge-lime">Débloqué par le cours</span></div>
+                          <h3 class="challenge-title"><a href="defi-tri.html">Tri fusion sous pression</a></h3>
+                        </div>
+                        <span class="challenge-points">300 pts</span>
+                      </div>
+                      <p class="challenge-desc">Implémente un tri stable en O(n log n) et passe les jeux de tests limites, dont 100 000 éléments.</p>
+                      <div class="challenge-meta">
+                        <span class="difficulty d3"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span>
+                        <span class="tiny muted mono">Difficulté 3/5</span>
+                        <span class="badge">Python · JS</span>
+                      </div>
+                      <div class="challenge-foot"><span><span data-icon="clock"></span> 25 min</span><span>5 tests visibles · 4 cachés</span></div>
+                    </article>
+                    <div class="row row-wrap">
+                      <a class="btn btn-primary" href="defi-tri.html">Ouvrir le défi <span data-icon="arrow-right"></span></a>
+                      <button class="btn btn-secondary" type="button">Passer le cours (test de positionnement)</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel">
+                <div class="panel-header"><h3 class="mb-0">Autres leçons de la région</h3><span class="badge badge-cyan">Tris et listes</span></div>
+                <div class="panel-body-tight">
+                  <div class="member-row">
+                    <span class="avatar">01</span>
+                    <div class="member-info"><strong>Complexité algorithmique</strong><span>Terminé · 8 min</span></div>
+                    <span class="badge badge-lime"><span data-icon="check"></span> 100 %</span>
+                  </div>
+                  <div class="member-row">
+                    <span class="avatar">02</span>
+                    <div class="member-info"><strong>Tri par insertion</strong><span>Terminé · 11 min</span></div>
+                    <span class="badge badge-lime"><span data-icon="check"></span> 100 %</span>
+                  </div>
+                  <div class="member-row">
+                    <span class="avatar" style="border-color:var(--cyan);color:var(--cyan)">03</span>
+                    <div class="member-info"><strong>Tri fusion</strong><span>En cours · 62 %</span></div>
+                    <span class="badge badge-cyan">En cours</span>
+                  </div>
+                  <div class="member-row">
+                    <span class="avatar">04</span>
+                    <div class="member-info"><strong>Tri rapide</strong><span>Verrouillé · finir la leçon 03</span></div>
+                    <span class="badge"><span data-icon="lock"></span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <aside class="stack" aria-label="Résumé du cours">
+              <div class="panel">
+                <div class="panel-header"><h3 class="mb-0">Dans ce cours</h3><span class="badge">4 sections</span></div>
+                <div class="panel-body">
+                  <ul class="check-list">
+                    <li class="ok"><span data-icon="check-circle"></span> Principe et pseudocode</li>
+                    <li class="ok"><span data-icon="check-circle"></span> Exemple interactif</li>
+                    <li class="ok"><span data-icon="check-circle"></span> Mini-quiz (3 questions)</li>
+                    <li><span data-icon="target"></span> Défi d'application</li>
+                  </ul>
+                  <hr>
+                  <div class="stack-sm">
+                    <div class="row between"><span class="small muted">XP à la clé</span><span class="mono small text-cyan">+120 XP</span></div>
+                    <div class="row between"><span class="small muted">Bits</span><span class="mono small text-amber">+40 Bits</span></div>
+                    <div class="row between"><span class="small muted">Badge</span><span class="small">« Diviser »</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card card-pad-sm">
+                <div class="row mb-2"><span data-icon="headphones" class="text-cyan"></span><strong style="font-size:0.86rem">Ambiance : Dédale</strong></div>
+                <p class="tiny muted mb-3">Musique douce, effets désactivables. Le son ne démarre qu'après une interaction.</p>
+                <div class="row">
+                  <button class="btn btn-secondary btn-sm" type="button"><span data-icon="play"></span> Écouter</button>
+                  <button class="btn btn-ghost btn-sm" type="button" aria-label="Couper le son"><span data-icon="volume-off"></span></button>
+                </div>
+              </div>
+
+              <div class="alert alert-violet">
+                <span data-icon="book"></span>
+                <span><strong>Lore lié :</strong> le Dédale des Tris, chapitre 02. Terminer ce cours débloque un fragment de lecture.</span>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

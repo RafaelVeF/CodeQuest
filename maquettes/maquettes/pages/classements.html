@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeQuest — Classements</title>
+  <meta name="description" content="Classements CodeQuest : joueurs, équipes, événements et thèmes, avec filtres de période et départage.">
+  <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body data-root="../" data-page="classements" data-layout="app" data-title="Classements">
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <div class="app-layout">
+    <aside class="sidebar" data-sidebar></aside>
+    <div class="app-main">
+      <header class="app-topbar" data-topbar></header>
+
+      <main id="main" class="page">
+        <div class="container-wide">
+          <div class="page-header">
+            <div>
+              <span class="eyebrow">Temps quasi réel · Redis</span>
+              <h1>Classements</h1>
+              <p class="muted">À score égal, la soumission la plus ancienne l'emporte. Les classements sont reconstruits périodiquement depuis la base.</p>
+            </div>
+            <div class="row row-wrap">
+              <span class="badge badge-lime"><span data-icon="activity"></span> Mis à jour il y a 12 s</span>
+              <button class="btn btn-sm btn-secondary" type="button" data-toast="Classements actualisés (simulation)."><span data-icon="refresh"></span> Actualiser</button>
+            </div>
+          </div>
+
+          <div class="panel mb-6">
+            <div class="panel-body-tight" data-tabs>
+              <div class="row row-wrap between">
+                <div class="tabs" role="tablist" aria-label="Type de classement">
+                  <button class="tab" role="tab" id="tab-players" aria-controls="panel-players" aria-selected="true" type="button"><span data-icon="user"></span> Joueurs</button>
+                  <button class="tab" role="tab" id="tab-teams" aria-controls="panel-teams" aria-selected="false" type="button"><span data-icon="users"></span> Équipes</button>
+                  <button class="tab" role="tab" id="tab-events" aria-controls="panel-events" aria-selected="false" type="button"><span data-icon="calendar"></span> Événements</button>
+                  <button class="tab" role="tab" id="tab-themes" aria-controls="panel-themes" aria-selected="false" type="button"><span data-icon="layers"></span> Thèmes</button>
+                </div>
+                <div class="row row-wrap">
+                  <button class="chip active" type="button">Semaine</button>
+                  <button class="chip" type="button">Mois</button>
+                  <button class="chip" type="button">Saison</button>
+                  <button class="chip" type="button">Tout temps</button>
+                </div>
+              </div>
+
+              <div class="panel-body" role="tabpanel" id="panel-players" aria-labelledby="tab-players">
+                <div class="row row-wrap between mb-4">
+                  <div class="row row-wrap">
+                    <span class="badge badge-cyan">Global</span>
+                    <span class="badge">Amis</span>
+                    <span class="badge">Mon équipe</span>
+                  </div>
+                  <div class="input-group" style="max-width:280px">
+                    <span data-icon="search"></span>
+                    <input class="input" type="search" placeholder="Rechercher un joueur…" aria-label="Rechercher un joueur">
+                  </div>
+                </div>
+
+                <div class="podium mb-6">
+                  <div class="podium-card">
+                    <span class="rank rank-2" style="margin:0 auto 12px">2</span>
+                    <span class="avatar avatar-lg">NY</span>
+                    <strong style="display:block;margin-top:8px">Nyx</strong>
+                    <span class="tiny muted mono">11 920 pts</span>
+                    <div class="progress mt-3"><span style="width:92%"></span></div>
+                  </div>
+                  <div class="podium-card first">
+                    <span class="rank rank-1" style="margin:0 auto 12px">1</span>
+                    <span class="avatar avatar-lg">VX</span>
+                    <strong style="display:block;margin-top:8px">Vortex</strong>
+                    <span class="tiny muted mono">12 480 pts</span>
+                    <div class="progress mt-3"><span style="width:100%"></span></div>
+                  </div>
+                  <div class="podium-card">
+                    <span class="rank rank-3" style="margin:0 auto 12px">3</span>
+                    <span class="avatar avatar-lg">NR</span>
+                    <strong style="display:block;margin-top:8px">Nova_Runner</strong>
+                    <span class="tiny muted mono">10 840 pts</span>
+                    <div class="progress mt-3"><span style="width:84%"></span></div>
+                  </div>
+                </div>
+
+                <div class="table-wrap">
+                  <table>
+                    <thead><tr><th>Rang</th><th>Joueur</th><th>Niveau</th><th>Thème fort</th><th>Score</th><th>Résolus</th><th>Tendance</th><th>Dernière soumission</th></tr></thead>
+                    <tbody>
+                      <tr><td><span class="rank rank-1">1</span></td><td><div class="player-cell"><span class="avatar">VX</span><span><strong>Vortex</strong><br><span class="tiny muted">@vortex</span></span></div></td><td>24</td><td>Cryptographie</td><td class="mono text-cyan">12 480</td><td>42</td><td class="text-lime">+3</td><td class="tiny muted">il y a 6 min</td></tr>
+                      <tr><td><span class="rank rank-2">2</span></td><td><div class="player-cell"><span class="avatar">NY</span><span><strong>Nyx</strong><br><span class="tiny muted">@nyx</span></span></div></td><td>22</td><td>Tris</td><td class="mono text-cyan">11 920</td><td>39</td><td class="text-lime">+1</td><td class="tiny muted">il y a 22 min</td></tr>
+                      <tr><td><span class="rank rank-3">3</span></td><td><div class="player-cell"><span class="avatar">NR</span><span><strong>Nova_Runner</strong> <span class="badge badge-cyan">Toi</span><br><span class="tiny muted">@nova_runner</span></span></div></td><td>12</td><td>Tris</td><td class="mono text-cyan">10 840</td><td>37</td><td class="text-red">−1</td><td class="tiny muted">il y a 1 h</td></tr>
+                      <tr><td><span class="rank">4</span></td><td><div class="player-cell"><span class="avatar">K0</span><span><strong>Kernel_0</strong><br><span class="tiny muted">@kernel0</span></span></div></td><td>19</td><td>Débogage</td><td class="mono text-cyan">9 760</td><td>35</td><td class="text-lime">+2</td><td class="tiny muted">il y a 2 h</td></tr>
+                      <tr><td><span class="rank">5</span></td><td><div class="player-cell"><span class="avatar">BY</span><span><strong>ByteMe</strong><br><span class="tiny muted">@byteme</span></span></div></td><td>18</td><td>QR codes</td><td class="mono text-cyan">9 210</td><td>33</td><td class="text-lime">+4</td><td class="tiny muted">il y a 3 h</td></tr>
+                      <tr><td><span class="rank">6</span></td><td><div class="player-cell"><span class="avatar">GL</span><span><strong>Glitch</strong><br><span class="tiny muted">@glitch</span></span></div></td><td>17</td><td>Stégano</td><td class="mono text-cyan">8 840</td><td>31</td><td class="text-red">−2</td><td class="tiny muted">hier</td></tr>
+                      <tr><td><span class="rank">7</span></td><td><div class="player-cell"><span class="avatar">LX</span><span><strong>Lex_</strong><br><span class="tiny muted">@lex</span></span></div></td><td>16</td><td>Tris</td><td class="mono text-cyan">8 320</td><td>29</td><td class="text-lime">+1</td><td class="tiny muted">hier</td></tr>
+                      <tr><td><span class="rank">8</span></td><td><div class="player-cell"><span class="avatar">RD</span><span><strong>R00t</strong><br><span class="tiny muted">@r00t</span></span></div></td><td>15</td><td>Cryptographie</td><td class="mono text-cyan">7 980</td><td>27</td><td class="text-lime">+5</td><td class="tiny muted">hier</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="row between row-wrap mt-4">
+                  <span class="tiny muted">Départage : score égal → soumission la plus ancienne. Tolérance de performance ±5 %.</span>
+                  <div class="row"><button class="btn btn-sm btn-secondary" type="button">Précédent</button><span class="mono small muted">1 / 12</span><button class="btn btn-sm btn-secondary" type="button">Suivant</button></div>
+                </div>
+              </div>
+
+              <div class="panel-body" role="tabpanel" id="panel-teams" aria-labelledby="tab-teams" hidden>
+                <div class="row row-wrap between mb-4">
+                  <span class="badge badge-cyan">Somme des meilleurs scores</span>
+                  <span class="tiny muted">Taille 2–5 · un seul résultat officiel par défi</span>
+                </div>
+                <div class="table-wrap">
+                  <table>
+                    <thead><tr><th>Rang</th><th>Équipe</th><th>Membres</th><th>Score</th><th>Défis</th><th>PV partagés</th><th>Tendance</th></tr></thead>
+                    <tbody>
+                      <tr><td><span class="rank rank-1">1</span></td><td><div class="player-cell"><span class="avatar">NULL</span><span><strong>NullPointer</strong><br><span class="tiny muted">[NULL]</span></span></div></td><td>5 / 5</td><td class="mono text-cyan">48 200</td><td>96</td><td><div class="progress" style="width:90px"><span style="width:88%"></span></div></td><td class="text-lime">+2</td></tr>
+                      <tr><td><span class="rank rank-2">2</span></td><td><div class="player-cell"><span class="avatar">SEG</span><span><strong>Segfault Club</strong><br><span class="tiny muted">[SEG]</span></span></div></td><td>4 / 5</td><td class="mono text-cyan">45 780</td><td>91</td><td><div class="progress" style="width:90px"><span style="width:72%"></span></div></td><td class="text-lime">+1</td></tr>
+                      <tr><td><span class="rank rank-3">3</span></td><td><div class="player-cell"><span class="avatar">BYT</span><span><strong>Byte Force</strong><br><span class="tiny muted">[BYT]</span></span></div></td><td>5 / 5</td><td class="mono text-cyan">44 120</td><td>88</td><td><div class="progress" style="width:90px"><span style="width:94%"></span></div></td><td class="text-red">−1</td></tr>
+                      <tr><td><span class="rank">4</span></td><td><div class="player-cell"><span class="avatar">ORC</span><span><strong>Oracle Breakers</strong><br><span class="tiny muted">[ORC]</span></span></div></td><td>3 / 5</td><td class="mono text-cyan">39 640</td><td>80</td><td><div class="progress" style="width:90px"><span style="width:66%"></span></div></td><td class="text-lime">+3</td></tr>
+                      <tr><td><span class="rank">5</span></td><td><div class="player-cell"><span class="avatar">KRN</span><span><strong>Kernel Panic</strong><br><span class="tiny muted">[KRN]</span></span></div></td><td>2 / 5</td><td class="mono text-cyan">36 980</td><td>74</td><td><div class="progress" style="width:90px"><span style="width:51%"></span></div></td><td class="text-red">−2</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="alert alert-cyan mt-4">
+                  <span data-icon="info"></span>
+                  <span>Le score d'équipe est celui de la soumission retenue par le capitaine. La contribution individuelle alimente le classement joueurs avec un coefficient réduit.</span>
+                </div>
+              </div>
+
+              <div class="panel-body" role="tabpanel" id="panel-events" aria-labelledby="tab-events" hidden>
+                <div class="row row-wrap between mb-4">
+                  <div>
+                    <h3 class="mb-1">La clé d'ORACLE</h3>
+                    <span class="badge badge-magenta">Terminé · résultats publiés</span>
+                  </div>
+                  <a class="btn btn-sm btn-secondary" href="evenements.html">Voir l'event <span data-icon="arrow-right"></span></a>
+                </div>
+                <div class="table-wrap">
+                  <table>
+                    <thead><tr><th>Rang</th><th>Joueur / équipe</th><th>Score</th><th>Temps</th><th>Essais</th><th>Récompense</th></tr></thead>
+                    <tbody>
+                      <tr><td><span class="rank rank-1">1</span></td><td><div class="player-cell"><span class="avatar">VX</span><span>Vortex</span></div></td><td class="mono text-cyan">800</td><td class="mono">18:42</td><td>1</td><td><span class="badge badge-amber">500 Bits</span></td></tr>
+                      <tr><td><span class="rank rank-2">2</span></td><td><div class="player-cell"><span class="avatar">NY</span><span>Nyx</span></div></td><td class="mono text-cyan">760</td><td class="mono">22:10</td><td>1</td><td><span class="badge">300 Bits</span></td></tr>
+                      <tr><td><span class="rank rank-3">3</span></td><td><div class="player-cell"><span class="avatar">NR</span><span>Nova_Runner</span></div></td><td class="mono text-cyan">720</td><td class="mono">25:03</td><td>1</td><td><span class="badge">150 Bits</span></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="alert alert-lime mt-4"><span data-icon="unlock"></span><span>Les corrigés sont débloqués après la clôture. Un event à 1 essai ne peut jamais être rejoué.</span></div>
+              </div>
+
+              <div class="panel-body" role="tabpanel" id="panel-themes" aria-labelledby="tab-themes" hidden>
+                <div class="grid grid-2">
+                  <div class="panel">
+                    <div class="panel-header"><h4 class="mb-0">Tris et listes</h4><span class="badge badge-cyan">3 420 joueurs</span></div>
+                    <div class="panel-body">
+                      <div class="member-row"><span class="rank rank-1">1</span><span class="member-info"><strong>Nyx</strong><span>4 820 pts</span></span></div>
+                      <div class="member-row"><span class="rank rank-2">2</span><span class="member-info"><strong>Vortex</strong><span>4 610 pts</span></span></div>
+                      <div class="member-row"><span class="rank rank-3">3</span><span class="member-info"><strong>Nova_Runner</strong><span>4 380 pts</span></span></div>
+                    </div>
+                  </div>
+                  <div class="panel">
+                    <div class="panel-header"><h4 class="mb-0">Cryptographie</h4><span class="badge badge-violet">2 110 joueurs</span></div>
+                    <div class="panel-body">
+                      <div class="member-row"><span class="rank rank-1">1</span><span class="member-info"><strong>Vortex</strong><span>3 980 pts</span></span></div>
+                      <div class="member-row"><span class="rank rank-2">2</span><span class="member-info"><strong>R00t</strong><span>3 740 pts</span></span></div>
+                      <div class="member-row"><span class="rank rank-3">3</span><span class="member-info"><strong>Nyx</strong><span>3 520 pts</span></span></div>
+                    </div>
+                  </div>
+                  <div class="panel">
+                    <div class="panel-header"><h4 class="mb-0">Débogage</h4><span class="badge badge-magenta">1 870 joueurs</span></div>
+                    <div class="panel-body">
+                      <div class="member-row"><span class="rank rank-1">1</span><span class="member-info"><strong>Kernel_0</strong><span>3 310 pts</span></span></div>
+                      <div class="member-row"><span class="rank rank-2">2</span><span class="member-info"><strong>Glitch</strong><span>3 120 pts</span></span></div>
+                      <div class="member-row"><span class="rank rank-3">3</span><span class="member-info"><strong>ByteMe</strong><span>2 980 pts</span></span></div>
+                    </div>
+                  </div>
+                  <div class="panel">
+                    <div class="panel-header"><h4 class="mb-0">Stégano &amp; QR</h4><span class="badge badge-violet">940 joueurs</span></div>
+                    <div class="panel-body">
+                      <div class="member-row"><span class="rank rank-1">1</span><span class="member-info"><strong>Glitch</strong><span>2 640 pts</span></span></div>
+                      <div class="member-row"><span class="rank rank-2">2</span><span class="member-info"><strong>ByteMe</strong><span>2 510 pts</span></span></div>
+                      <div class="member-row"><span class="rank rank-3">3</span><span class="member-info"><strong>Lex_</strong><span>2 330 pts</span></span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-3">
+            <div class="card card-pad-sm">
+              <div class="stat-label"><span data-icon="trophy"></span> Ta position</div>
+              <div class="stat-value">#3</div>
+              <div class="stat-trend">Top 0,3 % · +1 place cette semaine</div>
+            </div>
+            <div class="card card-pad-sm">
+              <div class="stat-label"><span data-icon="target"></span> Prochain rang</div>
+              <div class="stat-value" style="font-size:1.4rem">Nyx · 1 080 pts</div>
+              <div class="progress mt-2"><span style="width:74%"></span></div>
+            </div>
+            <div class="card card-pad-sm">
+              <div class="stat-label"><span data-icon="clock"></span> Saison</div>
+              <div class="stat-value" style="font-size:1.4rem">12 j restants</div>
+              <div class="stat-trend">Récompenses à la clôture</div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

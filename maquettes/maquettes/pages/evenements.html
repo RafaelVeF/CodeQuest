@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeQuest — Événement : la clé d'ORACLE</title>
+  <meta name="description" content="Événement CodeQuest à un seul essai : compte à rebours, confirmation explicite, classement et récompenses.">
+  <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body data-root="../" data-page="evenements" data-layout="app" data-title="Événement">
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <div class="app-layout">
+    <aside class="sidebar" data-sidebar></aside>
+    <div class="app-main">
+      <header class="app-topbar" data-topbar></header>
+
+      <main id="main" class="page">
+        <div class="container-wide">
+          <div class="lore-hero mb-6" style="background:radial-gradient(circle at 80% 20%, rgba(244,114,182,0.18), transparent 52%), radial-gradient(circle at 15% 80%, rgba(167,139,250,0.14), transparent 55%), var(--surface)">
+            <div class="row row-wrap between" style="position:relative;z-index:1">
+              <div style="max-width:680px">
+                <div class="row row-wrap mb-3">
+                  <span class="badge badge-magenta">Event · 1 essai</span>
+                  <span class="badge badge-violet">Cryptographie</span>
+                  <span class="badge badge-amber">Difficulté 5/5</span>
+                </div>
+                <h1 style="font-size:clamp(2rem,4vw,3.2rem);text-transform:uppercase">La clé<br>d'ORACLE</h1>
+                <p class="muted" style="max-width:600px;font-size:1.02rem">Un chiffrement composite protège le dernier fragment du signal. Base64 imbriqué, XOR à clé courte et substitution : un seul essai par équipe, une seule soumission définitive.</p>
+                <div class="row row-wrap">
+                  <span class="timer urgent"><span data-icon="clock"></span> <span data-countdown="19320">05:22:00</span></span>
+                  <span class="badge"><span data-icon="calendar"></span> Ferme le 6 nov. à 18:00</span>
+                  <span class="badge"><span data-icon="users"></span> 84 équipes inscrites</span>
+                </div>
+              </div>
+              <div class="card card-pad" style="min-width:260px;background:color-mix(in srgb, var(--surface) 80%, transparent)">
+                <div class="row between mb-3"><span class="badge badge-red">Essai unique</span><span class="mono tiny muted">800 pts</span></div>
+                <p class="small muted mb-4">Le chronomètre démarre à l'ouverture. Fermer le navigateur ou abandonner consomme l'essai.</p>
+                <button class="btn btn-primary btn-block" type="button" data-modal-open="event-confirm"><span data-icon="play"></span> Démarrer l'event</button>
+                <button class="btn btn-ghost btn-block btn-sm mt-2" type="button" data-toast="Règles complètes ouvertes (simulation).">Lire les règles</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid" style="grid-template-columns:minmax(0,1fr) 340px;align-items:start">
+            <div class="stack">
+              <div class="panel">
+                <div class="panel-header"><h3 class="mb-0">Déroulement</h3><span class="badge badge-magenta">Statut : ouvert</span></div>
+                <div class="panel-body">
+                  <div class="grid grid-3">
+                    <div class="card card-pad-sm">
+                      <span class="chapter-number">01 · Avant</span>
+                      <h4 class="mt-2">Inscription</h4>
+                      <p class="small muted mb-0">L'équipe s'inscrit avant la fermeture. Le capitaine valide la composition (2–5 membres).</p>
+                    </div>
+                    <div class="card card-pad-sm" style="border-color:var(--magenta)">
+                      <span class="chapter-number text-magenta">02 · Pendant</span>
+                      <h4 class="mt-2">Un seul essai</h4>
+                      <p class="small muted mb-0">Une confirmation explicite lance le chronomètre. La soumission est définitive.</p>
+                    </div>
+                    <div class="card card-pad-sm">
+                      <span class="chapter-number">03 · Après</span>
+                      <h4 class="mt-2">Résultats</h4>
+                      <p class="small muted mb-0">Classement publié à la clôture, corrigé débloqué, récompenses distribuées.</p>
+                    </div>
+                  </div>
+
+                  <h3 class="mt-6">Ce qui est évalué</h3>
+                  <ul>
+                    <li>Le texte clair complet, avec casse et ponctuation normalisées.</li>
+                    <li>La méthode n'est pas jugée : seul le résultat compte.</li>
+                    <li>Le temps de résolution départage les scores égaux.</li>
+                    <li>Les indices sont <strong>désactivés</strong> pendant l'event.</li>
+                  </ul>
+
+                  <div class="alert alert-red mt-4">
+                    <span data-icon="alert-triangle"></span>
+                    <span><strong>Attention :</strong> un abandon, un rafraîchissement ou une fermeture d'onglet consomme l'essai. Aucun replay n'est possible, même en cas de problème technique signalé après coup.</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel">
+                <div class="panel-header"><h3 class="mb-0">Classement de l'event</h3><span class="badge badge-amber">Résultats provisoires</span></div>
+                <div class="panel-body" style="padding:0">
+                  <div class="table-wrap" style="border:0;border-radius:0">
+                    <table>
+                      <thead><tr><th>Rang</th><th>Équipe</th><th>Score</th><th>Temps</th><th>Statut</th></tr></thead>
+                      <tbody>
+                        <tr><td><span class="rank rank-1">1</span></td><td><div class="player-cell"><span class="avatar">NULL</span><span>NullPointer</span></div></td><td class="mono text-cyan">—</td><td class="mono">—</td><td><span class="badge badge-cyan">En course</span></td></tr>
+                        <tr><td><span class="rank rank-2">2</span></td><td><div class="player-cell"><span class="avatar">SEG</span><span>Segfault Club</span></div></td><td class="mono text-cyan">—</td><td class="mono">—</td><td><span class="badge badge-cyan">En course</span></td></tr>
+                        <tr><td><span class="rank rank-3">3</span></td><td><div class="player-cell"><span class="avatar">BYT</span><span>Byte Force</span></div></td><td class="mono text-cyan">—</td><td class="mono">—</td><td><span class="badge badge-cyan">En course</span></td></tr>
+                        <tr><td><span class="rank">4</span></td><td><div class="player-cell"><span class="avatar">ORC</span><span>Oracle Breakers</span></div></td><td class="mono text-cyan">—</td><td class="mono">—</td><td><span class="badge">Inscrite</span></td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="panel-footer"><span class="tiny muted">Les scores apparaissent à la soumission. Le classement final est figé à la clôture.</span></div>
+              </div>
+            </div>
+
+            <aside class="stack" aria-label="Récompenses et informations">
+              <div class="panel">
+                <div class="panel-header"><h3 class="mb-0">Récompenses</h3><span class="badge badge-amber">Top 3</span></div>
+                <div class="panel-body">
+                  <div class="member-row"><span class="rank rank-1">1</span><span class="member-info"><strong>500 Bits + titre</strong><span>« Briseur d'ORACLE »</span></span></div>
+                  <div class="member-row"><span class="rank rank-2">2</span><span class="member-info"><strong>300 Bits</strong><span>Badge event</span></span></div>
+                  <div class="member-row"><span class="rank rank-3">3</span><span class="member-info"><strong>150 Bits</strong><span>Badge participant</span></span></div>
+                  <p class="tiny muted mt-3 mb-0">Les récompenses ne modifient jamais la puissance en compétition.</p>
+                </div>
+              </div>
+
+              <div class="panel">
+                <div class="panel-header"><h3 class="mb-0">Mon équipe</h3><span class="badge badge-cyan">5 / 5</span></div>
+                <div class="panel-body">
+                  <div class="row row-wrap mb-3">
+                    <span class="avatar">NULL</span>
+                    <div><strong style="display:block">NullPointer</strong><span class="tiny muted">Capitaine : Nova_Runner</span></div>
+                  </div>
+                  <div class="row between mb-2"><span class="small muted">Inscription</span><span class="badge badge-lime">Confirmée</span></div>
+                  <div class="row between mb-2"><span class="small muted">Essais consommés</span><span class="mono small">0 / 1</span></div>
+                  <div class="row between"><span class="small muted">PV partagés</span><span class="mono small">72 / 100</span></div>
+                  <a class="btn btn-secondary btn-block btn-sm mt-3" href="equipes.html">Gérer l'équipe</a>
+                </div>
+              </div>
+
+              <div class="alert alert-violet">
+                <span data-icon="book"></span>
+                <span><strong>Lore :</strong> cet event conclut le chapitre 03. Le texte clair contient un fragment du message d'ORACLE.</span>
+              </div>
+
+              <div class="card card-pad-sm">
+                <div class="row mb-2"><span data-icon="globe" class="text-cyan"></span><strong style="font-size:0.86rem">Fuseau horaire</strong></div>
+                <p class="tiny muted mb-0">Toutes les dates sont affichées en <strong>Europe/Paris (UTC+1)</strong>. L'horloge serveur fait foi.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="event-confirm" hidden>
+    <div class="modal" role="alertdialog" aria-modal="true" aria-labelledby="event-confirm-title" aria-describedby="event-confirm-desc">
+      <div class="modal-header">
+        <h3 id="event-confirm-title" class="mb-0 text-magenta">Confirmer l'essai unique</h3>
+        <button class="icon-btn" type="button" data-modal-close aria-label="Fermer"><span data-icon="x"></span></button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-red mb-4"><span data-icon="alert-triangle"></span><span>Cette action est <strong>définitive</strong>.</span></div>
+        <p id="event-confirm-desc">En démarrant maintenant :</p>
+        <ul>
+          <li>le chronomètre démarre immédiatement ;</li>
+          <li>tu ne pourras soumettre qu'une seule réponse ;</li>
+          <li>fermer l'onglet ou abandonner consomme l'essai ;</li>
+          <li>les indices sont désactivés pour cet event.</li>
+        </ul>
+        <label class="checkbox mt-4"><input type="checkbox" id="event-ack"> <span>Je comprends et je confirme que mon équipe est prête.</span></label>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" type="button" data-modal-close>Annuler</button>
+        <button class="btn btn-danger" type="button" data-toast="Event démarré (simulation). Chronomètre lancé." data-modal-close>Démarrer maintenant</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

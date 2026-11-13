@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeQuest — Défi : stéganographie &amp; QR</title>
+  <meta name="description" content="Défi visuel CodeQuest : message caché dans les bits de poids faible, QR fragmenté, indices et variante atelier.">
+  <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body data-root="../" data-page="defis" data-layout="app" data-title="Défi · Stégano &amp; QR">
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <div class="app-layout">
+    <aside class="sidebar" data-sidebar></aside>
+    <div class="app-main">
+      <header class="app-topbar" data-topbar></header>
+
+      <main id="main" class="page-tight" data-workspace>
+        <div class="container-wide">
+          <div class="row row-wrap between mb-4">
+            <div>
+              <nav class="breadcrumb mb-2" aria-label="Fil d'Ariane">
+                <a href="defis.html">Défis</a><span class="sep">/</span>
+                <a href="defis.html">Stégano &amp; QR</a><span class="sep">/</span>
+                <span class="current">Le canal des images</span>
+              </nav>
+              <div class="row row-wrap">
+                <h1 style="font-size:clamp(1.4rem,2.6vw,2rem);margin:0">Le canal des images</h1>
+                <span class="badge badge-violet">Difficulté 3/5</span>
+                <span class="badge">Stéganographie LSB</span>
+                <span class="badge badge-lime">3 indices</span>
+              </div>
+            </div>
+            <div class="row row-wrap">
+              <span class="timer"><span data-icon="clock"></span> <span data-countdown="1120">00:18:40</span></span>
+              <a class="btn btn-sm btn-secondary" href="defis.html"><span data-icon="arrow-left"></span> Quitter</a>
+            </div>
+          </div>
+
+          <div class="grid" style="grid-template-columns:minmax(0,1.05fr) minmax(360px,0.95fr);align-items:start">
+            <div class="stack">
+              <div class="panel" data-tabs>
+                <div class="panel-header">
+                  <div><span class="eyebrow mb-0">Analyse visuelle</span><h3 class="mb-0">Image interceptée</h3></div>
+                  <span class="badge badge-violet">PNG · 1920×1080</span>
+                </div>
+                <div class="panel-body-tight">
+                  <div class="tabs" role="tablist" aria-label="Type d'analyse">
+                    <button class="tab" role="tab" id="tab-stegano" aria-controls="panel-stegano" aria-selected="true" type="button"><span data-icon="image"></span> Stéganographie</button>
+                    <button class="tab" role="tab" id="tab-qr" aria-controls="panel-qr" aria-selected="false" type="button"><span data-icon="qr-code"></span> QR fragmenté</button>
+                  </div>
+
+                  <div class="panel-body" role="tabpanel" id="panel-stegano" aria-labelledby="tab-stegano">
+                    <div style="position:relative;border:1px solid var(--border-strong);border-radius:var(--radius);overflow:hidden;background:#08101f">
+                      <svg viewBox="0 0 640 360" role="img" aria-label="Image abstraite représentant le secteur 07, avec un bruit visuel léger" style="display:block;width:100%;height:auto">
+                        <defs>
+                          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0" stop-color="#0b1b33"/><stop offset="1" stop-color="#160f28"/>
+                          </linearGradient>
+                          <linearGradient id="neon" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#f472b6"/>
+                          </linearGradient>
+                          <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+                            <path d="M32 0H0V32" fill="none" stroke="#22d3ee" stroke-opacity="0.13"/>
+                          </pattern>
+                        </defs>
+                        <rect width="640" height="360" fill="url(#sky)"/>
+                        <rect width="640" height="360" fill="url(#grid)"/>
+                        <circle cx="500" cy="90" r="54" fill="none" stroke="url(#neon)" stroke-width="2" stroke-dasharray="6 8"/>
+                        <circle cx="500" cy="90" r="26" fill="url(#neon)" opacity="0.18"/>
+                        <path d="M0 300 L90 240 L160 272 L250 196 L330 250 L420 170 L520 224 L640 150 V360 H0 Z" fill="#0d1930" stroke="#24314d"/>
+                        <path d="M0 320 L110 280 L210 304 L310 252 L400 296 L500 236 L640 286" fill="none" stroke="#22d3ee" stroke-opacity="0.5" stroke-width="1.5"/>
+                        <g fill="#f472b6" opacity="0.75">
+                          <rect x="88" y="238" width="3" height="26"/><rect x="164" y="268" width="3" height="20"/>
+                          <rect x="334" y="246" width="3" height="22"/><rect x="524" y="220" width="3" height="18"/>
+                        </g>
+                        <text x="20" y="34" fill="#7183a3" font-family="monospace" font-size="11">SECTEUR-07 / frame 0182</text>
+                        <text x="20" y="344" fill="#44546f" font-family="monospace" font-size="10">LSB · canal alpha · bruit gaussien σ=0.4</text>
+                      </svg>
+                      <span class="badge badge-amber" style="position:absolute;top:12px;right:12px">Indice visuel</span>
+                    </div>
+
+                    <div class="row row-wrap between mt-4">
+                      <div class="row row-wrap">
+                        <button class="btn btn-sm btn-secondary" type="button"><span data-icon="download"></span> Télécharger</button>
+                        <button class="btn btn-sm btn-ghost" type="button" data-toast="Zoom simulé sur le canal alpha."><span data-icon="search"></span> Zoom LSB</button>
+                      </div>
+                      <span class="tiny muted mono">SHA-256 : 9f2c…a41d</span>
+                    </div>
+
+                    <div class="grid grid-3 mt-4">
+                      <div class="field">
+                        <label class="label" for="chan">Canal</label>
+                        <select class="select" id="chan"><option>Alpha (A)</option><option>Rouge (R)</option><option>Vert (G)</option><option>Bleu (B)</option></select>
+                      </div>
+                      <div class="field">
+                        <label class="label" for="bits">Bits de poids</label>
+                        <select class="select" id="bits"><option>LSB (1 bit)</option><option>2 bits</option><option>3 bits</option></select>
+                      </div>
+                      <div class="field">
+                        <label class="label" for="filter">Filtre</label>
+                        <select class="select" id="filter"><option>Aucun</option><option>Amplifier ×32</option><option>Inverser</option></select>
+                      </div>
+                    </div>
+
+                    <div class="alert alert-cyan mt-3">
+                      <span data-icon="info"></span>
+                      <span><strong>Méthode :</strong> extrais les bits de poids faible du canal alpha, regroupe-les par octets, puis décode en UTF-8. Le message commence par <code>CQ{</code>.</span>
+                    </div>
+                  </div>
+
+                  <div class="panel-body" role="tabpanel" id="panel-qr" aria-labelledby="tab-qr" hidden>
+                    <p class="small muted">Un QR code a été découpé en 4 fragments et partiellement dégradé. Reconstruis l'image ou décode les fragments utiles.</p>
+                    <div class="grid grid-2" style="max-width:520px;margin-inline:auto">
+                      <div style="aspect-ratio:1;border:1px solid var(--border-strong);border-radius:var(--radius);background:#0a1120;display:grid;place-items:center;position:relative;overflow:hidden">
+                        <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;width:72%">
+                          <span style="aspect-ratio:1;background:#e8eef9"></span><span style="aspect-ratio:1;background:#e8eef9"></span><span style="aspect-ratio:1;background:#e8eef9"></span><span style="aspect-ratio:1;background:#0a1120"></span><span style="aspect-ratio:1;background:#e8eef9"></span><span style="aspect-ratio:1;background:#e8eef9"></span><span style="aspect-ratio:1;background:#e8eef9"></span>
+                          <span style="aspect-ratio:1;background:#e8eef9"></span><span style="aspect-ratio:1;background:#0a1120"></span><span style="aspect-ratio:1;background:#e8eef9"></span><span style="aspect-ratio:1;background:#0a1120"></span><span style="aspect-ratio:1;background:#e8eef9"></span><span style="aspect-ratio:1;background:#0a1120"></span><span style="aspect-ratio:1;background:#e8eef9"></span>
+                          <span style="aspect-ratio:1;background:#e8eef9"></span><span style="aspect-ratio:1;background:#e8eef9"></span><span style="aspect-ratio:1;background:#e8eef9"></span><span style="aspect-ratio:1;background:#22d3ee"></span><span style="aspect-ratio:1;background:#e8eef9"></span><span style="aspect-ratio:1;background:#e8eef9"></span><span style="aspect-ratio:1;background:#e8eef9"></span>
+                          <span style="aspect-ratio:1;background:#0a1120"></span><span style="aspect-ratio:1;background:#22d3ee"></span><span style="aspect-ratio:1;background:#0a1120"></span><span style="aspect-ratio:1;background:#e8eef9"></span><span style="aspect-ratio:1;background:#0a1120"></span><span style="aspect-ratio:1;background:#f472b6"></span><span style="aspect-ratio:1;background:#0a1120"></span>
+                          <span style="aspect-ratio:1;background:#e8eef9"></span><span style="aspect-ratio:1;background:#0a1120"></span><span style="aspect-ratio:1;background:#e8eef9"></span><span style="aspect-ratio:1;background:#0a1120"></span><span style="aspect-ratio:1;background:#e8eef9"></span><span style="aspect-ratio:1;background:#0a1120"></span><span style="aspect-ratio:1;background:#e8eef9"></span>
+                          <span style="aspect-ratio:1;background:#e8eef9"></span><span style="aspect-ratio:1;background:#e8eef9"></span><span style="aspect-ratio:1;background:#e8eef9"></span><span style="aspect-ratio:1;background:#f472b6"></span><span style="aspect-ratio:1;background:#e8eef9"></span><span style="aspect-ratio:1;background:#e8eef9"></span><span style="aspect-ratio:1;background:#e8eef9"></span>
+                          <span style="aspect-ratio:1;background:#0a1120"></span><span style="aspect-ratio:1;background:#e8eef9"></span><span style="aspect-ratio:1;background:#0a1120"></span><span style="aspect-ratio:1;background:#e8eef9"></span><span style="aspect-ratio:1;background:#0a1120"></span><span style="aspect-ratio:1;background:#e8eef9"></span><span style="aspect-ratio:1;background:#0a1120"></span>
+                        </div>
+                        <span class="badge badge-red" style="position:absolute;top:8px;left:8px">Fragment 1/4</span>
+                      </div>
+                      <div style="aspect-ratio:1;border:1px dashed var(--border-strong);border-radius:var(--radius);background:var(--surface-2);display:grid;place-items:center;text-align:center;padding:16px">
+                        <div><span data-icon="qr-code" class="icon-xl text-cyan"></span><p class="tiny muted mt-2 mb-0">Fragment 2<br>partiellement dégradé</p></div>
+                      </div>
+                      <div style="aspect-ratio:1;border:1px dashed var(--border-strong);border-radius:var(--radius);background:var(--surface-2);display:grid;place-items:center;text-align:center;padding:16px">
+                        <div><span data-icon="qr-code" class="icon-xl text-magenta"></span><p class="tiny muted mt-2 mb-0">Fragment 3<br>faible contraste</p></div>
+                      </div>
+                      <div style="aspect-ratio:1;border:1px dashed var(--border-strong);border-radius:var(--radius);background:var(--surface-2);display:grid;place-items:center;text-align:center;padding:16px">
+                        <div><span data-icon="qr-code" class="icon-xl text-lime"></span><p class="tiny muted mt-2 mb-0">Fragment 4<br>à reconstruire</p></div>
+                      </div>
+                    </div>
+                    <div class="alert alert-amber mt-4">
+                      <span data-icon="alert-triangle"></span>
+                      <span>Variante « atelier » : tu devras générer un QR valide contenant une valeur imposée, vérifié par l'extracteur de référence.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel">
+                <div class="panel-header"><h3 class="mb-0">Extracteur LSB</h3><span class="badge badge-cyan">Script</span></div>
+                <div class="code-shell" data-editor>
+                  <div class="code-toolbar"><select class="select" aria-label="Langage"><option>Python 3.12</option><option>JavaScript</option></select><span class="spacer"></span><span class="tiny muted mono">Pillow</span></div>
+                  <div class="editor" style="min-height:200px">
+                    <div class="line-numbers" data-line-numbers aria-hidden="true">1</div>
+                    <textarea class="code-area" data-code-input aria-label="Éditeur d'extraction" spellcheck="false">from PIL import Image
+
+img = Image.open("secteur07.png").convert("RGBA")
+bits = [px[3] & 1 for px in img.getdata()]
+chars = []
+for i in range(0, len(bits) - 7, 8):
+    byte = 0
+    for b in bits[i:i+8]:
+        byte = (byte << 1) | b
+    if byte == 0:
+        break
+    chars.append(chr(byte))
+print("".join(chars))
+</textarea>
+                  </div>
+                  <div class="console" data-console>
+                    <div class="console-line"><span class="console-time">[out]</span><span class="terminal-dim">CQ{...} · 42 octets extraits</span></div>
+                  </div>
+                </div>
+                <div class="panel-footer"><button class="btn btn-secondary btn-sm" type="button" data-run><span data-icon="play"></span> Exécuter</button></div>
+              </div>
+            </div>
+
+            <aside class="stack" aria-label="Soumission et indices">
+              <div class="panel">
+                <div class="panel-header"><h3 class="mb-0">Soumettre le message</h3><span class="badge badge-violet">300 pts</span></div>
+                <div class="panel-body">
+                  <form class="form" data-demo-form data-toast="Message soumis. Vérification simulée…" data-toast-type="success" data-success-target="#visuel-result">
+                    <div class="field">
+                      <label class="label" for="stegano-answer">Message extrait</label>
+                      <textarea class="textarea" id="stegano-answer" placeholder="CQ{...}" required></textarea>
+                      <span class="hint">Respecte la casse et les accolades. Les espaces superflus sont ignorés.</span>
+                    </div>
+                    <div class="field">
+                      <label class="label" for="stegano-method">Méthode utilisée</label>
+                      <select class="select" id="stegano-method"><option>LSB canal alpha</option><option>LSB canal rouge</option><option>Métadonnées EXIF</option><option>Autre</option></select>
+                    </div>
+                    <button class="btn btn-primary btn-block" type="submit"><span data-icon="send"></span> Soumettre</button>
+                    <div class="alert alert-lime" id="visuel-result" hidden>
+                      <span data-icon="check-circle"></span>
+                      <span><strong>Message correct.</strong> 300 pts · badge « Œil du Puits » débloqué.</span>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <div class="panel">
+                <div class="panel-header"><h3 class="mb-0">Indices</h3><span class="badge badge-amber">2 restants</span></div>
+                <div class="panel-body">
+                  <div class="stack-sm">
+                    <div class="alert alert-lime"><span data-icon="check-circle"></span><span>Indice 1 utilisé : « regarde le canal alpha ».</span></div>
+                    <div class="row between"><span class="small muted">Indice 2 · longueur du message</span><button class="btn btn-sm btn-secondary" type="button" data-toast="Indice 2 débloqué (simulation). 60 Bits.">60 Bits</button></div>
+                    <div class="row between"><span class="small muted">Indice 3 · premier caractère</span><button class="btn btn-sm btn-secondary" type="button" data-toast="Indice 3 débloqué (simulation). 120 Bits.">120 Bits</button></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card card-pad-sm">
+                <div class="row mb-2"><span data-icon="shield-check" class="text-cyan"></span><strong style="font-size:0.86rem">Sécurité</strong></div>
+                <p class="tiny muted mb-0">Le fichier est généré par seed côté serveur. Il ne contient aucun exécutable et les métadonnées personnelles sont supprimées.</p>
+              </div>
+
+              <div class="alert alert-violet">
+                <span data-icon="book"></span>
+                <span><strong>Lore lié :</strong> le Puits des Images, chapitre 05. Le message extrait mentionne un fragment du signal d'ORACLE.</span>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

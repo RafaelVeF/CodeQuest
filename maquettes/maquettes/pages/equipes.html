@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeQuest — Équipe NullPointer</title>
+  <meta name="description" content="Page équipe CodeQuest : membres, capitaine, invitations, PV partagés, édition collaborative et événements.">
+  <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body data-root="../" data-page="equipes" data-layout="app" data-title="Équipe">
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <div class="app-layout">
+    <aside class="sidebar" data-sidebar></aside>
+    <div class="app-main">
+      <header class="app-topbar" data-topbar></header>
+
+      <main id="main" class="page">
+        <div class="container-wide">
+          <div class="panel mb-6">
+            <div class="panel-body">
+              <div class="row row-wrap between">
+                <div class="row" style="align-items:flex-start">
+                  <span class="avatar avatar-xl" style="border-radius:18px">NULL</span>
+                  <div>
+                    <div class="row row-wrap mb-2">
+                      <h1 style="margin:0;font-size:clamp(1.5rem,2.6vw,2rem)">NullPointer</h1>
+                      <span class="badge badge-cyan">[NULL]</span>
+                      <span class="badge badge-lime"><span data-icon="crown"></span> Capitaine : Nova_Runner</span>
+                    </div>
+                    <p class="muted mb-2" style="max-width:560px">Cinq développeurs, une seule règle : aucun pointeur ne reste nul. On vise le top 3 de la saison et le Gardien du Dédale.</p>
+                    <div class="row row-wrap">
+                      <span class="badge"><span data-icon="users"></span> 5 / 5 membres</span>
+                      <span class="badge"><span data-icon="calendar"></span> Créée il y a 4 mois</span>
+                      <span class="badge badge-amber">Rang équipe #1</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="stack-sm">
+                  <button class="btn btn-primary" type="button" data-modal-open="invite-modal"><span data-icon="user-plus"></span> Inviter un membre</button>
+                  <button class="btn btn-secondary" type="button" data-toast="Lien d'invitation copié (simulation)."><span data-icon="link"></span> Copier le lien</button>
+                  <button class="btn btn-ghost btn-sm" type="button" data-toast="Paramètres d'équipe ouverts (simulation)."><span data-icon="settings"></span> Paramètres</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-4 mb-6">
+            <div class="stat-card">
+              <div class="stat-label"><span data-icon="trophy"></span> Score d'équipe</div>
+              <div class="stat-value">48 200</div>
+              <div class="stat-trend">+1 240 cette semaine</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label"><span data-icon="heart"></span> PV partagés</div>
+              <div class="stat-value">72 / 100</div>
+              <div class="progress mt-2"><span style="width:72%"></span></div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label"><span data-icon="code"></span> Défis d'équipe</div>
+              <div class="stat-value">96</div>
+              <div class="stat-trend">12 en cours</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label"><span data-icon="flame"></span> Série collective</div>
+              <div class="stat-value">14 j</div>
+              <div class="stat-trend">Record de la saison</div>
+            </div>
+          </div>
+
+          <div class="grid" style="grid-template-columns:minmax(0,1fr) 340px;align-items:start">
+            <div class="panel" data-tabs>
+              <div class="panel-body-tight">
+                <div class="tabs" role="tablist" aria-label="Sections de l'équipe">
+                  <button class="tab" role="tab" id="tab-members" aria-controls="panel-members" aria-selected="true" type="button"><span data-icon="users"></span> Membres</button>
+                  <button class="tab" role="tab" id="tab-invites" aria-controls="panel-invites" aria-selected="false" type="button"><span data-icon="mail"></span> Invitations <span class="badge badge-magenta">2</span></button>
+                  <button class="tab" role="tab" id="tab-collab" aria-controls="panel-collab" aria-selected="false" type="button"><span data-icon="git-branch"></span> Édition collaborative</button>
+                  <button class="tab" role="tab" id="tab-team-settings" aria-controls="panel-team-settings" aria-selected="false" type="button"><span data-icon="settings"></span> Réglages</button>
+                </div>
+
+                <div class="panel-body" role="tabpanel" id="panel-members" aria-labelledby="tab-members">
+                  <div class="row between row-wrap mb-3">
+                    <h3 class="mb-0">Membres actifs</h3>
+                    <span class="badge">5 / 5 places</span>
+                  </div>
+                  <div class="member-row">
+                    <span class="avatar">NR</span>
+                    <div class="member-info"><strong>Nova_Runner <span class="badge badge-amber"><span data-icon="crown"></span> Capitaine</span></strong><span>Niveau 12 · Python · 10 840 pts</span></div>
+                    <span class="member-role">Capitaine</span>
+                    <button class="icon-btn" type="button" aria-label="Options pour Nova_Runner" data-toast="Menu membre (simulation)."><span data-icon="more"></span></button>
+                  </div>
+                  <div class="member-row">
+                    <span class="avatar">VX</span>
+                    <div class="member-info"><strong>Vortex</strong><span>Niveau 24 · Cryptographie · 12 480 pts</span></div>
+                    <span class="member-role">Membre</span>
+                    <button class="icon-btn" type="button" aria-label="Options pour Vortex" data-toast="Menu membre (simulation)."><span data-icon="more"></span></button>
+                  </div>
+                  <div class="member-row">
+                    <span class="avatar">NY</span>
+                    <div class="member-info"><strong>Nyx</strong><span>Niveau 22 · Tris · 11 920 pts</span></div>
+                    <span class="member-role">Membre</span>
+                    <button class="icon-btn" type="button" aria-label="Options pour Nyx" data-toast="Menu membre (simulation)."><span data-icon="more"></span></button>
+                  </div>
+                  <div class="member-row">
+                    <span class="avatar">K0</span>
+                    <div class="member-info"><strong>Kernel_0</strong><span>Niveau 19 · Débogage · 9 760 pts</span></div>
+                    <span class="member-role">Membre</span>
+                    <button class="icon-btn" type="button" aria-label="Options pour Kernel_0" data-toast="Menu membre (simulation)."><span data-icon="more"></span></button>
+                  </div>
+                  <div class="member-row">
+                    <span class="avatar">BY</span>
+                    <div class="member-info"><strong>ByteMe</strong><span>Niveau 18 · QR codes · 9 210 pts</span></div>
+                    <span class="member-role">Membre</span>
+                    <button class="icon-btn" type="button" aria-label="Options pour ByteMe" data-toast="Menu membre (simulation)."><span data-icon="more"></span></button>
+                  </div>
+
+                  <div class="alert alert-cyan mt-4">
+                    <span data-icon="info"></span>
+                    <span>Quitter ou être exclu ne retire pas les scores déjà acquis par l'équipe. Cela retire seulement le droit de contribuer aux défis en cours.</span>
+                  </div>
+                </div>
+
+                <div class="panel-body" role="tabpanel" id="panel-invites" aria-labelledby="tab-invites" hidden>
+                  <div class="row between row-wrap mb-3">
+                    <h3 class="mb-0">Invitations en attente</h3>
+                    <button class="btn btn-sm btn-primary" type="button" data-modal-open="invite-modal"><span data-icon="plus"></span> Nouvelle invitation</button>
+                  </div>
+                  <div class="member-row">
+                    <span class="avatar">GL</span>
+                    <div class="member-info"><strong>Glitch</strong><span>Invité par Nova_Runner · expire dans 5 j</span></div>
+                    <span class="badge badge-amber">En attente</span>
+                    <button class="btn btn-sm btn-ghost" type="button" data-toast="Invitation annulée (simulation).">Annuler</button>
+                  </div>
+                  <div class="member-row">
+                    <span class="avatar">LX</span>
+                    <div class="member-info"><strong>Lex_</strong><span>Demande d'adhésion · niveau 16</span></div>
+                    <span class="badge badge-cyan">Demande</span>
+                    <div class="row">
+                      <button class="btn btn-sm btn-primary" type="button" data-toast="Lex_ accepté dans l'équipe (simulation).">Accepter</button>
+                      <button class="btn btn-sm btn-ghost" type="button" data-toast="Demande refusée (simulation).">Refuser</button>
+                    </div>
+                  </div>
+
+                  <div class="card card-pad-sm mt-4">
+                    <h4>Inviter par lien</h4>
+                    <p class="small muted">Le lien expire dans 7 jours et ne peut être utilisé qu'une fois. Toute demande reste soumise à validation du capitaine.</p>
+                    <div class="row">
+                      <input class="input" type="text" value="https://codequest.gg/join/NULL-7F3A" readonly aria-label="Lien d'invitation">
+                      <button class="btn btn-secondary" type="button" data-copy="https://codequest.gg/join/NULL-7F3A"><span data-icon="copy"></span> Copier</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel-body" role="tabpanel" id="panel-collab" aria-labelledby="tab-collab" hidden>
+                  <div class="row between row-wrap mb-3">
+                    <h3 class="mb-0">Session collaborative</h3>
+                    <span class="badge badge-lime"><span data-icon="activity"></span> 3 curseurs actifs</span>
+                  </div>
+                  <div class="code-shell" data-editor>
+                    <div class="code-toolbar">
+                      <span class="badge badge-cyan">defi-tri · solution.py</span>
+                      <span class="spacer"></span>
+                      <span class="tiny muted mono">Yjs · CRDT</span>
+                    </div>
+                    <div class="editor" style="min-height:280px">
+                      <div class="line-numbers" data-line-numbers aria-hidden="true">1</div>
+                      <textarea class="code-area" data-code-input aria-label="Éditeur collaboratif" spellcheck="false">def merge_sort(values):
+    if len(values) <= 1:
+        return list(values)
+
+    mid = len(values) // 2
+    left = merge_sort(values[:mid])
+    right = merge_sort(values[mid:])
+    return merge(left, right)
+
+
+def merge(left, right):
+    result, i, j = [], 0, 0
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            result.append(left[i]); i += 1
+        else:
+            result.append(right[j]); j += 1
+    return result + left[i:] + right[j:]
+</textarea>
+                    </div>
+                    <div class="console">
+                      <div class="console-line"><span class="console-time">[collab]</span><span><span class="text-cyan">Nova_Runner</span> a modifié la ligne 16</span></div>
+                      <div class="console-line"><span class="console-time">[collab]</span><span><span class="text-magenta">Vortex</span> a rejoint la session</span></div>
+                      <div class="console-line"><span class="console-time">[collab]</span><span><span class="text-lime">Nyx</span> consulte l'énoncé</span></div>
+                    </div>
+                  </div>
+                  <div class="row row-wrap between mt-4">
+                    <div class="row">
+                      <button class="btn btn-secondary btn-sm" type="button" data-run><span data-icon="play"></span> Tester la version commune</button>
+                      <button class="btn btn-primary btn-sm" type="button" data-toast="Soumission d'équipe réservée au capitaine (simulation)." disabled><span data-icon="send"></span> Soumettre (capitaine)</button>
+                    </div>
+                    <span class="tiny muted">Seul le capitaine déclenche la soumission officielle.</span>
+                  </div>
+                </div>
+
+                <div class="panel-body" role="tabpanel" id="panel-team-settings" aria-labelledby="tab-team-settings" hidden>
+                  <h3>Réglages de l'équipe</h3>
+                  <form class="form" data-demo-form data-toast="Réglages d'équipe enregistrés (simulation).">
+                    <div class="form-row">
+                      <div class="field"><label class="label" for="team-name">Nom</label><input class="input" id="team-name" type="text" value="NullPointer"></div>
+                      <div class="field"><label class="label" for="team-tag">Tag</label><input class="input" id="team-tag" type="text" value="NULL" maxlength="5"></div>
+                    </div>
+                    <div class="field"><label class="label" for="team-desc">Description</label><textarea class="textarea" id="team-desc">Cinq développeurs, une seule règle : aucun pointeur ne reste nul.</textarea></div>
+                    <div class="form-row">
+                      <div class="field"><label class="label" for="team-size">Taille maximale</label><select class="select" id="team-size"><option>5 membres</option><option>4 membres</option><option>3 membres</option></select></div>
+                      <div class="field"><label class="label" for="team-join">Adhésion</label><select class="select" id="team-join"><option>Sur validation</option><option>Ouverte</option><option>Sur invitation</option></select></div>
+                    </div>
+                    <div class="row row-wrap">
+                      <button class="btn btn-primary" type="submit">Enregistrer</button>
+                      <button class="btn btn-danger" type="button" data-toast="Suppression d'équipe : confirmation requise (simulation).">Dissoudre l'équipe</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <aside class="stack" aria-label="Informations d'équipe">
+              <div class="panel">
+                <div class="panel-header"><h3 class="mb-0">Santé de l'équipe</h3><span class="badge badge-red">72 PV</span></div>
+                <div class="panel-body">
+                  <div class="hp-bar team mb-3"><span style="width:72%"></span><span class="hp-text">72 / 100 PV partagés</span></div>
+                  <p class="small muted">Les PV sont partagés en boss et events hardcore. Un essai raté coûte 10 à 25 PV au pool.</p>
+                  <div class="row between mt-3"><span class="tiny muted">Régénération</span><span class="mono tiny">1 PV / 6 min</span></div>
+                  <div class="row between"><span class="tiny muted">Prochain PV</span><span class="mono tiny text-lime">dans 4 min</span></div>
+                  <button class="btn btn-secondary btn-block btn-sm mt-3" type="button" data-toast="Potion utilisée sur le pool d'équipe (simulation)."><span data-icon="heart"></span> Utiliser une potion</button>
+                </div>
+              </div>
+
+              <div class="panel">
+                <div class="panel-header"><h3 class="mb-0">Prochain event</h3><span class="badge badge-magenta">1 essai</span></div>
+                <div class="panel-body">
+                  <strong style="display:block">La clé d'ORACLE</strong>
+                  <p class="small muted">Inscription d'équipe jusqu'au 6 nov. 18:00. Un seul essai par équipe.</p>
+                  <div class="timer mb-3"><span data-icon="clock"></span> <span data-countdown="19320">05:22:00</span></div>
+                  <a class="btn btn-primary btn-block btn-sm" href="evenements.html">Voir l'événement</a>
+                </div>
+              </div>
+
+              <div class="card card-pad-sm">
+                <div class="row mb-2"><span data-icon="headphones" class="text-cyan"></span><strong style="font-size:0.86rem">Salon vocal</strong></div>
+                <p class="tiny muted mb-3">2 membres connectés · aucun enregistrement.</p>
+                <div class="row"><button class="btn btn-secondary btn-sm" type="button" data-toast="Salon vocal rejoint (simulation)."><span data-icon="mic"></span> Rejoindre</button><a class="btn btn-ghost btn-sm" href="chat.html">Chat</a></div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="invite-modal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="invite-title">
+      <div class="modal-header">
+        <h3 id="invite-title" class="mb-0">Inviter un membre</h3>
+        <button class="icon-btn" type="button" data-modal-close aria-label="Fermer"><span data-icon="x"></span></button>
+      </div>
+      <div class="modal-body">
+        <form class="form" data-demo-form data-toast="Invitation envoyée (simulation).">
+          <div class="field">
+            <label class="label" for="invite-pseudo">Pseudo ou e-mail</label>
+            <div class="input-group"><span data-icon="user-plus"></span><input class="input" id="invite-pseudo" type="text" placeholder="glitch ou glitch@codequest.gg" required></div>
+            <span class="hint">Le joueur doit accepter l'invitation. Une équipe compte 2 à 5 membres.</span>
+          </div>
+          <div class="field">
+            <label class="label" for="invite-role">Rôle proposé</label>
+            <select class="select" id="invite-role"><option>Membre</option><option>Capitaine (transférer)</option></select>
+          </div>
+          <div class="alert alert-amber"><span data-icon="alert-triangle"></span><span>Le capitaine actuel conserve ses droits jusqu'au transfert explicite.</span></div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" type="button" data-modal-close>Annuler</button>
+        <button class="btn btn-primary" type="button" data-toast="Invitation envoyée (simulation)." data-modal-close>Envoyer l'invitation</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

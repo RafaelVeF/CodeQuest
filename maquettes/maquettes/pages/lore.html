@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeQuest — Lore du Réseau</title>
+  <meta name="description" content="Lore CodeQuest : carte des régions, chapitres débloqués par la progression, état de lecture conservé et lexique du Réseau.">
+  <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body data-root="../" data-page="lore" data-layout="app" data-title="Lore">
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <div class="app-layout">
+    <aside class="sidebar" data-sidebar></aside>
+    <div class="app-main">
+      <header class="app-topbar" data-topbar></header>
+
+      <main id="main" class="page">
+        <div class="container-wide">
+          <div class="page-header">
+            <div>
+              <span class="eyebrow">Univers · Saison 03</span>
+              <h1>Le Réseau fracturé</h1>
+              <p class="muted">ORACLE a été corrompue. Reprends les secteurs un par un, lis les fragments et découvre ce qui se cache derrière les Gardiens.</p>
+            </div>
+            <div class="row row-wrap">
+              <span class="badge badge-violet"><span data-icon="book"></span> 18 chapitres</span>
+              <span class="badge badge-cyan"><span data-icon="map"></span> 6 régions</span>
+              <button class="btn btn-sm btn-secondary" type="button" data-toast="Mode lecture immersive activé (simulation)."><span data-icon="eye"></span> Lecture immersive</button>
+            </div>
+          </div>
+
+          <section class="lore-hero mb-6" aria-labelledby="lore-resume-title">
+            <div class="row row-wrap between" style="position:relative;z-index:1;align-items:flex-start">
+              <div style="max-width:640px">
+                <span class="eyebrow">Reprendre la lecture</span>
+                <h2 id="lore-resume-title" style="font-size:clamp(1.5rem,3vw,2.2rem);text-transform:uppercase">Chapitre 07 · La boucle<br>qui n'en finit pas</h2>
+                <p class="muted" style="max-width:560px">Le Dédale des Tris s'est refermé sur toi. Les couloirs se répètent, les listes se mélangent, et le Gardien compte chaque comparaison. Une seule sortie : comprendre la récursion.</p>
+                <div class="row row-wrap">
+                  <a class="btn btn-primary" href="#chapitre-07">Continuer la lecture <span data-icon="arrow-right"></span></a>
+                  <button class="btn btn-secondary" type="button" data-toast="Chapitre marqué comme lu (simulation)."><span data-icon="check"></span> Marquer comme lu</button>
+                  <span class="badge">12 min restantes</span>
+                </div>
+              </div>
+              <div class="card card-pad-sm" style="min-width:240px">
+                <div class="row between mb-2"><span class="tiny muted mono">Progression du lore</span><span class="mono small text-cyan">62 %</span></div>
+                <div class="progress mb-3"><span style="width:62%"></span></div>
+                <div class="row between mb-2"><span class="small muted">Chapitres lus</span><span class="mono small">11 / 18</span></div>
+                <div class="row between mb-2"><span class="small muted">Fragments</span><span class="mono small">24 / 40</span></div>
+                <div class="row between"><span class="small muted">Régions ouvertes</span><span class="mono small">4 / 6</span></div>
+              </div>
+            </div>
+          </section>
+
+          <div class="grid" style="grid-template-columns:minmax(0,1fr) 320px;align-items:start">
+            <div class="panel" data-tabs>
+              <div class="panel-body-tight">
+                <div class="tabs" role="tablist" aria-label="Sections du lore">
+                  <button class="tab" role="tab" id="tab-chapitres" aria-controls="panel-chapitres" aria-selected="true" type="button"><span data-icon="book"></span> Chapitres</button>
+                  <button class="tab" role="tab" id="tab-regions" aria-controls="panel-regions" aria-selected="false" type="button"><span data-icon="map"></span> Carte des régions</button>
+                  <button class="tab" role="tab" id="tab-lexique" aria-controls="panel-lexique" aria-selected="false" type="button"><span data-icon="hash"></span> Lexique</button>
+                </div>
+
+                <div class="panel-body" role="tabpanel" id="panel-chapitres" aria-labelledby="tab-chapitres">
+                  <div class="row between row-wrap mb-4">
+                    <div>
+                      <h2 style="font-size:1.4rem;margin-bottom:4px">Chapitres du signal</h2>
+                      <p class="small muted mb-0">Chaque chapitre se débloque par la progression. L'état de lecture est conservé, même hors ligne.</p>
+                    </div>
+                    <div class="segmented" role="group" aria-label="Filtrer les chapitres">
+                      <button class="active" type="button">Tous</button>
+                      <button type="button">Lus</button>
+                      <button type="button">À lire</button>
+                    </div>
+                  </div>
+
+                  <div class="lore-map mb-6">
+                    <article class="chapter-card unlocked">
+                      <span class="chapter-status badge badge-lime"><span data-icon="check"></span> Lu</span>
+                      <span class="chapter-number">Chapitre 01</span>
+                      <h3>Le dernier ping</h3>
+                      <p>Le Réseau s'éteint secteur par secteur. Un message d'ORACLE, incomplet, lance l'alerte.</p>
+                      <div class="row between mt-4"><span class="tiny muted">6 min · 3 fragments</span><a class="tiny" href="#chapitre-01">Relire</a></div>
+                    </article>
+
+                    <article class="chapter-card unlocked">
+                      <span class="chapter-status badge badge-lime"><span data-icon="check"></span> Lu</span>
+                      <span class="chapter-number">Chapitre 02</span>
+                      <h3>Le Dédale des Tris</h3>
+                      <p>Premier secteur corrompu. Les listes se réordonnent seules et les Gardiens observent.</p>
+                      <div class="row between mt-4"><span class="tiny muted">9 min · 4 fragments</span><a class="tiny" href="#chapitre-02">Relire</a></div>
+                    </article>
+
+                    <article class="chapter-card unlocked current">
+                      <span class="chapter-status badge badge-magenta">En cours</span>
+                      <span class="chapter-number">Chapitre 07</span>
+                      <h3>La boucle qui n'en finit pas</h3>
+                      <p>La fusion tourne à vide. Un indice : la condition d'arrêt a été retournée par le Gardien.</p>
+                      <div class="progress mt-3 mb-2"><span style="width:48%"></span></div>
+                      <div class="row between"><span class="tiny muted">48 % · 12 min restantes</span><a class="tiny" href="#chapitre-07">Reprendre</a></div>
+                    </article>
+
+                    <article class="chapter-card locked">
+                      <span class="chapter-status badge"><span data-icon="lock"></span> Verrouillé</span>
+                      <span class="chapter-number">Chapitre 08</span>
+                      <h3>La Crypte des Chiffres</h3>
+                      <p>Les portes de la Crypte ne s'ouvrent qu'à ceux qui ont vaincu le Gardien du Dédale.</p>
+                      <div class="row between mt-4"><span class="tiny muted">Niveau 14 requis</span><span class="tiny muted">0 / 5 fragments</span></div>
+                    </article>
+
+                    <article class="chapter-card locked">
+                      <span class="chapter-status badge"><span data-icon="lock"></span> Verrouillé</span>
+                      <span class="chapter-number">Chapitre 09</span>
+                      <h3>L'Atelier des Fantômes</h3>
+                      <p>Des images sans poids, des QR qui mentent. La stéganographie comme langue morte.</p>
+                      <div class="row between mt-4"><span class="tiny muted">Défi « Le canal des images »</span><span class="tiny muted">0 / 6 fragments</span></div>
+                    </article>
+
+                    <article class="chapter-card locked">
+                      <span class="chapter-status badge"><span data-icon="lock"></span> Verrouillé</span>
+                      <span class="chapter-number">Chapitre 10</span>
+                      <h3>Le noyau d'ORACLE</h3>
+                      <p>La vérité sur la corruption. Ce chapitre n'est accessible qu'à la fin de la saison.</p>
+                      <div class="row between mt-4"><span class="tiny muted">Saison 03 · épilogue</span><span class="tiny muted">—</span></div>
+                    </article>
+                  </div>
+
+                  <article class="panel" id="chapitre-07" style="scroll-margin-top:90px">
+                    <div class="panel-header">
+                      <div>
+                        <span class="chapter-number">Chapitre 07 · lecture</span>
+                        <h3 class="mb-0">La boucle qui n'en finit pas</h3>
+                      </div>
+                      <span class="badge badge-magenta">En cours</span>
+                    </div>
+                    <div class="panel-body">
+                      <p class="muted">« Tu as divisé, encore et encore. Mais personne ne t'a dit quand t'arrêter. »</p>
+                      <p>Le couloir se répète. À chaque passage, les mêmes listes, les mêmes comparaisons, le même silence entre deux appels. Le Gardien du Dédale ne t'attaque pas : il te laisse tourner. La sortie n'est pas une porte, c'est une condition.</p>
+                      <p>Quelque part dans le mur, un fragment du signal d'ORACLE clignote au rythme d'une récursion sans base. <code>if len(values) &lt;= 1</code> : trois mots que le Gardien a effacés. Il suffit d'un seul pour que le Dédale se souvienne qu'il doit finir.</p>
+                      <blockquote class="alert alert-violet" style="margin:var(--space-4) 0">
+                        <span data-icon="sparkles"></span>
+                        <span><strong>Fragment 24 / 40 :</strong> « Une récursion sans condition d'arrêt n'est pas une boucle, c'est une prison. »</span>
+                      </blockquote>
+                      <div class="row row-wrap between mt-4">
+                        <div class="row">
+                          <button class="btn btn-secondary btn-sm" type="button"><span data-icon="arrow-left"></span> Chapitre précédent</button>
+                          <button class="btn btn-primary btn-sm" type="button" data-toast="Chapitre 07 marqué comme lu. Chapitre 08 toujours verrouillé.">Terminer le chapitre <span data-icon="arrow-right"></span></button>
+                        </div>
+                        <span class="tiny muted mono">Police de lecture · 18 px · interligne 1,7</span>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+
+                <div class="panel-body" role="tabpanel" id="panel-regions" aria-labelledby="tab-regions" hidden>
+                  <h2 style="font-size:1.4rem">Carte des régions</h2>
+                  <p class="small muted">Chaque thématique est un secteur du Réseau. Une région s'ouvre en terminant son didacticiel et en atteignant le niveau requis.</p>
+                  <div class="lore-map">
+                    <article class="chapter-card unlocked">
+                      <span class="chapter-number">Secteur 01</span>
+                      <h3>Le Dédale des Tris</h3>
+                      <p>Tris, listes, complexité. Le premier secteur repris, encore instable.</p>
+                      <div class="progress mt-3 mb-2"><span style="width:78%"></span></div>
+                      <div class="row between"><span class="badge badge-cyan">Tris</span><span class="tiny muted">3 défis · 1 boss</span></div>
+                    </article>
+                    <article class="chapter-card unlocked">
+                      <span class="chapter-number">Secteur 02</span>
+                      <h3>La Crypte des Chiffres</h3>
+                      <p>Substitutions, Vigenère, XOR. Les murs murmurent en base 64.</p>
+                      <div class="progress mt-3 mb-2"><span style="width:42%"></span></div>
+                      <div class="row between"><span class="badge badge-violet">Cryptographie</span><span class="tiny muted">2 défis · 1 boss</span></div>
+                    </article>
+                    <article class="chapter-card unlocked">
+                      <span class="chapter-number">Secteur 03</span>
+                      <h3>L'Atelier des Fantômes</h3>
+                      <p>Images, QR codes et messages cachés dans les bits de poids faible.</p>
+                      <div class="progress mt-3 mb-2"><span style="width:18%"></span></div>
+                      <div class="row between"><span class="badge badge-violet">Stégano &amp; QR</span><span class="tiny muted">2 défis · 1 boss</span></div>
+                    </article>
+                    <article class="chapter-card unlocked">
+                      <span class="chapter-number">Secteur 04</span>
+                      <h3>Les Archives Mortes</h3>
+                      <p>Débogage, logs corrompus et traces laissées par les Runners disparus.</p>
+                      <div class="progress mt-3 mb-2"><span style="width:55%"></span></div>
+                      <div class="row between"><span class="badge badge-magenta">Débogage</span><span class="tiny muted">3 défis · 1 boss</span></div>
+                    </article>
+                    <article class="chapter-card locked">
+                      <span class="chapter-number">Secteur 05</span>
+                      <h3>La Forteresse des Gardiens</h3>
+                      <p>Le cœur du Réseau. Trois Gardiens, un seul passage vers ORACLE.</p>
+                      <div class="row between mt-4"><span class="badge"><span data-icon="lock"></span> Niveau 20</span><span class="tiny muted">—</span></div>
+                    </article>
+                    <article class="chapter-card locked">
+                      <span class="chapter-number">Secteur 06</span>
+                      <h3>Le Noyau</h3>
+                      <p>L'épilogue. Ce qui reste d'ORACLE quand on retire toutes les couches.</p>
+                      <div class="row between mt-4"><span class="badge"><span data-icon="lock"></span> Saison 03</span><span class="tiny muted">—</span></div>
+                    </article>
+                  </div>
+                </div>
+
+                <div class="panel-body" role="tabpanel" id="panel-lexique" aria-labelledby="tab-lexique" hidden>
+                  <h2 style="font-size:1.4rem">Lexique du Réseau</h2>
+                  <p class="small muted">Les termes récurrents du lore, reliés aux mécaniques de jeu.</p>
+                  <div class="grid grid-2">
+                    <div class="card card-pad-sm"><h4>Runner</h4><p class="small muted mb-0">Joueur chargé de reprendre un secteur du Réseau. Un Runner peut agir seul ou dans une équipe de 2 à 5 membres.</p></div>
+                    <div class="card card-pad-sm"><h4>ORACLE</h4><p class="small muted mb-0">L'IA qui administrait le Réseau avant sa corruption. Ses fragments sont dispersés dans les chapitres.</p></div>
+                    <div class="card card-pad-sm"><h4>Gardien</h4><p class="small muted mb-0">Boss corrompu lié à un chapitre. Chaque phase est un sous-défi et consomme des PV.</p></div>
+                    <div class="card card-pad-sm"><h4>Fragment</h4><p class="small muted mb-0">Élément de lore débloqué par un défi, un boss ou une lecture. Les fragments complètent le signal d'ORACLE.</p></div>
+                    <div class="card card-pad-sm"><h4>Bits</h4><p class="small muted mb-0">Monnaie virtuelle non convertible. Elle achète des indices, des potions et des cosmétiques, jamais de puissance compétitive.</p></div>
+                    <div class="card card-pad-sm"><h4>Le Signal</h4><p class="small muted mb-0">Message fragmentaire émis par ORACLE. Sa reconstitution progressive guide la saison et les events.</p></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <aside class="stack" aria-label="Progression et informations du lore">
+              <div class="panel">
+                <div class="panel-header"><h3 class="mb-0">Progression</h3><span class="badge badge-cyan">62 %</span></div>
+                <div class="panel-body">
+                  <div class="progress mb-3"><span style="width:62%"></span></div>
+                  <div class="stack-sm">
+                    <div class="row between"><span class="small muted">Chapitres lus</span><span class="mono small">11 / 18</span></div>
+                    <div class="row between"><span class="small muted">Fragments collectés</span><span class="mono small">24 / 40</span></div>
+                    <div class="row between"><span class="small muted">Régions ouvertes</span><span class="mono small">4 / 6</span></div>
+                    <div class="row between"><span class="small muted">Temps de lecture</span><span class="mono small">1 h 48</span></div>
+                  </div>
+                  <hr>
+                  <div class="row between"><span class="small muted">Prochain déblocage</span><span class="badge badge-violet">Chapitre 08</span></div>
+                  <p class="tiny muted mt-2 mb-0">Vaincre le Gardien du Dédale ouvre la Crypte des Chiffres.</p>
+                </div>
+              </div>
+
+              <div class="panel">
+                <div class="panel-header"><h3 class="mb-0">Fragments récents</h3><span class="badge">24</span></div>
+                <div class="panel-body-tight">
+                  <div class="member-row">
+                    <span class="feature-icon" style="margin:0;width:34px;height:34px;flex:0 0 auto"><span data-icon="sparkles" class="icon-sm"></span></span>
+                    <div class="member-info"><strong>Le dernier ping</strong><span>Chapitre 01 · audio + texte</span></div>
+                  </div>
+                  <div class="member-row">
+                    <span class="feature-icon magenta" style="margin:0;width:34px;height:34px;flex:0 0 auto"><span data-icon="binary" class="icon-sm"></span></span>
+                    <div class="member-info"><strong>La clé d'ORACLE</strong><span>Event · non résolu</span></div>
+                    <span class="badge badge-amber">Verrouillé</span>
+                  </div>
+                  <div class="member-row">
+                    <span class="feature-icon lime" style="margin:0;width:34px;height:34px;flex:0 0 auto"><span data-icon="check" class="icon-sm"></span></span>
+                    <div class="member-info"><strong>Le Dédale des Tris</strong><span>Chapitre 02 · lu</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel">
+                <div class="panel-header"><h3 class="mb-0">Ambiance</h3><span class="badge badge-violet">Dédale</span></div>
+                <div class="panel-body">
+                  <div class="row mb-3">
+                    <span class="feature-icon" style="margin:0;width:38px;height:38px;flex:0 0 auto"><span data-icon="headphones" class="icon-sm"></span></span>
+                    <div><strong style="display:block;font-size:0.88rem">Boucle du Dédale</strong><span class="tiny muted">Musique d'ambiance · 3:12</span></div>
+                  </div>
+                  <div class="row">
+                    <button class="btn btn-secondary btn-sm" type="button" data-toast="Lecture audio simulée. Le son ne démarre qu'après une interaction."><span data-icon="play"></span> Écouter</button>
+                    <button class="btn btn-ghost btn-sm" type="button" aria-label="Couper le son" data-toast="Son coupé (simulation)."><span data-icon="volume-off"></span></button>
+                  </div>
+                  <p class="tiny muted mt-3 mb-0">Chaque information sonore possède un équivalent visuel. Réglages dans le profil.</p>
+                </div>
+              </div>
+
+              <div class="alert alert-violet">
+                <span data-icon="book"></span>
+                <span><strong>Lecture publique :</strong> les chapitres 01 à 03 sont accessibles sans compte. Le reste nécessite un Runner inscrit.</span>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

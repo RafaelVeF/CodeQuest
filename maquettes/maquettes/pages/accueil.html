@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeQuest — Apprends, code, reprends le Réseau</title>
+  <meta name="description" content="CodeQuest, plateforme de défis informatiques : algorithmique, débogage, cryptographie, stéganographie et QR codes.">
+  <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body data-root="../" data-page="accueil" data-layout="public" data-title="Accueil">
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <header class="topbar" data-topbar></header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <span class="eyebrow">Saison 03 · Le Réseau fracturé</span>
+            <h1 class="hero-title">Le Réseau est corrompu.<br><span class="gradient">Reprends le contrôle.</span></h1>
+            <p class="hero-sub">Deviens un Runner. Apprends l'algorithmique, le débogage et la cryptographie, puis affronte les Gardiens de ORACLE. Seul ou en équipe, chaque défi repousse les limites du Réseau.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary btn-lg" href="inscription.html">Commencer l'initiation <span data-icon="arrow-right"></span></a>
+              <a class="btn btn-secondary btn-lg" href="classements.html">Voir le classement public</a>
+            </div>
+            <div class="hero-stats">
+              <div class="hero-stat"><strong>1 248</strong><span>Runners actifs</span></div>
+              <div class="hero-stat"><strong>24</strong><span>Défis ouverts</span></div>
+              <div class="hero-stat"><strong>6</strong><span>Régions du Réseau</span></div>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="hero-orbit" aria-hidden="true"></div>
+            <div class="terminal scanlines" style="position:relative;z-index:1">
+              <div class="terminal-bar">
+                <span class="terminal-dots"><span></span><span></span><span></span></span>
+                <span class="terminal-title">oracle://secteur-07 / diagnostic</span>
+                <span class="badge badge-red" style="margin-left:auto">Corrompu</span>
+              </div>
+              <div class="terminal-body">
+                <div class="terminal-line"><span class="terminal-prompt">$</span><span class="terminal-cmd">codequest scan --region dedale</span></div>
+                <div class="terminal-line"><span class="terminal-dim">› Analyse des nœuds…</span></div>
+                <div class="terminal-line"><span class="terminal-warn">!</span><span>3 Gardiens détectés · intégrité 42 %</span></div>
+                <div class="terminal-line"><span class="terminal-prompt">$</span><span class="terminal-cmd">codequest run sort_list</span></div>
+                <div class="terminal-line"><span class="terminal-ok">✓</span><span>5/5 tests passés · 320 pts</span></div>
+                <div class="terminal-line"><span class="terminal-ok">✓</span><span>+120 Bits · badge « Premier tri »</span></div>
+                <div class="terminal-line mt-3"><span class="terminal-prompt">$</span><span class="terminal-cmd">codequest next</span><span class="terminal-cursor"></span></div>
+                <div class="terminal-line"><span class="terminal-dim">→ Crypte des Chiffres · difficulté 3/5</span></div>
+              </div>
+            </div>
+            <div class="card card-pad-sm" style="position:absolute;right:-10px;bottom:-18px;z-index:2;width:230px;box-shadow:var(--shadow)">
+              <div class="row between mb-2"><span class="badge badge-lime">Défi réussi</span><span class="mono tiny muted">+320</span></div>
+              <strong style="display:block;font-size:0.9rem">Tri fusion optimisé</strong>
+              <div class="progress mt-3"><span style="width:100%"></span></div>
+              <p class="tiny muted mb-0 mt-2">Temps CPU : 18 ms · rang 14</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">La boucle CodeQuest</span>
+            <h2>Apprendre, éprouver, progresser</h2>
+            <p>Chaque notion est d'abord enseignée, puis mise à l'épreuve. Le score récompense la correction et la performance, jamais le paiement.</p>
+          </div>
+          <a class="btn btn-ghost" href="didacticiel.html">Voir un didacticiel <span data-icon="arrow-right"></span></a>
+        </div>
+        <div class="grid grid-4">
+          <div class="feature-card">
+            <span class="feature-icon"><span data-icon="book"></span></span>
+            <span class="badge badge-cyan mb-3">01 · Apprendre</span>
+            <h3>Didacticiels courts</h3>
+            <p class="small muted mb-0">Leçon, exemple interactif et mini-quiz. Un cours obligatoire avant le premier défi de la notion, ou test de positionnement.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon magenta"><span data-icon="code"></span></span>
+            <span class="badge badge-magenta mb-3">02 · Coder</span>
+            <h3>Défis exécutés</h3>
+            <p class="small muted mb-0">Éditeur, tests visibles et cachés, bac à sable. Le temps CPU médian départage les solutions correctes.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon lime"><span data-icon="trophy"></span></span>
+            <span class="badge badge-lime mb-3">03 · Progresser</span>
+            <h3>Scores &amp; classements</h3>
+            <p class="small muted mb-0">XP, niveaux, badges, Bits et classements joueurs, équipes, thèmes, saisons et events.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon violet"><span data-icon="skull"></span></span>
+            <span class="badge badge-violet mb-3">04 · Affronter</span>
+            <h3>Boss &amp; Gardiens</h3>
+            <p class="small muted mb-0">Des boss multi-phases, des PV partagés en équipe et des récompenses qui racontent le lore.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Cartographie</span>
+            <h2>Six régions, six façons de penser</h2>
+            <p>Chaque thématique est une région du Réseau. Les prérequis forment un arbre de compétences : un défi verrouillé indique toujours ce qui manque.</p>
+          </div>
+          <a class="btn btn-ghost" href="lore.html">Explorer le lore <span data-icon="arrow-right"></span></a>
+        </div>
+        <div class="grid grid-3">
+          <a class="region-card" href="defis.html">
+            <div class="region-icon"><span data-icon="sort" class="icon-lg"></span></div>
+            <h3>Le Dédale des Tris</h3>
+            <p>Algorithmes de tri, complexité, stabilité, structures et grands volumes.</p>
+            <div class="region-meta"><span>8 défis · 1 boss</span><span class="text-cyan">Difficulté 1–5</span></div>
+          </a>
+          <a class="region-card magenta" href="defis.html">
+            <div class="region-icon"><span data-icon="key" class="icon-lg"></span></div>
+            <h3>La Crypte des Chiffres</h3>
+            <p>César, Vigenère, XOR, substitutions et chiffrements maison du lore.</p>
+            <div class="region-meta"><span>5 défis · 1 boss</span><span class="text-magenta">Instances par seed</span></div>
+          </a>
+          <a class="region-card lime" href="defis.html">
+            <div class="region-icon"><span data-icon="bug" class="icon-lg"></span></div>
+            <h3>L'Atelier des Fantômes</h3>
+            <p>Débogage, cas limites, fuites d'état et corrections sous contrainte.</p>
+            <div class="region-meta"><span>4 défis · 1 boss</span><span class="text-lime">Correction + essais</span></div>
+          </a>
+          <a class="region-card violet" href="defis.html">
+            <div class="region-icon"><span data-icon="image" class="icon-lg"></span></div>
+            <h3>Le Puits des Images</h3>
+            <p>Stéganographie LSB, canaux de couleur, métadonnées et texte quasi invisible.</p>
+            <div class="region-meta"><span>3 défis · atelier</span><span class="text-violet">Indices progressifs</span></div>
+          </a>
+          <a class="region-card" href="defis.html">
+            <div class="region-icon"><span data-icon="qr-code" class="icon-lg"></span></div>
+            <h3>Le Sanctuaire des QR</h3>
+            <p>QR caché, fragmenté, faible contraste ou dégradé. Variante atelier de génération.</p>
+            <div class="region-meta"><span>2 défis · atelier</span><span class="text-cyan">Décodage</span></div>
+          </a>
+          <a class="region-card magenta" href="boss.html">
+            <div class="region-icon"><span data-icon="skull" class="icon-lg"></span></div>
+            <h3>La Forteresse des Gardiens</h3>
+            <p>Boss multi-phases, PV, KO et récompenses majeures liées aux chapitres.</p>
+            <div class="region-meta"><span>3 boss · 100 PV</span><span class="text-magenta">Équipe ou solo</span></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">À la une</span>
+            <h2>Défis ouverts cette semaine</h2>
+            <p>Un aperçu du catalogue. Les prérequis, la difficulté et le statut sont visibles avant d'ouvrir un défi.</p>
+          </div>
+          <a class="btn btn-ghost" href="defis.html">Tout le catalogue <span data-icon="arrow-right"></span></a>
+        </div>
+        <div class="grid grid-3">
+          <article class="challenge-card">
+            <div class="challenge-top">
+              <div>
+                <div class="row row-wrap mb-2"><span class="badge badge-cyan">Tris</span><span class="badge badge-lime">Disponible</span></div>
+                <h3 class="challenge-title"><a href="defi-tri.html">Tri fusion sous pression</a></h3>
+              </div>
+              <span class="challenge-points">300 pts</span>
+            </div>
+            <p class="challenge-desc">Implémente un tri stable en O(n log n) et passe les jeux de tests limites.</p>
+            <div class="challenge-meta">
+              <span class="difficulty d3"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span>
+              <span class="tiny muted mono">Difficulté 3/5</span>
+            </div>
+            <div class="challenge-foot"><span><span data-icon="clock"></span> 25 min</span><span>Python · JS</span></div>
+            <div class="challenge-progress"><span style="width:100%"></span></div>
+          </article>
+          <article class="challenge-card">
+            <div class="challenge-top">
+              <div>
+                <div class="row row-wrap mb-2"><span class="badge badge-violet">Cryptographie</span><span class="badge badge-amber">Event</span></div>
+                <h3 class="challenge-title"><a href="defi-decryptage.html">Le message de la Crypte</a></h3>
+              </div>
+              <span class="challenge-points">450 pts</span>
+            </div>
+            <p class="challenge-desc">Déchiffre un message Vigenère généré pour ton équipe. Un seul essai.</p>
+            <div class="challenge-meta">
+              <span class="difficulty d4"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+              <span class="tiny muted mono">Difficulté 4/5</span>
+            </div>
+            <div class="challenge-foot"><span><span data-icon="clock"></span> 45 min</span><span>Équipe · 1 essai</span></div>
+            <div class="challenge-progress"><span style="width:42%"></span></div>
+          </article>
+          <article class="challenge-card">
+            <div class="challenge-top">
+              <div>
+                <div class="row row-wrap mb-2"><span class="badge badge-magenta">Boss</span><span class="badge badge-red">Verrouillé</span></div>
+                <h3 class="challenge-title"><a href="boss.html">Gardien du Dédale</a></h3>
+              </div>
+              <span class="challenge-points">1 000 pts</span>
+            </div>
+            <p class="challenge-desc">Trois phases : tri, débogage et optimisation. PV partagés en équipe.</p>
+            <div class="challenge-meta">
+              <span class="difficulty d5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
+              <span class="tiny muted mono">Difficulté 5/5</span>
+            </div>
+            <div class="challenge-foot"><span><span data-icon="lock"></span> Termine « Tri fusion »</span><span>Boss</span></div>
+            <div class="challenge-progress"><span style="width:0%"></span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container">
+        <div class="grid grid-2">
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <span class="eyebrow mb-0">Classement public</span>
+                <h3 class="mb-0">Les Runners en tête</h3>
+              </div>
+              <a class="btn btn-sm btn-ghost" href="classements.html">Tout voir <span data-icon="arrow-right"></span></a>
+            </div>
+            <div class="panel-body" style="padding:0">
+              <div class="table-wrap" style="border:0;border-radius:0">
+                <table>
+                  <thead><tr><th>Rang</th><th>Joueur</th><th>Score</th><th>Résolus</th></tr></thead>
+                  <tbody>
+                    <tr><td><span class="rank rank-1">1</span></td><td><div class="player-cell"><span class="avatar">VX</span><span>Vortex</span></div></td><td class="mono text-cyan">12 480</td><td>42</td></tr>
+                    <tr><td><span class="rank rank-2">2</span></td><td><div class="player-cell"><span class="avatar">NY</span><span>Nyx</span></div></td><td class="mono text-cyan">11 920</td><td>39</td></tr>
+                    <tr><td><span class="rank rank-3">3</span></td><td><div class="player-cell"><span class="avatar">NR</span><span>Nova_Runner</span></div></td><td class="mono text-cyan">10 840</td><td>37</td></tr>
+                    <tr><td><span class="rank">4</span></td><td><div class="player-cell"><span class="avatar">K0</span><span>Kernel_0</span></div></td><td class="mono text-cyan">9 760</td><td>35</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="lore-hero" style="display:flex;flex-direction:column;justify-content:space-between">
+            <div>
+              <span class="eyebrow">Chapitre 03 · Le signal</span>
+              <h2>ORACLE n'est pas morte. Elle observe.</h2>
+              <p>Les Runners ont repris le secteur 07, mais un signal persiste dans la Crypte des Chiffres. Chaque Gardien vaincu révèle un fragment de la vérité. Le prochain chapitre se débloque au niveau 15.</p>
+            </div>
+            <div class="row row-wrap mt-4">
+              <a class="btn btn-primary" href="lore.html">Lire le lore <span data-icon="arrow-right"></span></a>
+              <span class="badge badge-violet"><span data-icon="lock"></span> Chapitre 04 verrouillé</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container">
+        <div class="card card-pad" style="background:var(--gradient-soft);border-color:var(--border-strong)">
+          <div class="row row-wrap between">
+            <div style="max-width:640px">
+              <span class="eyebrow">Prêt à rejoindre le Réseau ?</span>
+              <h2 class="mb-2">Ton premier défi t'attend.</h2>
+              <p class="mb-0">Crée ton compte, suis le didacticiel « Tris et listes », puis soumets ta première solution. Aucune carte bancaire, aucune installation : le bac à sable s'occupe du reste.</p>
+            </div>
+            <div class="row row-wrap">
+              <a class="btn btn-primary btn-lg" href="inscription.html">Créer mon compte</a>
+              <a class="btn btn-secondary btn-lg" href="connexion.html">Se connecter</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" data-footer></footer>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

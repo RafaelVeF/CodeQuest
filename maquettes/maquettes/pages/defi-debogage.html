@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeQuest — Défi : l'indice fantôme</title>
+  <meta name="description" content="Défi de débogage CodeQuest : corriger un bug d'indice sans dépasser trois lignes modifiées.">
+  <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body data-root="../" data-page="defis" data-layout="app" data-title="Défi · Débogage">
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <div class="app-layout">
+    <aside class="sidebar" data-sidebar></aside>
+    <div class="app-main">
+      <header class="app-topbar" data-topbar></header>
+
+      <main id="main" class="page-tight" data-workspace>
+        <div class="container-wide">
+          <div class="row row-wrap between mb-4">
+            <div>
+              <nav class="breadcrumb mb-2" aria-label="Fil d'Ariane">
+                <a href="defis.html">Défis</a><span class="sep">/</span>
+                <a href="defis.html">Débogage</a><span class="sep">/</span>
+                <span class="current">L'indice fantôme</span>
+              </nav>
+              <div class="row row-wrap">
+                <h1 style="font-size:clamp(1.4rem,2.6vw,2rem);margin:0">L'indice fantôme</h1>
+                <span class="badge badge-magenta">Difficulté 2/5</span>
+                <span class="badge">1 bug</span>
+                <span class="badge badge-amber">≤ 3 lignes modifiées</span>
+              </div>
+            </div>
+            <div class="row row-wrap">
+              <span class="timer"><span data-icon="clock"></span> <span data-countdown="842">00:14:02</span></span>
+              <span class="badge">Essais : 3 / ∞</span>
+              <a class="btn btn-sm btn-secondary" href="defis.html"><span data-icon="arrow-left"></span> Quitter</a>
+            </div>
+          </div>
+
+          <div class="workspace">
+            <section class="panel statement" aria-label="Énoncé du défi">
+              <div class="panel-header">
+                <div><span class="eyebrow mb-0">Énoncé</span><h3 class="mb-0">Corrige, sans réécrire</h3></div>
+                <span class="badge badge-magenta">200 pts</span>
+              </div>
+              <div class="panel-body">
+                <div class="statement-body">
+                  <p>La fonction <code>sum_even_pairs(values)</code> doit renvoyer la somme des valeurs situées à des indices pairs. Elle échoue sur les listes vides et sur certaines listes de longueur impaire.</p>
+
+                  <h3>Règles</h3>
+                  <ul>
+                    <li>Le bug est unique : une erreur d'indice.</li>
+                    <li>Tu peux modifier <strong>au maximum 3 lignes</strong> (ajout, suppression ou remplacement).</li>
+                    <li>L'interface publique et les tests ne doivent pas être modifiés.</li>
+                    <li>Les essais sont illimités ; le score baisse avec le nombre d'essais.</li>
+                  </ul>
+
+                  <h3>Score</h3>
+                  <div class="stack-sm">
+                    <div class="row between"><span class="small muted">Correction (tous les tests)</span><span class="mono small">150 pts</span></div>
+                    <div class="row between"><span class="small muted">Bonus ≤ 1 ligne modifiée</span><span class="mono small text-lime">+30 pts</span></div>
+                    <div class="row between"><span class="small muted">Bonus rapidité</span><span class="mono small text-cyan">+20 pts</span></div>
+                    <div class="row between"><span class="small muted">Pénalité par essai supplémentaire</span><span class="mono small text-red">−10 pts</span></div>
+                  </div>
+
+                  <h3>Indice gratuit</h3>
+                  <div class="alert alert-cyan">
+                    <span data-icon="info"></span>
+                    <span>Regarde la borne supérieure de la boucle. Que se passe-t-il quand <code>len(values)</code> est impair ?</span>
+                  </div>
+
+                  <h3>Tests visibles</h3>
+                  <div class="test-list">
+                    <div class="test-item pass"><span class="icon"><span data-icon="check-circle"></span></span><span class="test-name">[1, 2, 3, 4] → 4</span><span class="test-time">ok</span></div>
+                    <div class="test-item fail"><span class="icon"><span data-icon="x-circle"></span></span><span class="test-name">[5] → 5</span><span class="test-time">IndexError</span></div>
+                    <div class="test-item pass"><span class="icon"><span data-icon="check-circle"></span></span><span class="test-name">[] → 0</span><span class="test-time">ok</span></div>
+                    <div class="test-item fail"><span class="icon"><span data-icon="x-circle"></span></span><span class="test-name">[2, 9, 4, 7, 6] → 12</span><span class="test-time">IndexError</span></div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="stack" aria-label="Éditeur et résultats">
+              <div class="panel">
+                <div class="panel-header">
+                  <div class="row">
+                    <span class="badge badge-magenta"><span data-icon="bug"></span> buggy.py</span>
+                    <span class="badge badge-amber"><span data-icon="edit"></span> <span id="line-budget">0 / 3 lignes</span></span>
+                  </div>
+                  <div class="row">
+                    <button class="btn btn-sm btn-ghost" type="button" data-toast="Diff simulé : aucune modification pour l'instant."><span data-icon="git-branch"></span> Voir le diff</button>
+                  </div>
+                </div>
+                <div class="code-shell" data-editor>
+                  <div class="code-toolbar">
+                    <select class="select" aria-label="Langage"><option>Python 3.12</option><option>JavaScript (Node 22)</option></select>
+                    <span class="spacer"></span>
+                    <span class="tiny muted mono">Mode débogage · diff limité</span>
+                  </div>
+                  <div class="editor">
+                    <div class="line-numbers" data-line-numbers aria-hidden="true">1</div>
+                    <textarea class="code-area" data-code-input aria-label="Éditeur de code" spellcheck="false">def sum_even_pairs(values):
+    """Somme des valeurs aux indices pairs."""
+    total = 0
+    i = 0
+    # BUG : la borne dépasse la taille réelle de la liste
+    while i <= len(values):
+        total += values[i]
+        i += 2
+    return total
+
+
+# Ne pas modifier les tests ci-dessous
+assert sum_even_pairs([1, 2, 3, 4]) == 4
+assert sum_even_pairs([]) == 0
+assert sum_even_pairs([5]) == 5
+</textarea>
+                  </div>
+                  <div class="console" data-console aria-live="polite">
+                    <div class="console-line"><span class="console-time">[debug]</span><span class="terminal-err">✗ 2 tests échouent : IndexError sur [5] et [2, 9, 4, 7, 6]</span></div>
+                    <div class="console-line"><span class="console-time">[debug]</span><span class="terminal-dim">Indice : la condition de boucle doit rester dans les bornes.</span></div>
+                  </div>
+                </div>
+                <div class="panel-footer">
+                  <div class="row row-wrap between">
+                    <div class="row">
+                      <button class="btn btn-secondary btn-sm" type="button" data-run><span data-icon="play"></span> Tester</button>
+                      <button class="btn btn-primary btn-sm" type="button" data-submit><span data-icon="send"></span> Soumettre</button>
+                    </div>
+                    <span class="tiny muted">Essais restants illimités · meilleur score conservé</span>
+                  </div>
+                </div>
+              </div>
+
+              <div id="run-result" data-run-result hidden></div>
+              <div id="submit-result" data-submit-result hidden></div>
+
+              <div class="grid grid-2">
+                <div class="panel">
+                  <div class="panel-header"><h4 class="mb-0">Contrainte de diff</h4><span class="badge badge-amber">3 max.</span></div>
+                  <div class="panel-body">
+                    <div class="meter mb-3"><span class="meter-label">Lignes</span><div class="progress amber"><span style="width:0%"></span></div><span class="mono tiny">0 / 3</span></div>
+                    <p class="small muted mb-0">Une ligne est comptée dès qu'elle diffère de la version d'origine. Les commentaires ne sont pas comptés.</p>
+                  </div>
+                </div>
+                <div class="panel">
+                  <div class="panel-header"><h4 class="mb-0">Historique des essais</h4><span class="badge">3</span></div>
+                  <div class="panel-body">
+                    <div class="stack-sm">
+                      <div class="row between"><span class="small muted">Essai 1 · il y a 4 min</span><span class="mono tiny text-red">2/4</span></div>
+                      <div class="row between"><span class="small muted">Essai 2 · il y a 2 min</span><span class="mono tiny text-red">2/4</span></div>
+                      <div class="row between"><span class="small muted">Essai 3 · à l'instant</span><span class="mono tiny text-amber">3/4</span></div>
+                    </div>
+                    <p class="tiny muted mt-3 mb-0">Seul le meilleur score est conservé. Les soumissions sont immuables.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

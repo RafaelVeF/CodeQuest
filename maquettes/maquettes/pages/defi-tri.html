@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeQuest — Défi : tri fusion sous pression</title>
+  <meta name="description" content="Espace de résolution CodeQuest : énoncé, éditeur, tests visibles et cachés, console d'exécution et soumission.">
+  <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body data-root="../" data-page="defis" data-layout="app" data-title="Défi · Tri fusion">
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <div class="app-layout">
+    <aside class="sidebar" data-sidebar></aside>
+    <div class="app-main">
+      <header class="app-topbar" data-topbar></header>
+
+      <main id="main" class="page-tight" data-workspace>
+        <div class="container-wide">
+          <div class="row row-wrap between mb-4">
+            <div>
+              <nav class="breadcrumb mb-2" aria-label="Fil d'Ariane">
+                <a href="defis.html">Défis</a><span class="sep">/</span>
+                <a href="defis.html">Tris et listes</a><span class="sep">/</span>
+                <span class="current">Tri fusion sous pression</span>
+              </nav>
+              <div class="row row-wrap">
+                <h1 style="font-size:clamp(1.4rem,2.6vw,2rem);margin:0">Tri fusion sous pression</h1>
+                <span class="badge badge-cyan">Difficulté 3/5</span>
+                <span class="badge">Python · JS</span>
+                <span class="badge badge-lime">Essais illimités</span>
+              </div>
+            </div>
+            <div class="row row-wrap">
+              <span class="timer" title="Temps écoulé depuis l'ouverture"><span data-icon="clock"></span> <span data-countdown="1512">00:25:12</span></span>
+              <button class="btn btn-sm btn-ghost" type="button" data-toast="Aide ouverte : indices, erreurs fréquentes et forum du défi."><span data-icon="info"></span> Aide</button>
+              <a class="btn btn-sm btn-secondary" href="defis.html"><span data-icon="arrow-left"></span> Quitter</a>
+            </div>
+          </div>
+
+          <div class="workspace">
+            <section class="panel statement" aria-label="Énoncé du défi">
+              <div class="panel-header">
+                <div>
+                  <span class="eyebrow mb-0">Énoncé</span>
+                  <h3 class="mb-0">Tri fusion stable</h3>
+                </div>
+                <span class="badge badge-cyan">300 + 60 pts</span>
+              </div>
+              <div class="panel-body">
+                <div class="statement-body">
+                  <p>Écris une fonction <code>merge_sort(values)</code> qui renvoie une nouvelle liste triée par ordre croissant, <strong>sans modifier la liste d'entrée</strong>. Le tri doit être <strong>stable</strong> : deux éléments égaux conservent leur ordre d'origine.</p>
+
+                  <h3>Contraintes</h3>
+                  <ul>
+                    <li><code>0 ≤ len(values) ≤ 100 000</code></li>
+                    <li>Valeurs entières entre <code>-10⁹</code> et <code>10⁹</code></li>
+                    <li>Complexité attendue : <code>O(n log n)</code></li>
+                    <li>La liste d'entrée ne doit pas être modifiée</li>
+                  </ul>
+
+                  <h3>Exemples</h3>
+                  <div class="terminal mb-4">
+                    <div class="terminal-bar"><span class="terminal-dots"><span></span><span></span><span></span></span><span class="terminal-title">exemples</span></div>
+                    <div class="terminal-body">
+                      <div class="terminal-line"><span class="terminal-prompt">›</span><span>[3, 1, 2] → [1, 2, 3]</span></div>
+                      <div class="terminal-line"><span class="terminal-prompt">›</span><span>[] → []</span></div>
+                      <div class="terminal-line"><span class="terminal-prompt">›</span><span>[2, 2, 1] → [1, 2, 2]</span></div>
+                    </div>
+                  </div>
+
+                  <h3>Barème</h3>
+                  <div class="stack-sm">
+                    <div class="meter"><span class="meter-label">Base</span><div class="progress"><span style="width:83%"></span></div><span class="mono tiny">300 pts</span></div>
+                    <div class="meter"><span class="meter-label">Perf max</span><div class="progress lime"><span style="width:100%"></span></div><span class="mono tiny">+60 pts</span></div>
+                  </div>
+                  <p class="tiny muted mt-2">Score = base + perf. Perf calculée sur le temps CPU médian de 5 exécutions, avec une tolérance de ±5 %.</p>
+
+                  <h3>Prérequis</h3>
+                  <div class="row row-wrap">
+                    <span class="badge badge-lime"><span data-icon="check"></span> Didacticiel « Tri fusion »</span>
+                    <span class="badge"><span data-icon="check"></span> Niveau 8</span>
+                  </div>
+
+                  <div class="alert alert-amber mt-4">
+                    <span data-icon="alert-triangle"></span>
+                    <span>Les tests cachés ne sont jamais envoyés au navigateur. Ils sont injectés côté runner, dans un conteneur sans réseau.</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="stack" aria-label="Espace de code et résultats">
+              <div class="panel">
+                <div class="panel-header">
+                  <div class="row">
+                    <span class="badge badge-cyan"><span data-icon="code"></span> solution.py</span>
+                    <span class="tiny muted">Bac à sable · 2 s max · 256 Mo</span>
+                  </div>
+                  <div class="row">
+                    <button class="btn btn-sm btn-ghost" type="button" data-toast="Formatage simulé."><span data-icon="wand"></span> Formater</button>
+                    <button class="btn btn-sm btn-ghost" type="button" data-toast="Code copié dans le presse-papiers."><span data-icon="copy"></span></button>
+                  </div>
+                </div>
+                <div class="code-shell" data-editor>
+                  <div class="code-toolbar">
+                    <select class="select" aria-label="Langage">
+                      <option>Python 3.12</option>
+                      <option>JavaScript (Node 22)</option>
+                      <option>Java 21</option>
+                    </select>
+                    <span class="spacer"></span>
+                    <span class="tiny muted mono">UTF-8 · LF · 4 espaces</span>
+                  </div>
+                  <div class="editor">
+                    <div class="line-numbers" data-line-numbers aria-hidden="true">1</div>
+                    <textarea class="code-area" data-code-input aria-label="Éditeur de code" spellcheck="false">def merge_sort(values):
+    """Trie une liste par fusion, sans la modifier."""
+    if len(values) <= 1:
+        return list(values)
+
+    mid = len(values) // 2
+    left = merge_sort(values[:mid])
+    right = merge_sort(values[mid:])
+    return merge(left, right)
+
+
+def merge(left, right):
+    result = []
+    i = j = 0
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+    result.extend(left[i:])
+    result.extend(right[j:])
+    return result
+</textarea>
+                  </div>
+                  <div class="console" data-console aria-live="polite">
+                    <div class="console-line"><span class="console-time">[08:41]</span><span class="terminal-dim">Prêt. Exécute le code pour lancer les tests visibles.</span></div>
+                  </div>
+                </div>
+                <div class="panel-footer">
+                  <div class="row row-wrap between">
+                    <div class="row">
+                      <button class="btn btn-secondary btn-sm" type="button" data-run><span data-icon="play"></span> Exécuter</button>
+                      <button class="btn btn-primary btn-sm" type="button" data-submit><span data-icon="send"></span> Soumettre</button>
+                    </div>
+                    <span class="tiny muted mono"><kbd>Ctrl</kbd> + <kbd>Enter</kbd> pour exécuter</span>
+                  </div>
+                </div>
+              </div>
+
+              <div id="run-result" data-run-result hidden></div>
+              <div id="submit-result" data-submit-result hidden></div>
+
+              <div class="grid grid-2">
+                <div class="panel">
+                  <div class="panel-header"><h4 class="mb-0">Tests visibles</h4><span class="badge badge-lime">5 / 5</span></div>
+                  <div class="panel-body">
+                    <div class="test-list">
+                      <div class="test-item pass" data-test>
+                        <span class="icon" data-test-icon aria-hidden="true"><span data-icon="check-circle"></span></span>
+                        <span class="test-name">liste vide</span>
+                        <span class="test-time">2 ms</span>
+                      </div>
+                      <div class="test-item pass" data-test>
+                        <span class="icon" data-test-icon aria-hidden="true"><span data-icon="check-circle"></span></span>
+                        <span class="test-name">un seul élément</span>
+                        <span class="test-time">2 ms</span>
+                      </div>
+                      <div class="test-item pass" data-test>
+                        <span class="icon" data-test-icon aria-hidden="true"><span data-icon="check-circle"></span></span>
+                        <span class="test-name">doublons stables</span>
+                        <span class="test-time">3 ms</span>
+                      </div>
+                      <div class="test-item pass" data-test>
+                        <span class="icon" data-test-icon aria-hidden="true"><span data-icon="check-circle"></span></span>
+                        <span class="test-name">ordre inverse</span>
+                        <span class="test-time">4 ms</span>
+                      </div>
+                      <div class="test-item pass" data-test>
+                        <span class="icon" data-test-icon aria-hidden="true"><span data-icon="check-circle"></span></span>
+                        <span class="test-name">10 000 éléments</span>
+                        <span class="test-time">11 ms</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel">
+                  <div class="panel-header"><h4 class="mb-0">Tests cachés</h4><span class="badge">4</span></div>
+                  <div class="panel-body">
+                    <div class="test-list">
+                      <div class="test-item"><span class="icon" aria-hidden="true"><span data-icon="lock"></span></span><span class="test-name">très grands volumes</span><span class="test-time">—</span></div>
+                      <div class="test-item"><span class="icon" aria-hidden="true"><span data-icon="lock"></span></span><span class="test-name">valeurs extrêmes</span><span class="test-time">—</span></div>
+                      <div class="test-item"><span class="icon" aria-hidden="true"><span data-icon="lock"></span></span><span class="test-name">entrée non modifiée</span><span class="test-time">—</span></div>
+                      <div class="test-item"><span class="icon" aria-hidden="true"><span data-icon="lock"></span></span><span class="test-name">stabilité avec objet</span><span class="test-time">—</span></div>
+                    </div>
+                    <p class="tiny muted mt-3 mb-0">Les résultats cachés sont révélés uniquement à la soumission officielle.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel">
+                <div class="panel-header"><h4 class="mb-0">Indices</h4><span class="badge badge-amber">Coûtent des Bits</span></div>
+                <div class="panel-body">
+                  <div class="row between row-wrap">
+                    <div>
+                      <strong style="font-size:0.9rem">Débloquer l'indice 1</strong>
+                      <p class="small muted mb-0">Rappel sur la condition d'arrêt et le découpage au milieu.</p>
+                    </div>
+                    <button class="btn btn-sm btn-secondary" type="button" data-toast="Indice débloqué (simulation). 40 Bits débités."><span data-icon="key"></span> 40 Bits</button>
+                  </div>
+                  <hr>
+                  <div class="row between row-wrap">
+                    <div>
+                      <strong style="font-size:0.9rem">Débloquer l'indice 2</strong>
+                      <p class="small muted mb-0">Comment garantir la stabilité lors de la fusion.</p>
+                    </div>
+                    <button class="btn btn-sm btn-secondary" type="button" data-toast="Indice débloqué (simulation). 80 Bits débités."><span data-icon="key"></span> 80 Bits</button>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>
