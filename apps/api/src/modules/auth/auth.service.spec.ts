@@ -103,3 +103,88 @@ describe('AuthService.register', () => {
     });
   });
 });
+
+describe('AuthService.login', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    prismaMock.session.create.mockResolvedValue({ id: 'session-1' });
+    prismaMock.user.update.mockResolvedValue(userRecord);
+  });
+
+  it('accepte un e-mail ou un pseudo insensible à la casse', async () => {
+    const passwordHash = await argon2.hash('CodeQuest2026!', { type: argon2.argon2id });
+    prismaMock.user.findFirst.mockResolvedValue({ ...userRecord, passwordHash, lockedUntil: null });
+    const service = createService();
+
+    const result = await service.login(
+      { identifier: 'DEMO_RUNNER', password: 'CodeQuest2026!' },
+      {},
+    );
+
+    expect(prismaMock.user.findFirst.mock.calls[0][0].where.OR).toEqual([
+      { email: 'demo_runner' },
+      { pseudoNormalized: 'demo_runner' },
+    ]);
+    expect(result.user.id).toBe('user-1');
+    expect(result.rememberMe).toBe(true);
+  });
+
+  it('refuse un mauvais mot de passe avec un message générique et incrémente les échecs', async () => {
+    const passwordHash = await argon2.hash('CodeQuest2026!', { type: argon2.argon2id });
+    prismaMock.user.findFirst.mockResolvedValue({
+      ...userRecord,
+      passwordHash,
+      failedLoginAttempts: 1,
+      lockedUntil: null,
+    });
+    const service = createService();
+
+    await expect(
+      service.login({ identifier: 'demo_runner', password: 'mauvais' }, {}),
+    ).rejects.toThrow('Identifiants incorrects.');
+    expect(prismaMock.user.update).toHaveBeenCalledWith({
+      where: { id: 'user-1' },
+      data: { failedLoginAttempts: 2 },
+    });
+  });
+
+  it('verrouille le compte au cinquième échec', async () => {
+    const passwordHash = await argon2.hash('CodeQuest2026!', { type: argon2.argon2id });
+    prismaMock.user.findFirst.mockResolvedValue({
+      ...userRecord,
+      passwordHash,
+      failedLoginAttempts: 4,
+      lockedUntil: null,
+    });
+    const service = createService();
+
+    await expect(
+      service.login({ identifier: 'demo_runner', password: 'mauvais' }, {}),
+    ).rejects.toThrow('Identifiants incorrects.');
+    const data = prismaMock.user.update.mock.calls[0][0].data;
+    expect(data.failedLoginAttempts).toBe(5);
+    expect(data.lockedUntil.getTime()).toBeGreaterThan(Date.now());
+  });
+
+  it('refuse un compte verrouillé, non actif ou supprimé sans vérifier le mot de passe', async () => {
+    prismaMock.user.findFirst.mockResolvedValue({
+      ...userRecord,
+      passwordHash: 'unused',
+      lockedUntil: new Date(Date.now() + 60_000),
+    });
+    const service = createService();
+    await expect(
+      service.login({ identifier: 'demo_runner', password: 'CodeQuest2026!' }, {}),
+    ).rejects.toThrow('Identifiants incorrects.');
+
+    prismaMock.user.findFirst.mockResolvedValue({
+      ...userRecord,
+      passwordHash: 'unused',
+      lockedUntil: null,
+      status: 'BANNED',
+    });
+    await expect(
+      service.login({ identifier: 'demo_runner', password: 'CodeQuest2026!' }, {}),
+    ).rejects.toThrow('Identifiants incorrects.');
+  });
+});

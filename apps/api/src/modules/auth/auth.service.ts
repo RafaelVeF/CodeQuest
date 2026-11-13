@@ -1,14 +1,18 @@
-import { ConflictException, Injectable } from '@nestjs/common';
+import { ConflictException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import type { AuthUser, SupportedLanguage, UserRole } from '@codequest/shared';
 import { PrismaService } from '../prisma/prisma.service';
 import { RegisterDto } from './dto/register.dto';
+import { LoginDto } from './dto/login.dto';
 import {
   ACCESS_TOKEN_TTL_MS,
+  INVALID_CREDENTIALS_MESSAGE,
+  LOCK_DURATION_MS,
+  MAX_LOGIN_ATTEMPTS,
   REFRESH_SHORT_TTL_MS,
   REFRESH_TTL_MS,
 } from './auth.constants';
-import { generateRefreshToken, hashPassword, hashRefreshToken } from './password';
+import { generateRefreshToken, hashPassword, hashRefreshToken, verifyPassword } from './password';
 import type { AuthResult, AuthTokens, RequestMeta } from './auth.types';
 
 @Injectable()
@@ -59,6 +63,44 @@ export class AuthService {
       throw error;
     }
     const tokens = await this.createSession(user.id, true, meta);
+    return { ...tokens, user: this.toAuthUser(user) };
+  }
+
+  async login(dto: LoginDto, meta: RequestMeta): Promise<AuthResult> {
+    const normalized = dto.identifier.toLowerCase();
+    const user = await this.prisma.user.findFirst({
+      where: { OR: [{ email: normalized }, { pseudoNormalized: normalized }] },
+      include: { roles: { include: { role: true } } },
+    });
+
+    if (
+      !user ||
+      (user.lockedUntil && user.lockedUntil > new Date()) ||
+      user.status !== 'ACTIVE' ||
+      user.deletedAt
+    ) {
+      throw new UnauthorizedException(INVALID_CREDENTIALS_MESSAGE);
+    }
+
+    const passwordValid = await verifyPassword(user.passwordHash, dto.password);
+    if (!passwordValid) {
+      const nextAttempts = (user.failedLoginAttempts ?? 0) + 1;
+      const data =
+        nextAttempts >= MAX_LOGIN_ATTEMPTS
+          ? {
+              failedLoginAttempts: MAX_LOGIN_ATTEMPTS,
+              lockedUntil: new Date(Date.now() + LOCK_DURATION_MS),
+            }
+          : { failedLoginAttempts: nextAttempts };
+      await this.prisma.user.update({ where: { id: user.id }, data });
+      throw new UnauthorizedException(INVALID_CREDENTIALS_MESSAGE);
+    }
+
+    await this.prisma.user.update({
+      where: { id: user.id },
+      data: { failedLoginAttempts: 0, lockedUntil: null, lastLoginAt: new Date() },
+    });
+    const tokens = await this.createSession(user.id, dto.remember ?? true, meta);
     return { ...tokens, user: this.toAuthUser(user) };
   }
 
