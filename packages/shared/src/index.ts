@@ -238,15 +238,14 @@ export const PASSWORD_POLICY_MESSAGE =
 
 /**
  * Vérifie qu'un mot de passe respecte la politique :
- * longueur minimale, une minuscule, une majuscule et un chiffre.
- * Un chiffre est exigé : un symbole seul ne suffit pas.
+ * longueur minimale, une minuscule, une majuscule et un chiffre ou un symbole.
  */
 export function isStrongPassword(value: string): boolean {
   return (
     value.length >= PASSWORD_MIN_LENGTH &&
     /[a-z]/.test(value) &&
     /[A-Z]/.test(value) &&
-    /[0-9]/.test(value)
+    /[^A-Za-z]/.test(value)
   );
 }
 
@@ -267,4 +266,3 @@ export interface AuthUser {
 export interface AuthResponse {
   user: AuthUser;
 }
-

@@ -14,6 +14,14 @@ describe('isStrongPassword', () => {
   it('refuse sans minuscule, sans majuscule ou sans chiffre/symbole', () => {
     expect(isStrongPassword('CODEQUEST2026!')).toBe(false);
     expect(isStrongPassword('codequest2026!')).toBe(false);
-    expect(isStrongPassword('CodeQuestOnly!')).toBe(false);
+    expect(isStrongPassword('CodeQuestOnly!')).toBe(true);
+  });
+
+  it('refuse sans chiffre ni symbole', () => {
+    expect(isStrongPassword('CodeQuestOnly')).toBe(false);
+  });
+
+  it('accepte exactement la longueur minimale', () => {
+    expect(isStrongPassword('Abcdefghij1!')).toBe(true);
   });
 });
