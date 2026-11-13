@@ -83,16 +83,13 @@ et les composants réutilisables.
 
 ## Direction artistique
 
-- **Thème** : rétro-futuriste « terminal néon », fond sombre par défaut, mode clair optionnel.
-- **Typographies** : Chakra Petch pour les titres, Inter pour le texte, JetBrains Mono pour le code
-  et les données techniques. Des polices système servent de repli.
-- **Couleurs** : cyan pour l'action et la progression, magenta pour le narratif et les événements,
-  lime pour la réussite, ambre pour l'avertissement, rouge pour le danger, violet pour le lore.
-- **Surfaces** : bleu nuit, bordures discrètes, halos réservés aux états importants.
+- **Thème** : Minimaliste sombre & sobre (« Dark Monochrome & Neutral »), fond noir/zinc profond par défaut, mode clair optionnel.
+- **Typographies** : Inter pour l'interface et les titres, JetBrains Mono pour le code et les données techniques.
+- **Couleurs** : Blanc pur pour l'action principale, accents sémantiques discrets (émeraude pour le succès, ambre pour les avertissements et Bits, rouge pour le danger et PV, bleu ciel pour le code et liens).
+- **Surfaces** : Noir profond (`#09090b`) et surfaces zinc (`#141417`, `#1b1b1f`), bordures fines nettes `1px solid rgba(255, 255, 255, 0.08)`, suppression des halos et scanlines.
 - **Iconographie** : icônes SVG au trait, jamais d'emoji comme icône structurelle.
 
-Les tokens sont des variables CSS (`--bg`, `--surface`, `--cyan`, `--space-*`, `--radius-*`,
-`--font-*`). Le mode clair est obtenu avec `[data-theme="light"]`.
+Les tokens sont des variables CSS (`--bg`, `--surface`, `--text`, `--primary`, `--space-*`, `--radius-*`, `--font-*`). Le mode clair est obtenu avec `[data-theme="light"]`.
 
 ## Conventions de structure
 
