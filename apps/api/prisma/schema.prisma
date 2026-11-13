@@ -1,0 +1,480 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// ==========================================
+// 1. UTILISATEURS & RBAC
+// ==========================================
+
+model User {
+  id                String       @id @default(uuid())
+  email             String       @unique
+  pseudo            String       @unique
+  passwordHash      String       @map("password_hash")
+  avatarUrl         String?      @map("avatar_url")
+  preferredLanguage String       @default("python") @map("preferred_language")
+  soundEnabled      Boolean      @default(true) @map("sound_enabled")
+  theme             String       @default("neon-dark")
+  emailVerifiedAt   DateTime?    @map("email_verified_at")
+  status            String       @default("ACTIVE") // ACTIVE, BANNED, SUSPENDED, DELETED
+  createdAt         DateTime     @default(now()) @map("created_at")
+  updatedAt         DateTime     @updatedAt @map("updated_at")
+  deletedAt         DateTime?    @map("deleted_at")
+
+  roles             UserRole[]
+  sessions          Session[]
+  resetTokens       PasswordResetToken[]
+  health            PlayerHealth?
+  teamMemberships   TeamMember[]
+  submissions       Submission[]
+  bestScores        BestScore[]
+  wallet            Wallet?
+  inventory         Inventory[]
+  lessonProgress    LessonProgress[]
+  loreProgress      LoreProgress[]
+  eventParticipants EventParticipant[]
+  chatMessages      ChatMessage[]
+  auditLogs         AuditLog[]
+
+  @@map("users")
+}
+
+model Role {
+  id          String           @id @default(uuid())
+  name        String           @unique
+  description String?
+  users       UserRole[]
+  permissions RolePermission[]
+
+  @@map("roles")
+}
+
+model Permission {
+  id          String           @id @default(uuid())
+  name        String           @unique
+  roles       RolePermission[]
+
+  @@map("permissions")
+}
+
+model UserRole {
+  userId String @map("user_id")
+  roleId String @map("role_id")
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role   Role   @relation(fields: [roleId], references: [id], onDelete: Cascade)
+
+  @@id([userId, roleId])
+  @@map("user_roles")
+}
+
+model RolePermission {
+  roleId       String     @map("role_id")
+  permissionId String     @map("permission_id")
+  role         Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permission   Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  @@id([roleId, permissionId])
+  @@map("role_permissions")
+}
+
+model Session {
+  id               String    @id @default(uuid())
+  userId           String    @map("user_id")
+  refreshTokenHash String    @map("refresh_token_hash")
+  userAgent        String?   @map("user_agent")
+  ip               String?
+  expiresAt        DateTime  @map("expires_at")
+  revokedAt        DateTime? @map("revoked_at")
+  createdAt        DateTime  @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model PasswordResetToken {
+  id        String    @id @default(uuid())
+  userId    String    @map("user_id")
+  tokenHash String    @map("token_hash")
+  expiresAt DateTime  @map("expires_at")
+  usedAt    DateTime? @map("used_at")
+  createdAt DateTime  @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("password_reset_tokens")
+}
+
+// ==========================================
+// 2. PROGRESSION, COURS & LORE
+// ==========================================
+
+model Theme {
+  id           String      @id @default(uuid())
+  name         String
+  slug         String      @unique
+  regionLoreId String?     @map("region_lore_id")
+  challenges   Challenge[]
+  lessons      Lesson[]
+
+  @@map("themes")
+}
+
+model Lesson {
+  id          String           @id @default(uuid())
+  themeId     String           @map("theme_id")
+  title       String
+  content     String           @db.Text
+  quiz        Json?
+  orderIndex  Int              @default(0) @map("order_index")
+  theme       Theme            @relation(fields: [themeId], references: [id])
+  progress    LessonProgress[]
+
+  @@map("lessons")
+}
+
+model LessonProgress {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  lessonId    String   @map("lesson_id")
+  isCompleted Boolean  @default(false) @map("is_completed")
+  completedAt DateTime? @map("completed_at")
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lesson Lesson @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, lessonId])
+  @@map("lesson_progress")
+}
+
+model LoreChapter {
+  id          String         @id @default(uuid())
+  title       String
+  content     String         @db.Text
+  orderIndex  Int            @default(0) @map("order_index")
+  unlockLevel Int            @default(1) @map("unlock_level")
+  progress    LoreProgress[]
+
+  @@map("lore_chapters")
+}
+
+model LoreProgress {
+  id          String      @id @default(uuid())
+  userId      String      @map("user_id")
+  chapterId   String      @map("chapter_id")
+  isRead      Boolean     @default(false) @map("is_read")
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  chapter     LoreChapter @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, chapterId])
+  @@map("lore_progress")
+}
+
+// ==========================================
+// 3. DÉFIS & VERSIONS
+// ==========================================
+
+model Challenge {
+  id          String                 @id @default(uuid())
+  themeId     String                 @map("theme_id")
+  type        String                 // SORTING, DEBUGGING, DECRYPTION, STEGANOGRAPHY, QR_CODE
+  difficulty  Int                    // 1 à 5
+  title       String
+  statement   String                 @db.Text
+  basePoints  Int                    @default(100) @map("base_points")
+  perfMax     Int                    @default(50) @map("perf_max")
+  tOptMs      Float                  @default(50.0) @map("t_opt_ms")
+  tMaxMs      Float                  @default(500.0) @map("t_max_ms")
+  isEvent     Boolean                @default(false) @map("is_event")
+  isBoss      Boolean                @default(false) @map("is_boss")
+  status      String                 @default("DRAFT") // DRAFT, PUBLISHED, ARCHIVED
+  createdAt   DateTime               @default(now()) @map("created_at")
+
+  theme         Theme                  @relation(fields: [themeId], references: [id])
+  versions      ChallengeVersion[]
+  prerequisites ChallengePrerequisite[] @relation("TargetPrereqs")
+  requiredFor   ChallengePrerequisite[] @relation("SourcePrereqs")
+  submissions   Submission[]
+  bestScores    BestScore[]
+
+  @@map("challenges")
+}
+
+model ChallengeVersion {
+  id                String    @id @default(uuid())
+  challengeId       String    @map("challenge_id")
+  version           Int       @default(1)
+  testsEncrypted    String    @db.Text @map("tests_encrypted") // Chiffré AES-256-GCM
+  solutionEncrypted String    @db.Text @map("solution_encrypted") // Chiffré AES-256-GCM
+  createdAt         DateTime  @default(now()) @map("created_at")
+
+  challenge Challenge @relation(fields: [challengeId], references: [id], onDelete: Cascade)
+
+  @@unique([challengeId, version])
+  @@map("challenge_versions")
+}
+
+model ChallengePrerequisite {
+  id                  String     @id @default(uuid())
+  challengeId         String     @map("challenge_id")
+  requiredChallengeId String?    @map("required_challenge_id")
+  requiredLevel       Int?       @map("required_level")
+  requiredLessonId    String?    @map("required_lesson_id")
+
+  challenge         Challenge  @relation("TargetPrereqs", fields: [challengeId], references: [id], onDelete: Cascade)
+  requiredChallenge Challenge? @relation("SourcePrereqs", fields: [requiredChallengeId], references: [id], onDelete: SetNull)
+
+  @@map("challenge_prerequisites")
+}
+
+// ==========================================
+// 4. ÉQUIPES & VITALITÉ
+// ==========================================
+
+model Team {
+  id          String       @id @default(uuid())
+  name        String       @unique
+  tag         String       @unique
+  description String?
+  captainId   String       @map("captain_id")
+  createdAt   DateTime     @default(now()) @map("created_at")
+
+  members     TeamMember[]
+  submissions Submission[]
+  bestScores  BestScore[]
+
+  @@map("teams")
+}
+
+model TeamMember {
+  id       String   @id @default(uuid())
+  teamId   String   @map("team_id")
+  userId   String   @map("user_id")
+  role     String   @default("MEMBER") // CAPTAIN, MEMBER
+  joinedAt DateTime @default(now()) @map("joined_at")
+
+  team Team @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([teamId, userId])
+  @@map("team_members")
+}
+
+model PlayerHealth {
+  id          String   @id @default(uuid())
+  userId      String   @unique @map("user_id")
+  hp          Int      @default(100) // Max 100
+  koUntil     DateTime? @map("ko_until")
+  lastRegenAt DateTime @default(now()) @map("last_regen_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("player_health")
+}
+
+// ==========================================
+// 5. SOUMISSIONS & SCORING
+// ==========================================
+
+model Submission {
+  id             String    @id @default(uuid())
+  challengeId    String    @map("challenge_id")
+  userId         String    @map("user_id")
+  teamId         String?   @map("team_id")
+  language       String
+  code           String    @db.Text
+  status         String    @default("PENDING") // PENDING, RUNNING, COMPLETED, FAILED, TIMEOUT
+  cpuTimeMs      Float?    @map("cpu_time_ms")
+  testsPassed    Int       @default(0) @map("tests_passed")
+  testsTotal     Int       @default(0) @map("tests_total")
+  score          Int       @default(0)
+  idempotencyKey String?   @unique @map("idempotency_key")
+  createdAt      DateTime  @default(now()) @map("created_at")
+
+  challenge Challenge @relation(fields: [challengeId], references: [id])
+  user      User      @relation(fields: [userId], references: [id])
+  team      Team?     @relation(fields: [teamId], references: [id])
+
+  @@index([challengeId, score(sort: Desc)])
+  @@map("submissions")
+}
+
+model BestScore {
+  id           String   @id @default(uuid())
+  challengeId  String   @map("challenge_id")
+  userId       String?  @map("user_id")
+  teamId       String?  @map("team_id")
+  submissionId String   @map("submission_id")
+  score        Int
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  challenge Challenge @relation(fields: [challengeId], references: [id])
+  user      User?     @relation(fields: [userId], references: [id])
+  team      Team?     @relation(fields: [teamId], references: [id])
+
+  @@unique([challengeId, userId])
+  @@unique([challengeId, teamId])
+  @@map("best_scores")
+}
+
+// ==========================================
+// 6. ÉCONOMIE VIRTUELLE (LEDGER IMMUABLE)
+// ==========================================
+
+model Wallet {
+  id           String        @id @default(uuid())
+  userId       String        @unique @map("user_id")
+  balance      Int           @default(0)
+  createdAt    DateTime      @default(now()) @map("created_at")
+  transactions Transaction[]
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("wallets")
+}
+
+model Transaction {
+  id             String   @id @default(uuid())
+  walletId       String   @map("wallet_id")
+  amount         Int      // positif = gain, négatif = dépense
+  reason         String   // CHALLENGE_REWARD, SHOP_PURCHASE, EVENT_BONUS, HINT_PURCHASE
+  idempotencyKey String?  @unique @map("idempotency_key")
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  wallet Wallet @relation(fields: [walletId], references: [id])
+
+  @@map("transactions")
+}
+
+model ShopItem {
+  id          String      @id @default(uuid())
+  name        String
+  description String
+  type        String      // COSMETIC, POTION, HINT, THEME
+  cost        Int
+  metadata    Json?
+  inventory   Inventory[]
+
+  @@map("shop_items")
+}
+
+model Inventory {
+  id         String   @id @default(uuid())
+  userId     String   @map("user_id")
+  itemId     String   @map("item_id")
+  quantity   Int      @default(1)
+  acquiredAt DateTime @default(now()) @map("acquired_at")
+
+  user User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  item ShopItem @relation(fields: [itemId], references: [id])
+
+  @@unique([userId, itemId])
+  @@map("inventory")
+}
+
+// ==========================================
+// 7. ÉVÉNEMENTS, BATTLE ROYALE & BOSS
+// ==========================================
+
+model Event {
+  id           String             @id @default(uuid())
+  title        String
+  startsAt     DateTime           @map("starts_at")
+  endsAt       DateTime           @map("ends_at")
+  type         String             @default("STANDARD") // STANDARD, BATTLE_ROYALE, HARDCORE
+  maxAttempts  Int                @default(1) @map("max_attempts")
+  status       String             @default("SCHEDULED") // DRAFT, SCHEDULED, OPEN, FINISHED
+  participants EventParticipant[]
+
+  @@map("events")
+}
+
+model EventParticipant {
+  id           String   @id @default(uuid())
+  eventId      String   @map("event_id")
+  userId       String?  @map("user_id")
+  teamId       String?  @map("team_id")
+  attemptCount Int      @default(0) @map("attempt_count")
+  score        Int      @default(0)
+  joinedAt     DateTime @default(now()) @map("joined_at")
+
+  event Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  user  User? @relation(fields: [userId], references: [id])
+
+  @@unique([eventId, userId])
+  @@unique([eventId, teamId])
+  @@map("event_participants")
+}
+
+model Boss {
+  id          String      @id @default(uuid())
+  name        String
+  loreTitle   String      @map("lore_title")
+  maxHp       Int         @default(1000) @map("max_hp")
+  currentHp   Int         @default(1000) @map("current_hp")
+  damageRule  Json?       @map("damage_rule")
+  phases      BossPhase[]
+
+  @@map("bosses")
+}
+
+model BossPhase {
+  id          String @id @default(uuid())
+  bossId      String @map("boss_id")
+  phaseOrder  Int    @map("phase_order")
+  challengeId String @map("challenge_id")
+
+  boss Boss @relation(fields: [bossId], references: [id], onDelete: Cascade)
+
+  @@map("boss_phases")
+}
+
+// ==========================================
+// 8. CHAT & MODÉRATION
+// ==========================================
+
+model ChatChannel {
+  id        String        @id @default(uuid())
+  name      String
+  type      String        @default("GLOBAL") // GLOBAL, TEAM, EVENT, PRIVATE
+  teamId    String?       @map("team_id")
+  messages  ChatMessage[]
+
+  @@map("chat_channels")
+}
+
+model ChatMessage {
+  id        String      @id @default(uuid())
+  channelId String      @map("channel_id")
+  userId    String      @map("user_id")
+  content   String      @db.Text
+  sentAt    DateTime    @default(now()) @map("sent_at")
+
+  channel ChatChannel @relation(fields: [channelId], references: [id], onDelete: Cascade)
+  user    User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("chat_messages")
+}
+
+// ==========================================
+// 9. AUDIT LOGS (APPEND-ONLY)
+// ==========================================
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  actorId   String?  @map("actor_id")
+  action    String   // USER_LOGIN, ROLE_CHANGE, SUBMISSION_CREATED, RUNNER_ABUSE...
+  target    String?
+  metadata  Json?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  actor User? @relation(fields: [actorId], references: [id], onDelete: SetNull)
+
+  @@map("audit_logs")
+}
+

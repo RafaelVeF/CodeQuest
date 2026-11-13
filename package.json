@@ -1,0 +1,36 @@
+{
+  "name": "codequest-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CodeQuest — Plateforme de défis informatiques et d'apprentissage",
+  "scripts": {
+    "dev": "pnpm --parallel run dev",
+    "build": "pnpm --recursive run build",
+    "lint": "pnpm --recursive run lint",
+    "test": "pnpm --recursive run test",
+    "prisma:generate": "pnpm --filter @codequest/api prisma:generate",
+    "prisma:migrate": "pnpm --filter @codequest/api prisma:migrate",
+    "docker:up": "docker compose -f infra/docker-compose.yml up -d",
+    "docker:down": "docker compose -f infra/docker-compose.yml down",
+    "docker:logs": "docker compose -f infra/docker-compose.yml logs -f"
+  },
+  "keywords": [
+    "codequest",
+    "challenges",
+    "monorepo",
+    "nestjs",
+    "react",
+    "typescript",
+    "gvisor",
+    "bullmq"
+  ],
+  "author": "CodeQuest Team",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  }
+}
