@@ -3,14 +3,17 @@ import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import helmet from 'helmet';
-import cookieParser from 'cookie-parser';
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const cookieParser = require('cookie-parser');
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   // Sécurité headers
   app.use(helmet());
-  app.use(cookieParser());
+  const cookieMiddleware = typeof cookieParser === 'function' ? cookieParser : (cookieParser as any).default;
+  app.use(cookieMiddleware());
 
   // Validation globale des DTO
   app.useGlobalPipes(
@@ -47,4 +50,3 @@ async function bootstrap() {
 }
 
 bootstrap();
-

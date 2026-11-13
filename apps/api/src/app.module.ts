@@ -7,7 +7,7 @@ import { HealthController } from './modules/health/health.controller';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: ['.env', '../../.env'],
+      envFilePath: ['.env', '../.env', '../../.env'],
     }),
     PrismaModule,
   ],

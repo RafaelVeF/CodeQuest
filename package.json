@@ -5,9 +5,13 @@
   "description": "CodeQuest — Plateforme de défis informatiques et d'apprentissage",
   "scripts": {
     "dev": "pnpm --parallel run dev",
+    "dev:web": "pnpm --filter @codequest/web run dev",
+    "dev:api": "pnpm --filter @codequest/api run dev",
+    "dev:runner": "pnpm --filter @codequest/runner run dev",
     "build": "pnpm --recursive run build",
     "lint": "pnpm --recursive run lint",
-    "test": "pnpm --recursive run test",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "prisma:generate": "pnpm --filter @codequest/api prisma:generate",
     "prisma:migrate": "pnpm --filter @codequest/api prisma:migrate",
     "docker:up": "docker compose -f infra/docker-compose.yml up -d",
@@ -31,6 +35,7 @@
     "pnpm": ">=9.0.0"
   },
   "devDependencies": {
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "vitest": "^5.1.0"
   }
 }
