@@ -15,6 +15,7 @@ model User {
   id                String       @id @default(uuid())
   email             String       @unique
   pseudo            String       @unique
+  pseudoNormalized    String       @unique @map("pseudo_normalized")
   passwordHash      String       @map("password_hash")
   avatarUrl         String?      @map("avatar_url")
   preferredLanguage String       @default("python") @map("preferred_language")
@@ -25,6 +26,9 @@ model User {
   createdAt         DateTime     @default(now()) @map("created_at")
   updatedAt         DateTime     @updatedAt @map("updated_at")
   deletedAt         DateTime?    @map("deleted_at")
+  failedLoginAttempts Int          @default(0) @map("failed_login_attempts")
+  lockedUntil         DateTime?    @map("locked_until")
+  lastLoginAt         DateTime?    @map("last_login_at")
 
   roles             UserRole[]
   sessions          Session[]
@@ -86,6 +90,9 @@ model Session {
   id               String    @id @default(uuid())
   userId           String    @map("user_id")
   refreshTokenHash String    @map("refresh_token_hash")
+  previousRefreshTokenHash      String?   @map("previous_refresh_token_hash")
+  previousRefreshTokenExpiresAt DateTime? @map("previous_refresh_token_expires_at")
+  rememberMe                    Boolean   @default(true) @map("remember_me")
   userAgent        String?   @map("user_agent")
   ip               String?
   expiresAt        DateTime  @map("expires_at")
