@@ -28,73 +28,68 @@
             </div>
           </div>
 
-          <div class="grid grid-4 mb-6">
-            <div class="stat-card">
-              <div class="stat-label"><span data-icon="code"></span> Défis ouverts</div>
-              <div class="stat-value" data-challenge-count>9</div>
-              <div class="stat-trend">sur 24 dans le catalogue</div>
+          <!-- Barre de métriques sobre -->
+          <div class="row row-wrap between mb-6 p-4" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 20px">
+            <div class="row" style="gap:24px">
+              <div>
+                <span class="tiny muted uppercase mono">Défis ouverts</span>
+                <div class="strong" style="font-size:1.15rem"><span data-challenge-count>9</span> <span class="tiny muted">/ 24</span></div>
+              </div>
+              <div style="width:1px;height:28px;background:var(--border)"></div>
+              <div>
+                <span class="tiny muted uppercase mono">Réussis</span>
+                <div class="strong" style="font-size:1.15rem">37 <span class="tiny text-lime">+4 sem.</span></div>
+              </div>
+              <div style="width:1px;height:28px;background:var(--border)"></div>
+              <div>
+                <span class="tiny muted uppercase mono">Série</span>
+                <div class="strong" style="font-size:1.15rem">6 jours</div>
+              </div>
+              <div style="width:1px;height:28px;background:var(--border)"></div>
+              <div>
+                <span class="tiny muted uppercase mono">Précision 1er essai</span>
+                <div class="strong" style="font-size:1.15rem">84 %</div>
+              </div>
             </div>
-            <div class="stat-card">
-              <div class="stat-label"><span data-icon="check-circle"></span> Réussis</div>
-              <div class="stat-value">37</div>
-              <div class="stat-trend">+4 cette semaine</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-label"><span data-icon="flame"></span> Série</div>
-              <div class="stat-value">6 j</div>
-              <div class="stat-trend">Record : 11 jours</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-label"><span data-icon="gauge"></span> Précision</div>
-              <div class="stat-value">84 %</div>
-              <div class="stat-trend">Tests passés au 1<sup>er</sup> essai</div>
+            <div class="row">
+              <a class="btn btn-sm btn-ghost" href="didacticiel.html"><span data-icon="book"></span> Didacticiels</a>
             </div>
           </div>
 
+          <!-- Barre de recherche et filtres consolidés -->
           <div class="panel mb-6">
-            <div class="panel-body">
-              <div class="row row-wrap between mb-4">
-                <div class="input-group" style="flex:1;min-width:240px;max-width:420px">
+            <div class="panel-body" style="padding:16px 20px">
+              <div class="row row-wrap between mb-3">
+                <div class="input-group" style="flex:1;min-width:260px;max-width:440px">
                   <span data-icon="search"></span>
-                  <input class="input" type="search" placeholder="Rechercher un défi, un thème, un tag…" aria-label="Rechercher un défi" data-challenge-search>
+                  <input class="input" type="search" placeholder="Rechercher un défi, un tag, un algorithme…" aria-label="Rechercher un défi" data-challenge-search>
                 </div>
                 <div class="row row-wrap">
-                  <button class="btn btn-sm btn-secondary" type="button"><span data-icon="filter"></span> Filtres avancés</button>
-                  <button class="btn btn-sm btn-ghost" type="button"><span data-icon="refresh"></span> Réinitialiser</button>
+                  <span class="tiny muted mono">Difficulté :</span>
+                  <button class="chip active" type="button" data-filter-key="difficulty" data-filter-value="all">Toutes</button>
+                  <button class="chip" type="button" data-filter-key="difficulty" data-filter-value="1">1</button>
+                  <button class="chip" type="button" data-filter-key="difficulty" data-filter-value="2">2</button>
+                  <button class="chip" type="button" data-filter-key="difficulty" data-filter-value="3">3</button>
+                  <button class="chip" type="button" data-filter-key="difficulty" data-filter-value="4">4</button>
+                  <button class="chip" type="button" data-filter-key="difficulty" data-filter-value="5">5</button>
                 </div>
               </div>
 
-              <div class="stack-sm">
+              <div class="row row-wrap between" style="padding-top:10px;border-top:1px solid var(--border)">
                 <div class="row row-wrap">
-                  <span class="tiny muted mono" style="width:82px">Thème</span>
+                  <span class="tiny muted mono" style="margin-right:4px">Thème :</span>
                   <button class="chip active" type="button" data-filter-key="theme" data-filter-value="all">Tous <span class="count">9</span></button>
                   <button class="chip" type="button" data-filter-key="theme" data-filter-value="tris">Tris <span class="count">3</span></button>
                   <button class="chip" type="button" data-filter-key="theme" data-filter-value="debogage">Débogage <span class="count">2</span></button>
-                  <button class="chip" type="button" data-filter-key="theme" data-filter-value="crypto">Cryptographie <span class="count">2</span></button>
+                  <button class="chip" type="button" data-filter-key="theme" data-filter-value="crypto">Crypto <span class="count">2</span></button>
                   <button class="chip" type="button" data-filter-key="theme" data-filter-value="visuel">Stégano &amp; QR <span class="count">2</span></button>
                 </div>
                 <div class="row row-wrap">
-                  <span class="tiny muted mono" style="width:82px">Difficulté</span>
-                  <button class="chip active" type="button" data-filter-key="difficulty" data-filter-value="all">Toutes</button>
-                  <button class="chip" type="button" data-filter-key="difficulty" data-filter-value="1">1 · Initiation</button>
-                  <button class="chip" type="button" data-filter-key="difficulty" data-filter-value="2">2 · Facile</button>
-                  <button class="chip" type="button" data-filter-key="difficulty" data-filter-value="3">3 · Moyen</button>
-                  <button class="chip" type="button" data-filter-key="difficulty" data-filter-value="4">4 · Difficile</button>
-                  <button class="chip" type="button" data-filter-key="difficulty" data-filter-value="5">5 · Expert</button>
-                </div>
-                <div class="row row-wrap">
-                  <span class="tiny muted mono" style="width:82px">Statut</span>
+                  <span class="tiny muted mono" style="margin-right:4px">Statut :</span>
                   <button class="chip active" type="button" data-filter-key="status" data-filter-value="all">Tous</button>
-                  <button class="chip" type="button" data-filter-key="status" data-filter-value="available">Disponible</button>
+                  <button class="chip" type="button" data-filter-key="status" data-filter-value="available">Dispo</button>
                   <button class="chip" type="button" data-filter-key="status" data-filter-value="done">Réussi</button>
                   <button class="chip" type="button" data-filter-key="status" data-filter-value="locked">Verrouillé</button>
-                </div>
-                <div class="row row-wrap">
-                  <span class="tiny muted mono" style="width:82px">Type</span>
-                  <button class="chip active" type="button" data-filter-key="type" data-filter-value="all">Tous</button>
-                  <button class="chip" type="button" data-filter-key="type" data-filter-value="solo">Solo</button>
-                  <button class="chip" type="button" data-filter-key="type" data-filter-value="equipe">Équipe</button>
-                  <button class="chip" type="button" data-filter-key="type" data-filter-value="event">Event</button>
                 </div>
               </div>
             </div>

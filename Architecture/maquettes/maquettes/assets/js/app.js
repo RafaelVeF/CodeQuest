@@ -214,8 +214,17 @@
       </div>
     </div>
     <div class="topbar-actions">
-      <a class="badge badge-amber" href="${root}pages/boutique.html" title="Solde de Bits">${icon('coin', 'icon-sm')} 1 240 Bits</a>
-      <span class="badge badge-red" title="Points de vie">${icon('heart', 'icon-sm')} 86 / 100 PV</span>
+      <div class="status-capsule">
+        <a class="status-item" href="${root}pages/boutique.html" title="Solde en Bits">
+          <span class="status-dot dot-amber"></span>
+          <span>1 240 Bits</span>
+        </a>
+        <span class="status-divider"></span>
+        <a class="status-item" href="${root}pages/profil.html" title="Points de vie">
+          <span class="status-dot dot-red"></span>
+          <span>86 / 100 PV</span>
+        </a>
+      </div>
       <button class="icon-btn" type="button" data-theme-toggle aria-label="Changer de thème">${icon('moon')}</button>
       <button class="icon-btn" type="button" aria-label="Notifications" data-toast="3 notifications non lues">${icon('bell')}</button>
       <details class="user-menu">

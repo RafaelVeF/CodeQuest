@@ -31,29 +31,21 @@
           </div>
 
           <div class="hero-visual">
-            <div class="hero-orbit" aria-hidden="true"></div>
-            <div class="terminal scanlines" style="position:relative;z-index:1">
+            <div class="terminal" style="position:relative;z-index:1">
               <div class="terminal-bar">
                 <span class="terminal-dots"><span></span><span></span><span></span></span>
-                <span class="terminal-title">oracle://secteur-07 / diagnostic</span>
-                <span class="badge badge-red" style="margin-left:auto">Corrompu</span>
+                <span class="terminal-title">codequest://session / runner-sandbox</span>
+                <span class="badge badge-lime" style="margin-left:auto">Actif</span>
               </div>
               <div class="terminal-body">
-                <div class="terminal-line"><span class="terminal-prompt">$</span><span class="terminal-cmd">codequest scan --region dedale</span></div>
-                <div class="terminal-line"><span class="terminal-dim">› Analyse des nœuds…</span></div>
-                <div class="terminal-line"><span class="terminal-warn">!</span><span>3 Gardiens détectés · intégrité 42 %</span></div>
-                <div class="terminal-line"><span class="terminal-prompt">$</span><span class="terminal-cmd">codequest run sort_list</span></div>
-                <div class="terminal-line"><span class="terminal-ok">✓</span><span>5/5 tests passés · 320 pts</span></div>
-                <div class="terminal-line"><span class="terminal-ok">✓</span><span>+120 Bits · badge « Premier tri »</span></div>
-                <div class="terminal-line mt-3"><span class="terminal-prompt">$</span><span class="terminal-cmd">codequest next</span><span class="terminal-cursor"></span></div>
-                <div class="terminal-line"><span class="terminal-dim">→ Crypte des Chiffres · difficulté 3/5</span></div>
+                <div class="terminal-line"><span class="terminal-prompt">$</span><span class="terminal-cmd">codequest run sort_list.py</span></div>
+                <div class="terminal-line"><span class="terminal-dim">› Compilation &amp; exécution en conteneur gVisor…</span></div>
+                <div class="terminal-line"><span class="terminal-ok">✓</span><span>5/5 tests de référence validés</span></div>
+                <div class="terminal-line"><span class="terminal-dim">› Mesure temps CPU (médiane de 5 passes) : 18.2 ms</span></div>
+                <div class="terminal-line"><span class="terminal-ok">✓</span><span>Score calculé : 320 pts (300 base + 20 perf)</span></div>
+                <div class="terminal-line mt-3"><span class="terminal-prompt">$</span><span class="terminal-cmd">codequest status</span><span class="terminal-cursor"></span></div>
+                <div class="terminal-line"><span class="terminal-dim">→ Rang actuel : 14e · Prochain secteur : Crypte des Chiffres</span></div>
               </div>
-            </div>
-            <div class="card card-pad-sm" style="position:absolute;right:-10px;bottom:-18px;z-index:2;width:230px;box-shadow:var(--shadow)">
-              <div class="row between mb-2"><span class="badge badge-lime">Défi réussi</span><span class="mono tiny muted">+320</span></div>
-              <strong style="display:block;font-size:0.9rem">Tri fusion optimisé</strong>
-              <div class="progress mt-3"><span style="width:100%"></span></div>
-              <p class="tiny muted mb-0 mt-2">Temps CPU : 18 ms · rang 14</p>
             </div>
           </div>
         </div>
@@ -73,25 +65,25 @@
         <div class="grid grid-4">
           <div class="feature-card">
             <span class="feature-icon"><span data-icon="book"></span></span>
-            <span class="badge badge-cyan mb-3">01 · Apprendre</span>
+            <span class="badge mb-3">01 · Apprendre</span>
             <h3>Didacticiels courts</h3>
             <p class="small muted mb-0">Leçon, exemple interactif et mini-quiz. Un cours obligatoire avant le premier défi de la notion, ou test de positionnement.</p>
           </div>
           <div class="feature-card">
-            <span class="feature-icon magenta"><span data-icon="code"></span></span>
-            <span class="badge badge-magenta mb-3">02 · Coder</span>
+            <span class="feature-icon"><span data-icon="code"></span></span>
+            <span class="badge mb-3">02 · Coder</span>
             <h3>Défis exécutés</h3>
             <p class="small muted mb-0">Éditeur, tests visibles et cachés, bac à sable. Le temps CPU médian départage les solutions correctes.</p>
           </div>
           <div class="feature-card">
-            <span class="feature-icon lime"><span data-icon="trophy"></span></span>
-            <span class="badge badge-lime mb-3">03 · Progresser</span>
+            <span class="feature-icon"><span data-icon="trophy"></span></span>
+            <span class="badge mb-3">03 · Progresser</span>
             <h3>Scores &amp; classements</h3>
             <p class="small muted mb-0">XP, niveaux, badges, Bits et classements joueurs, équipes, thèmes, saisons et events.</p>
           </div>
           <div class="feature-card">
-            <span class="feature-icon violet"><span data-icon="skull"></span></span>
-            <span class="badge badge-violet mb-3">04 · Affronter</span>
+            <span class="feature-icon"><span data-icon="skull"></span></span>
+            <span class="badge mb-3">04 · Affronter</span>
             <h3>Boss &amp; Gardiens</h3>
             <p class="small muted mb-0">Des boss multi-phases, des PV partagés en équipe et des récompenses qui racontent le lore.</p>
           </div>
@@ -114,37 +106,37 @@
             <div class="region-icon"><span data-icon="sort" class="icon-lg"></span></div>
             <h3>Le Dédale des Tris</h3>
             <p>Algorithmes de tri, complexité, stabilité, structures et grands volumes.</p>
-            <div class="region-meta"><span>8 défis · 1 boss</span><span class="text-cyan">Difficulté 1–5</span></div>
+            <div class="region-meta"><span>8 défis · 1 boss</span><span>Difficulté 1–5</span></div>
           </a>
-          <a class="region-card magenta" href="defis.html">
+          <a class="region-card" href="defis.html">
             <div class="region-icon"><span data-icon="key" class="icon-lg"></span></div>
             <h3>La Crypte des Chiffres</h3>
             <p>César, Vigenère, XOR, substitutions et chiffrements maison du lore.</p>
-            <div class="region-meta"><span>5 défis · 1 boss</span><span class="text-magenta">Instances par seed</span></div>
+            <div class="region-meta"><span>5 défis · 1 boss</span><span>Instances par seed</span></div>
           </a>
-          <a class="region-card lime" href="defis.html">
+          <a class="region-card" href="defis.html">
             <div class="region-icon"><span data-icon="bug" class="icon-lg"></span></div>
             <h3>L'Atelier des Fantômes</h3>
             <p>Débogage, cas limites, fuites d'état et corrections sous contrainte.</p>
-            <div class="region-meta"><span>4 défis · 1 boss</span><span class="text-lime">Correction + essais</span></div>
+            <div class="region-meta"><span>4 défis · 1 boss</span><span>Correction + essais</span></div>
           </a>
-          <a class="region-card violet" href="defis.html">
+          <a class="region-card" href="defis.html">
             <div class="region-icon"><span data-icon="image" class="icon-lg"></span></div>
             <h3>Le Puits des Images</h3>
             <p>Stéganographie LSB, canaux de couleur, métadonnées et texte quasi invisible.</p>
-            <div class="region-meta"><span>3 défis · atelier</span><span class="text-violet">Indices progressifs</span></div>
+            <div class="region-meta"><span>3 défis · atelier</span><span>Indices progressifs</span></div>
           </a>
           <a class="region-card" href="defis.html">
             <div class="region-icon"><span data-icon="qr-code" class="icon-lg"></span></div>
             <h3>Le Sanctuaire des QR</h3>
             <p>QR caché, fragmenté, faible contraste ou dégradé. Variante atelier de génération.</p>
-            <div class="region-meta"><span>2 défis · atelier</span><span class="text-cyan">Décodage</span></div>
+            <div class="region-meta"><span>2 défis · atelier</span><span>Décodage</span></div>
           </a>
-          <a class="region-card magenta" href="boss.html">
+          <a class="region-card" href="boss.html">
             <div class="region-icon"><span data-icon="skull" class="icon-lg"></span></div>
             <h3>La Forteresse des Gardiens</h3>
             <p>Boss multi-phases, PV, KO et récompenses majeures liées aux chapitres.</p>
-            <div class="region-meta"><span>3 boss · 100 PV</span><span class="text-magenta">Équipe ou solo</span></div>
+            <div class="region-meta"><span>3 boss · 100 PV</span><span>Équipe ou solo</span></div>
           </a>
         </div>
       </div>
