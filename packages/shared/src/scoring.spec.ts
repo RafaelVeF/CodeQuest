@@ -28,3 +28,4 @@ describe('Scoring Logic — Spécification v1.0 Section 4.3', () => {
     expect(score).toBe(25);
   });
 });
+

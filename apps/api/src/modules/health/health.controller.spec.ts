@@ -12,3 +12,4 @@ describe('HealthController', () => {
     expect(new Date(result.timestamp).getTime()).not.toBeNaN();
   });
 });
+
