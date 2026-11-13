@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { ConflictException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as argon2 from 'argon2';
+import { createHash } from 'node:crypto';
 import { AuthService } from './auth.service';
 
 const prismaMock = {
@@ -49,12 +50,31 @@ describe('AuthService.register', () => {
     const createArgs = prismaMock.user.create.mock.calls[0][0];
     expect(createArgs.data.email).toBe('demo@codequest.gg');
     expect(createArgs.data.pseudoNormalized).toBe('demo_runner');
+    expect(createArgs.data.preferredLanguage).toBe('python');
+    expect(createArgs.data.roles).toEqual({ create: [{ roleId: playerRole.id }] });
     expect(createArgs.data.passwordHash).not.toBe('CodeQuest2026!');
     expect(await argon2.verify(createArgs.data.passwordHash, 'CodeQuest2026!')).toBe(true);
     expect(prismaMock.session.create).toHaveBeenCalledOnce();
+    const sessionArgs = prismaMock.session.create.mock.calls[0][0];
+    expect(sessionArgs.data.userId).toBe(userRecord.id);
+    expect(sessionArgs.data.refreshTokenHash).toBe(
+      createHash('sha256').update(result.refreshToken).digest('hex'),
+    );
+    expect(sessionArgs.data.userAgent).toBe('vitest');
+    expect(sessionArgs.data.ip).toBe('127.0.0.1');
+    expect(sessionArgs.data.rememberMe).toBe(true);
+    expect(result.refreshExpiresAt).toEqual(sessionArgs.data.expiresAt);
+    expect(result.rememberMe).toBe(true);
+    const payload = await new JwtService({ secret: 'test-secret' }).verifyAsync(result.accessToken);
+    expect(payload).toMatchObject({ sub: userRecord.id, sid: 'session-1', type: 'access' });
+    expect(payload.exp - payload.iat).toBe(15 * 60);
     expect(result.user.pseudo).toBe('demo_runner');
     expect(result.accessToken).toBeTruthy();
     expect(result.refreshToken).toBeTruthy();
+    expect(result.user).not.toHaveProperty('passwordHash');
+    expect(result.user).not.toHaveProperty('refreshToken');
+    expect(result.user).not.toHaveProperty('refreshTokenHash');
+    expect(result.user.roles).toEqual(['PLAYER']);
   });
 
   it('refuse un e-mail ou pseudo déjà utilisé', async () => {
@@ -67,5 +87,19 @@ describe('AuthService.register', () => {
         {},
       ),
     ).rejects.toBeInstanceOf(ConflictException);
+  });
+
+  it('convertit une contrainte unique concurrente en conflit', async () => {
+    prismaMock.user.create.mockRejectedValueOnce({ code: 'P2002' });
+    const service = createService();
+
+    await expect(
+      service.register(
+        { email: 'demo@codequest.gg', pseudo: 'demo_runner', password: 'CodeQuest2026!' },
+        {},
+      ),
+    ).rejects.toMatchObject({
+      response: { message: 'E-mail ou pseudo déjà utilisé.' },
+    });
   });
 });

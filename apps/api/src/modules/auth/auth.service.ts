@@ -34,17 +34,30 @@ export class AuthService {
       create: { name: 'PLAYER' },
     });
     const passwordHash = await hashPassword(dto.password);
-    const user = await this.prisma.user.create({
-      data: {
-        email,
-        pseudo,
-        pseudoNormalized: pseudo,
-        passwordHash,
-        preferredLanguage: dto.preferredLanguage ?? 'python',
-        roles: { create: [{ roleId: role.id }] },
-      },
-      include: { roles: { include: { role: true } } },
-    });
+    let user;
+    try {
+      user = await this.prisma.user.create({
+        data: {
+          email,
+          pseudo,
+          pseudoNormalized: pseudo,
+          passwordHash,
+          preferredLanguage: dto.preferredLanguage ?? 'python',
+          roles: { create: [{ roleId: role.id }] },
+        },
+        include: { roles: { include: { role: true } } },
+      });
+    } catch (error: unknown) {
+      if (
+        error !== null &&
+        typeof error === 'object' &&
+        'code' in error &&
+        error.code === 'P2002'
+      ) {
+        throw new ConflictException('E-mail ou pseudo déjà utilisé.');
+      }
+      throw error;
+    }
     const tokens = await this.createSession(user.id, true, meta);
     return { ...tokens, user: this.toAuthUser(user) };
   }
