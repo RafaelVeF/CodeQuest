@@ -225,3 +225,46 @@ export interface SocketClientToServerEvents {
   'team:cursor_move': (data: { teamId: string; position: { line: number; column: number } }) => void;
 }
 
+// ==========================================
+// 8. AUTHENTIFICATION & POLITIQUE DE MOT DE PASSE
+// ==========================================
+
+/** Longueur minimale requise pour un mot de passe (contrat partagé API / web). */
+export const PASSWORD_MIN_LENGTH = 12;
+
+/** Message d'erreur affiché à l'utilisateur quand la politique de mot de passe n'est pas respectée. */
+export const PASSWORD_POLICY_MESSAGE =
+  'Le mot de passe doit contenir au moins 12 caractères, une minuscule, une majuscule et un chiffre ou un symbole.';
+
+/**
+ * Vérifie qu'un mot de passe respecte la politique :
+ * longueur minimale, une minuscule, une majuscule et un chiffre.
+ * Un chiffre est exigé : un symbole seul ne suffit pas.
+ */
+export function isStrongPassword(value: string): boolean {
+  return (
+    value.length >= PASSWORD_MIN_LENGTH &&
+    /[a-z]/.test(value) &&
+    /[A-Z]/.test(value) &&
+    /[0-9]/.test(value)
+  );
+}
+
+/** Utilisateur exposé par l'API d'authentification. */
+export interface AuthUser {
+  id: string;
+  email: string;
+  pseudo: string;
+  avatarUrl?: string;
+  preferredLanguage: SupportedLanguage;
+  theme: string;
+  soundEnabled: boolean;
+  roles: UserRole[];
+  createdAt: string;
+}
+
+/** Réponse de l'API d'authentification (connexion / inscription). */
+export interface AuthResponse {
+  user: AuthUser;
+}
+
